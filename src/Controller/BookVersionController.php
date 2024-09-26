@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/book/version')]
+#[Route('/book_version')]
 final class BookVersionController extends AbstractController
 {
     #[Route(name: 'app_book_version_index', methods: ['GET'])]
