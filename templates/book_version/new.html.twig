@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New BookVersion{% endblock %}
+
+{% block body %}
+    <h1>Create new BookVersion</h1>
+
+    {{ include('book_version/_form.html.twig') }}
+
+    <a href="{{ path('app_book_version_index') }}">back to list</a>
+{% endblock %}
