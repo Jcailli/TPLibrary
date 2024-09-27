@@ -1,44 +1,70 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a href="{{ path('homepage') }}" class="navbar-brand">Library</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_book_index') }}">Livres</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_book_version_index') }}">Versions</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_publisher_index') }}">Editeurs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_author_index') }}">Autheurs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('') }}">Emprunt</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('') }}">Réservation</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_user_index') }}">Utilisateurs</a>
-                </li>
+                {% if is_granted('IS_AUTHENTICATED') %}
+                    {% if is_granted('ROLE_LIBRARIAN') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_book_index') }}">Livres</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_book_version_index') }}">Versions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_publisher_index') }}">Editeurs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_author_index') }}">Autheurs</a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('ROLE_LIBRARIAN') or is_granted('ROLE_USER') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_borrowing_index') }}">Emprunt</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Réservation
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% if is_granted('ROLE_LIBRARIAN') %}
+                                    <li><a class="dropdown-item" href="#">Liste des Réservations</a></li>
+                                {% endif %}
+                                {% if is_granted('ROLE_USER') %}
+                                    <li><a class="dropdown-item" href="#">Nouvelle Réservation</a></li>
+                                    <li><a class="dropdown-item" href="#">Liste des Livres Disponibles à la réservation</a></li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_user_index') }}">Utilisateurs</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
             </ul>
             <div class="navbar-text">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_login') }}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_register') }}">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
-                    </li>
+                    {% if not is_granted('IS_AUTHENTICATED') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_login') }}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_register') }}">Register</a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('IS_AUTHENTICATED') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_user_show', {id: app.user.id}) }}">Profil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
