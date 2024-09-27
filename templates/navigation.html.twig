@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_book_index') }}">Livres</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_book_version_index') }}">Versions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_publisher_index') }}">Editeurs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_author_index') }}">Autheurs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('') }}">Emprunt</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('') }}">Réservation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_user_index') }}">Utilisateurs</a>
+                </li>
+            </ul>
+            <div class="navbar-text">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_login') }}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_register') }}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

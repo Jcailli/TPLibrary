@@ -20,15 +20,15 @@ class BookVersionType extends AbstractType
             ->add('name')
             ->add('book', EntityType::class, [
                 'class' => Book::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
             ])
             ->add('publisher', EntityType::class, [
                 'class' => Publisher::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
             ])
             ->add('borrowing', EntityType::class, [
                 'class' => Borrowing::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
             ])
             ->add('reservation', EntityType::class, [
                 'class' => Reservation::class,
