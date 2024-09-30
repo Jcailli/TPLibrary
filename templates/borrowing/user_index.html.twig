@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Borrowing index{% endblock %}
+
+{% block body %}
+    <h1>Liste de mes emprunts en cours</h1>
+    <p><em>(maximum : {{ app.user.maxBorrow }} livres)</em></p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date d'emprunt</th>
+                <th>Date de retour prévu</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for borrowing in borrowings %}
+            <tr>
+                <td>{{ borrowing.borrowingDate ? borrowing.borrowingDate|date('Y-m-d') : '' }}</td>
+                <td>{{ borrowing.returnDate ? borrowing.returnDate|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a class="btn btn-info" href="{{ path('app_borrowing_show', {'id': borrowing.id}) }}">{{ ux_icon('mdi:show') }} Détail</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Pas d'emprunts trouvés</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% if borrowings < app.user.maxBorrow %}
+        <a class="btn btn-primary" href="{{ path('app_borrowing_new') }}">{{ ux_icon('zondicons:add-outline') }} Nouvel Emprunt</a>
+    {% else %}
+        <twig:Alert type="danger" message="Vous ne pouvez plus emprunter de livre pour l'instant !"/>
+    {% endif %}
+{% endblock %}

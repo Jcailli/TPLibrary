@@ -27,8 +27,7 @@ class Borrowing
     #[ORM\JoinColumn(nullable: false)]
     private ?BookVersion $bookVersion = null;
 
-    #[ORM\OneToOne(inversedBy: 'borrowing', cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(inversedBy: 'borrowings')]
     private ?User $user = null;
 
     public function getId(): ?int
@@ -89,7 +88,7 @@ class Borrowing
         return $this->user;
     }
 
-    public function setUser(User $user): self
+    public function setUser(?User $user): static
     {
         $this->user = $user;
 
