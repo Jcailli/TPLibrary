@@ -4,28 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Change chmod">
+      <change afterPath="$PROJECT_DIR$/src/Twig/Components/Alert.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/borrowing/user_index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/components/Alert.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compose.override.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/compose.override.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/controllers.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/global.scss" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/webpack_encore.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BorrowingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BorrowingController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Borrowing.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Borrowing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Reservation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/RegistrationFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RegistrationFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/BookVersionType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BookVersionType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/BorrowingType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BorrowingType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/BorrowingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/BorrowingRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/app/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/app/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/book_version/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book_version/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/book_version/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book_version/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/borrowing/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowing/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/navigation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navigation.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,14 +142,19 @@
       <path value="$PROJECT_DIR$/vendor/symfony/string" />
       <path value="$PROJECT_DIR$/vendor/symfony/var-exporter" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-core" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-uuid" />
-      <path value="$PROJECT_DIR$/vendor/symfony/uid" />
       <path value="$PROJECT_DIR$/vendor/symfony/web-profiler-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfonycasts/reset-password-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
       <path value="$PROJECT_DIR$/vendor/symfony/mailer" />
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
       <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/asset" />
+      <path value="$PROJECT_DIR$/vendor/symfony/stimulus-bundle" />
+      <path value="$PROJECT_DIR$/vendor/twig/extra-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/asset-mapper" />
+      <path value="$PROJECT_DIR$/vendor/symfony/ux-autocomplete" />
+      <path value="$PROJECT_DIR$/vendor/symfony/ux-twig-component" />
+      <path value="$PROJECT_DIR$/vendor/symfony/ux-icons" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -152,24 +165,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;//wsl$/Debian/home/docker/projects/orange/library&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "//wsl$/Debian/home/docker/projects/orange/library/templates/borrowing",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager">
-    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
-      <option name="pathToComposerJson" value="$PROJECT_DIR$/composer.json" />
-      <method v="2" />
-    </configuration>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\wsl$\Debian\home\docker\projects\orange\library\templates\borrowing" />
+    </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -188,8 +200,154 @@
       <option name="presentableId" value="Default" />
       <updated>1727340644136</updated>
       <workItem from="1727340645344" duration="9056000" />
-      <workItem from="1727421453892" duration="4621000" />
+      <workItem from="1727421453892" duration="22143000" />
+      <workItem from="1727681633240" duration="8605000" />
     </task>
+    <task id="LOCAL-00001" summary="Init Mailer">
+      <option name="closed" value="true" />
+      <created>1727439146550</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1727439146550</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Init Mailer">
+      <option name="closed" value="true" />
+      <created>1727439171864</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1727439171864</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add ResetPassword + Update login and register">
+      <option name="closed" value="true" />
+      <created>1727439270580</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1727439270580</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add ResetPassword + Update login and register">
+      <option name="closed" value="true" />
+      <created>1727439277392</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1727439277392</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add ResetPassword + Update login and register">
+      <option name="closed" value="true" />
+      <created>1727439282702</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1727439282702</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add ResetPassword + Update login and register">
+      <option name="closed" value="true" />
+      <created>1727439291181</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1727439291181</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add ResetPassword + Update login and register">
+      <option name="closed" value="true" />
+      <created>1727439327491</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1727439327491</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add AppController for the home page">
+      <option name="closed" value="true" />
+      <created>1727439352570</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1727439352570</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Add AppController for the home page">
+      <option name="closed" value="true" />
+      <created>1727439368997</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1727439368997</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Update User CRUD for administration">
+      <option name="closed" value="true" />
+      <created>1727439536245</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1727439536245</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Update Navigation to add Granted Authorizations and Profil page">
+      <option name="closed" value="true" />
+      <created>1727439572882</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1727439572882</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add Symfony Profiler">
+      <option name="closed" value="true" />
+      <created>1727439590982</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1727439590982</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add Webpack encore for bootstrap and jquery">
+      <option name="closed" value="true" />
+      <created>1727441556751</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1727441556751</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Add Webpack encore for bootstrap and jquery">
+      <option name="closed" value="true" />
+      <created>1727441590247</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1727441590247</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Add Webpack encore for bootstrap and jquery">
+      <option name="closed" value="true" />
+      <created>1727441790198</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1727441790198</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Add Webpack encore for bootstrap and jquery">
+      <option name="closed" value="true" />
+      <created>1727444778239</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1727444778239</updated>
+    </task>
+    <task id="LOCAL-00017" summary="BookController for Librarian">
+      <option name="closed" value="true" />
+      <created>1727444868672</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1727444868672</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Change chmod">
+      <option name="closed" value="true" />
+      <created>1727444904422</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1727444904422</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,5 +363,18 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Init Mailer" />
+    <MESSAGE value="Add ResetPassword + Update login and register" />
+    <MESSAGE value="Add AppController for the home page" />
+    <MESSAGE value="Update User CRUD for administration" />
+    <MESSAGE value="Update Navigation to add Granted Authorizations and Profil page" />
+    <MESSAGE value="Add Symfony Profiler" />
+    <MESSAGE value="change chmod" />
+    <MESSAGE value="Add Webpack encore for bootstrap and jquery" />
+    <MESSAGE value="BookController for Librarian" />
+    <MESSAGE value="Change chmod" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change chmod" />
   </component>
 </project>
