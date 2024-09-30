@@ -9,9 +9,15 @@
 </style>
 
 <div class="example-wrapper">
-    <h1 class="text-center">Bonjour {{ user.userFirstName }} {{ user.username }}</h1>
+    {% if is_granted('IS_AUTHENTICATED') %}
+        <h1 class="text-center">Bonjour {{ user.userFirstName }} {{ user.username }}</h1>
 
-    <p class="text-center">Bienvenue dans ta librairie préférée</p>
+        <p class="text-center">Bienvenue dans ta librairie préférée</p>
+    {% else %}
+        <h1 class="text-center">Bonjour,</h1>
+
+        <p class="text-center">Merci de te connecter ou de te créer un compte pour entrer dans ta bibliothèque favorite.</p>
+    {% endif %}
     <img class="img-fluid" src="https://expodif.fr/wp-content/uploads/2022/04/Bibliotheque-de-livres.png" alt="bibliothèque">
 </div>
 {% endblock %}
