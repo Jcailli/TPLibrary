@@ -10,15 +10,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/book_version')]
 final class BookVersionController extends AbstractController
 {
     #[Route(name: 'app_book_version_index', methods: ['GET'])]
+    #[IsGranted('ROLE_LIBRARIAN')]
     public function index(BookVersionRepository $bookVersionRepository): Response
     {
         return $this->render('book_version/index.html.twig', [
             'book_versions' => $bookVersionRepository->findAll(),
+        ]);
+    }
+
+    #[Route('/can_be_reserved', name: 'app_book_version_can_be_reserved', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
+    public function bookVersionCanBeReserved(BookVersionRepository $bookVersionRepository): Response
+    {
+        return $this->render('book_version/index_reservation.html.twig', [
+            'book_versions' => $bookVersionRepository->findAllBookVersionBorrowed(),
         ]);
     }
 

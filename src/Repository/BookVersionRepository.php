@@ -3,6 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\BookVersion;
+use App\Entity\Borrowing;
+use App\Entity\Reservation;
+use DateInterval;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -39,28 +42,30 @@ class BookVersionRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return BookVersion[] Returns an array of BookVersion objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('b.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function findAllBookVersionBorrowed(): array
+    {
+        $qb = $this->createQueryBuilder('b')
+        ->innerJoin(
+            Borrowing::class,
+            'borrowing',
+            'WITH',
+            'borrowing.bookVersion = b.id'
+        )
+        ->leftJoin(
+            Reservation::class,
+            'reservation',
+            'WITH',
+            'reservation.bookVersion = b.id'
+        )
+        ->where('reservation.bookVersion IS NULL')
+        ->andWhere('borrowing.returned = :status OR borrowing.returnDate >= :returnedDate')
+        ->setParameter('status', false)
+        ->setParameter(
+            'returnedDate',
+            (new \DateTime('today'))
+                ->add(DateInterval::createFromDateString('2 day'))
+        );
 
-//    public function findOneBySomeField($value): ?BookVersion
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        return $qb->getQuery()->getResult();
+    }
 }

@@ -3,8 +3,11 @@
 namespace App\Form;
 
 use App\Entity\BookVersion;
+use App\Entity\Borrowing;
 use App\Entity\Reservation;
 use App\Entity\User;
+use App\Repository\BookVersionRepository;
+use DateInterval;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,11 +20,32 @@ class ReservationType extends AbstractType
         $builder
             ->add('bookVersion', EntityType::class, [
                 'class' => BookVersion::class,
-                'choice_label' => 'id',
-            ])
-            ->add('user', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
+                'choice_label' => function (BookVersion $bookVersion) {
+                    return $bookVersion->getBook()->getName() . ' : ' . $bookVersion->getName();
+                },
+                'query_builder' => function (BookVersionRepository $bookVersionRepository) {
+                    return $bookVersionRepository->createQueryBuilder('b')
+                        ->innerJoin(
+                            Borrowing::class,
+                            'borrowing',
+                            'WITH',
+                            'borrowing.bookVersion = b.id'
+                        )
+                        ->leftJoin(
+                            Reservation::class,
+                            'reservation',
+                            'WITH',
+                            'reservation.bookVersion = b.id'
+                        )
+                        ->where('reservation.bookVersion IS NULL')
+                        ->andWhere('borrowing.returned = :status OR borrowing.returnDate >= :returnedDate')
+                        ->setParameter('status', false)
+                        ->setParameter(
+                            'returnedDate',
+                            (new \DateTime('today'))
+                                ->add(DateInterval::createFromDateString('2 day'))
+                        );
+                }
             ])
         ;
     }

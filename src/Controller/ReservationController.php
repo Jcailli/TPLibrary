@@ -2,19 +2,23 @@
 
 namespace App\Controller;
 
+use App\Entity\BookVersion;
 use App\Entity\Reservation;
 use App\Form\ReservationType;
+use Symfony\Component\ExpressionLanguage\Expression;
 use App\Repository\ReservationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/reservation')]
 final class ReservationController extends AbstractController
 {
     #[Route(name: 'app_reservation_index', methods: ['GET'])]
+    #[IsGranted('ROEL_LIBRARIAN')]
     public function index(ReservationRepository $reservationRepository): Response
     {
         return $this->render('reservation/index.html.twig', [
@@ -22,7 +26,17 @@ final class ReservationController extends AbstractController
         ]);
     }
 
+    #[Route('/user' ,name: 'app_reservation_user_index', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
+    public function userReservation(ReservationRepository $reservationRepository): Response
+    {
+        return $this->render('reservation/user_index.html.twig', [
+            'reservations' => $reservationRepository->findAllByUserId($this->getUser()->getId()),
+        ]);
+    }
+
     #[Route('/new', name: 'app_reservation_new', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_USER')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $reservation = new Reservation();
@@ -42,7 +56,24 @@ final class ReservationController extends AbstractController
         ]);
     }
 
+    #[Route('/new/{bookVersionId}', name: 'app_reservation_new_from_book_list', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
+    public function newBookReservation(Request $request, BookVersion $bookVersionId, EntityManagerInterface $entityManager): Response
+    {
+        $reservation = new Reservation();
+        $reservation->setUser($this->getUser());
+        $reservation->setBookVersion($bookVersionId);
+        $form = $this->createForm(ReservationType::class, $reservation);
+        $form->handleRequest($request);
+
+        $entityManager->persist($reservation);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
+    }
+
     #[Route('/{id}', name: 'app_reservation_show', methods: ['GET'])]
+    #[IsGranted(new Expression('is_granted("ROLE_USER") or is_granted("ROLE_LIBRARIAN")'))]
     public function show(Reservation $reservation): Response
     {
         return $this->render('reservation/show.html.twig', [

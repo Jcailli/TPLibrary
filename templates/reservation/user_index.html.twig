@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation index{% endblock %}
+
+{% block body %}
+    <h1>My Reservations</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Book</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.bookVersion.book.name }} : {{ reservation.bookVersion.name }}</td>
+                <td>
+                    <a class="btn btn-info icon-link" href="{{ path('app_reservation_show', {'id': reservation.id}) }}"><twig:ux:icon class="bi" name="mdi:show" /> show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary icon-link" href="{{ path('app_reservation_new') }}"><twig:ux:icon class="bi" name="zondicons:add-outline" /> New</a>
+{% endblock %}
