@@ -25,9 +25,6 @@ return [
     'tom-select' => [
         'version' => '2.3.1',
     ],
-    'bootstrap' => [
-        'version' => '5.3.3',
-    ],
     '@popperjs/core' => [
         'version' => '2.11.8',
     ],
@@ -42,5 +39,8 @@ return [
     'tom-select/dist/css/tom-select.bootstrap5.css' => [
         'version' => '2.3.1',
         'type' => 'css',
+    ],
+    'bootstrap' => [
+        'version' => '5.3.3',
     ],
 ];

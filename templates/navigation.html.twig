@@ -9,27 +9,27 @@
                 {% if is_granted('IS_AUTHENTICATED') %}
                     {% if is_granted('ROLE_LIBRARIAN') %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_book_index') }}">Livres</a>
+                            <a class="nav-link" href="{{ path('app_book_index') }}">Books</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_book_version_index') }}">Versions</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_publisher_index') }}">Editeurs</a>
+                            <a class="nav-link" href="{{ path('app_publisher_index') }}">Publishers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_author_index') }}">Autheurs</a>
+                            <a class="nav-link" href="{{ path('app_author_index') }}">Authors</a>
                         </li>
                     {% endif %}
                     {% if is_granted('ROLE_LIBRARIAN') or is_granted('ROLE_USER') %}
                         {% if is_granted('ROLE_LIBRARIAN') %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('app_borrowing_index') }}">Liste des Emprunts</a>
+                                <a class="nav-link" href="{{ path('app_borrowing_index') }}">List of Borrowings</a>
                             </li>
                         {% endif %}
                         {% if is_granted('ROLE_USER') %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('app_borrowing_user_index') }}">Mes Emprunts</a>
+                                <a class="nav-link" href="{{ path('app_borrowing_user_index') }}">My Borrowings</a>
                             </li>
                         {% endif %}
                         <li class="nav-item dropdown">
@@ -49,7 +49,7 @@
                     {% endif %}
                     {% if is_granted('ROLE_ADMIN') %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_user_index') }}">Utilisateurs</a>
+                            <a class="nav-link" href="{{ path('app_user_index') }}">List of Users</a>
                         </li>
                     {% endif %}
                 {% endif %}
@@ -66,7 +66,7 @@
                     {% endif %}
                     {% if is_granted('IS_AUTHENTICATED') %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_user_show', {id: app.user.id}) }}">Profil</a>
+                            <a class="nav-link" href="{{ path('app_user_show', {id: app.user.id}) }}">Profile</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>

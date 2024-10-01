@@ -8,27 +8,30 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ borrowing.id }}</td>
+                <th>Book Borrowed</th>
+                <td>{{ borrowing.bookVersion.book.name }} : {{ borrowing.bookVersion.name }}</td>
             </tr>
             <tr>
-                <th>BorrowingDate</th>
+                <th>Borrowing Date</th>
                 <td>{{ borrowing.borrowingDate ? borrowing.borrowingDate|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>ReturnDate</th>
+                <th>Return Date</th>
                 <td>{{ borrowing.returnDate ? borrowing.returnDate|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Returned</th>
-                <td>{{ borrowing.returned ? 'Yes' : 'No' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_borrowing_index') }}">back to list</a>
+    <a class="btn btn-secondary" href="
+        {% if is_granted('ROLE_LIBRARIAN') %}
+            {{ path('app_borrowing_index') }}
+        {% else %}
+            {{ path('app_borrowing_user_index') }}
+        {% endif %}
+    ">back to list</a>
 
-    <a href="{{ path('app_borrowing_edit', {'id': borrowing.id}) }}">edit</a>
+    {% if is_granted('ROLE_LIBRARIAN') %}
+        <a class="btn btn-warning icon-link" href="{{ path('app_borrowing_edit', {'id': borrowing.id}) }}"><twig:ux:icon class="bi" name="material-symbols:edit-outline" /> edit</a>
+    {% endif %}
 
-    {{ include('borrowing/_delete_form.html.twig') }}
 {% endblock %}

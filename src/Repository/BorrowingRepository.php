@@ -42,8 +42,10 @@ class BorrowingRepository extends ServiceEntityRepository
     public function findByUserId(int $value): ?array
     {
         return $this->createQueryBuilder('b')
+            ->where('b.returned = :status')
             ->andWhere('b.user = :val')
             ->setParameter('val', $value)
+            ->setParameter('status', false)
             ->getQuery()
             ->getResult()
         ;

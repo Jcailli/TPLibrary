@@ -3,24 +3,26 @@
 {% block title %}Borrowing index{% endblock %}
 
 {% block body %}
-    <h1>Liste de mes emprunts en cours</h1>
-    <p><em>(maximum : {{ app.user.maxBorrow }} livres)</em></p>
+    <h1>List of my outstanding borrowings</h1>
+    <p><em>(maximum : {{ app.user.maxBorrow }} books)</em></p>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Date d'emprunt</th>
-                <th>Date de retour prévu</th>
+                <th>Book</th>
+                <th>Borrowing Date</th>
+                <th>Return Date</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
         {% for borrowing in borrowings %}
             <tr>
+                <td>{{ borrowing.bookVersion.book.name }} : {{ borrowing.bookVersion.name }}</td>
                 <td>{{ borrowing.borrowingDate ? borrowing.borrowingDate|date('Y-m-d') : '' }}</td>
                 <td>{{ borrowing.returnDate ? borrowing.returnDate|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a class="btn btn-info" href="{{ path('app_borrowing_show', {'id': borrowing.id}) }}">{{ ux_icon('mdi:show') }} Détail</a>
+                    <a class="btn btn-info icon-link" href="{{ path('app_borrowing_show', {'id': borrowing.id}) }}"><twig:ux:icon class="bi" name="mdi:show" /> Détail</a>
                 </td>
             </tr>
         {% else %}
@@ -31,8 +33,8 @@
         </tbody>
     </table>
 
-    {% if borrowings < app.user.maxBorrow %}
-        <a class="btn btn-primary" href="{{ path('app_borrowing_new') }}">{{ ux_icon('zondicons:add-outline') }} Nouvel Emprunt</a>
+    {% if borrowings|length < app.user.maxBorrow %}
+        <a class="btn btn-primary icon-link" href="{{ path('app_borrowing_new') }}"><twig:ux:icon class="bi" name="zondicons:add-outline" /> Nouvel Emprunt</a>
     {% else %}
         <twig:Alert type="danger" message="Vous ne pouvez plus emprunter de livre pour l'instant !"/>
     {% endif %}
