@@ -19,7 +19,13 @@
                 <td>{{ book_version.book.name }}</td>
                 <td>{{ book_version.name }}</td>
                 <td>
-                    <twig:Button type="reserve" path="{{ path('app_reservation_new_from_book_list', {'bookVersionId': book_version.id}) }}"/>
+                    {% if 'app_book_version_can_be_borrow' is same as(app.request.get('_route')) %}
+                        {% if app.user.borrowings|length < app.user.maxBorrow %}
+                            <twig:Button type="borrow" path="{{ path('app_borrowing_new_from_reservation', {'bookVersionId': book_version.id}) }}"/>
+                        {% endif %}
+                    {% elseif 'app_book_version_can_be_reserved' is same as(app.request.get('_route')) %}
+                        <twig:Button type="reserve" path="{{ path('app_reservation_new_from_book_list', {'bookVersionId': book_version.id}) }}"/>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}

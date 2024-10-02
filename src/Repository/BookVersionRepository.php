@@ -62,4 +62,27 @@ class BookVersionRepository extends ServiceEntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    public function findAllBookVersionNotBorrowedAndNotReserved(): array
+    {
+        $qb = $this->createQueryBuilder('b')
+        ->leftJoin(
+            Borrowing::class,
+            'borrowing',
+            'WITH',
+            'borrowing.bookVersion = b.id'
+        )
+        ->leftJoin(
+            Reservation::class,
+            'reservation',
+            'WITH',
+            'reservation.bookVersion = b.id'
+        )
+        ->where('reservation.bookVersion IS NULL')
+        ->andWhere('reservation.isActive = false OR reservation.isActive IS NULL')
+        ->andWhere('borrowing.bookVersion IS NULL')
+        ->andWhere('borrowing.returned = true OR borrowing.returned IS NULL');
+
+        return $qb->getQuery()->getResult();
+    }
 }

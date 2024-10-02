@@ -28,8 +28,14 @@
                             </li>
                         {% endif %}
                         {% if is_granted('ROLE_USER') %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('app_borrowing_user_index') }}">My Borrowings</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Borrowings
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ path('app_borrowing_user_index') }}">My Borrowings</a></li>
+                                    <li><a class="dropdown-item" href="{{ path('app_book_version_can_be_borrow') }}">Books available to borrow</a></li>
+                                </ul>
                             </li>
                         {% endif %}
                         <li class="nav-item dropdown">
@@ -42,8 +48,7 @@
                                 {% endif %}
                                 {% if is_granted('ROLE_USER') %}
                                     <li><a class="dropdown-item" href="{{ path('app_reservation_user_index') }}">My Reservations</a></li>
-                                    <li><a class="dropdown-item" href="{{ path('app_reservation_new') }}">New Reservation</a></li>
-                                    <li><a class="dropdown-item" href="{{ path('app_book_version_can_be_reserved') }}">List of Books available to Reservation</a></li>
+                                    <li><a class="dropdown-item" href="{{ path('app_book_version_can_be_reserved') }}">Books available to reservation</a></li>
                                 {% endif %}
                             </ul>
                         </li>

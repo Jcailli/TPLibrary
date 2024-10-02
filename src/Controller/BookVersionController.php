@@ -33,6 +33,15 @@ final class BookVersionController extends AbstractController
         ]);
     }
 
+    #[Route('/can_be_borrow', name: 'app_book_version_can_be_borrow', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
+    public function bookVersionCanBeBorrow(BookVersionRepository $bookVersionRepository): Response
+    {
+        return $this->render('book_version/index_reservation.html.twig', [
+            'book_versions' => $bookVersionRepository->findAllBookVersionNotBorrowedAndNotReserved(),
+        ]);
+    }
+
     #[Route('/new', name: 'app_book_version_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
