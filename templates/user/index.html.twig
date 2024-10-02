@@ -35,8 +35,8 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.penality }}</td>
                 <td>
-                    <a class="btn btn-info" href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a class="btn btn-warning" href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                    <twig:Button type="show" path="{{ path('app_user_show', {'id': user.id}) }}"/>
+                    <twig:Button type="edit" path="{{ path('app_user_edit', {'id': user.id}) }}"/>
                 </td>
             </tr>
         {% else %}
@@ -46,6 +46,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a class="btn btn-primary" href="{{ path('app_user_new') }}">Create new</a>
 {% endblock %}

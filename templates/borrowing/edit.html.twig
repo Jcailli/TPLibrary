@@ -7,7 +7,7 @@
 
     {{ include('borrowing/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_borrowing_index') }}">back to list</a>
+    <twig:Button type="back" path="{{ path('app_borrowing_index') }}"/>
 
     {{ include('borrowing/_delete_form.html.twig') }}
 {% endblock %}

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Reservation index{% endblock %}
+{% block title %}Reservations index{% endblock %}
 
 {% block body %}
     <h1>My Reservations</h1>
@@ -17,7 +17,7 @@
             <tr>
                 <td>{{ reservation.bookVersion.book.name }} : {{ reservation.bookVersion.name }}</td>
                 <td>
-                    <a class="btn btn-info icon-link" href="{{ path('app_reservation_show', {'id': reservation.id}) }}"><twig:ux:icon class="bi" name="mdi:show" /> show</a>
+                    <twig:Button type="show" path="{{ path('app_reservation_show', {'id': reservation.id}) }}"/>
                 </td>
             </tr>
         {% else %}
@@ -28,5 +28,5 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary icon-link" href="{{ path('app_reservation_new') }}"><twig:ux:icon class="bi" name="zondicons:add-outline" /> New</a>
+    <twig:Button type="new" path="{{ path('app_reservation_new') }}"/>
 {% endblock %}

@@ -26,14 +26,6 @@ class BookVersionType extends AbstractType
                 'class' => Publisher::class,
                 'choice_label' => 'name',
             ])
-            ->add('borrowing', EntityType::class, [
-                'class' => Borrowing::class,
-                'choice_label' => 'name',
-            ])
-            ->add('reservation', EntityType::class, [
-                'class' => Reservation::class,
-                'choice_label' => 'id',
-            ])
         ;
     }
 

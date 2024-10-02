@@ -30,5 +30,9 @@
         </tbody>
     </table>
 
-    <a class="btn btn-secondary" href="{{ path('app_reservation_user_index') }}">back to list</a>
+    <twig:Button type="back" path="{{ path('app_reservation_user_index') }}"/>
+
+    {% if reservation.bookVersion.borrowing.returned %}
+        <twig:Button type="borrow" path="{{ path('app_borrowing_new_from_reservation', {bookVersionId: reservation.bookVersion.id}) }}"/>
+    {% endif %}
 {% endblock %}

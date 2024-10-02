@@ -22,7 +22,7 @@
                 <td>{{ borrowing.borrowingDate ? borrowing.borrowingDate|date('Y-m-d') : '' }}</td>
                 <td>{{ borrowing.returnDate ? borrowing.returnDate|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a class="btn btn-info icon-link" href="{{ path('app_borrowing_show', {'id': borrowing.id}) }}"><twig:ux:icon class="bi" name="mdi:show" /> Détail</a>
+                    <twig:Button type="show" path="{{ path('app_borrowing_show', {'id': borrowing.id}) }}"/>
                 </td>
             </tr>
         {% else %}
@@ -34,7 +34,7 @@
     </table>
 
     {% if borrowings|length < app.user.maxBorrow %}
-        <a class="btn btn-primary icon-link" href="{{ path('app_borrowing_new') }}"><twig:ux:icon class="bi" name="zondicons:add-outline" /> Nouvel Emprunt</a>
+        <twig:Button type="new" path="{{ path('app_borrowing_new') }}"/>
     {% else %}
         <twig:Alert type="danger" message="Vous ne pouvez plus emprunter de livre pour l'instant !"/>
     {% endif %}

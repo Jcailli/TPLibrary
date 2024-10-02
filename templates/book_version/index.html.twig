@@ -1,26 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}BookVersion index{% endblock %}
+{% block title %}BookVersions index{% endblock %}
 
 {% block body %}
-    <h1>BookVersion index</h1>
+    <h1>BookVersions index</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th>Book Name</th>
+                <th>Version Name</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
         {% for book_version in book_versions %}
             <tr>
-                <td>{{ book_version.id }}</td>
+                <td>{{ book_version.book.name }}</td>
                 <td>{{ book_version.name }}</td>
                 <td>
-                    <a href="{{ path('app_book_version_show', {'id': book_version.id}) }}">show</a>
-                    <a href="{{ path('app_book_version_edit', {'id': book_version.id}) }}">edit</a>
+                    <twig:Button type="show" path="{{ path('app_book_version_show', {'id': book_version.id}) }}"/>
+                    <twig:Button type="edit" path="{{ path('app_book_version_edit', {'id': book_version.id}) }}"/>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +31,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_book_version_new') }}">Create new</a>
+    <twig:Button type="new" path="{{ path('app_book_version_new') }}"/>
 {% endblock %}

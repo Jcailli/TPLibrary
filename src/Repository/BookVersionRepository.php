@@ -58,13 +58,7 @@ class BookVersionRepository extends ServiceEntityRepository
             'reservation.bookVersion = b.id'
         )
         ->where('reservation.bookVersion IS NULL')
-        ->andWhere('borrowing.returned = :status OR borrowing.returnDate >= :returnedDate')
-        ->setParameter('status', false)
-        ->setParameter(
-            'returnedDate',
-            (new \DateTime('today'))
-                ->add(DateInterval::createFromDateString('2 day'))
-        );
+        ->andWhere('borrowing.returned = false');
 
         return $qb->getQuery()->getResult();
     }

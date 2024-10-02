@@ -4,44 +4,77 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="MAJ Homepage">
-      <change afterPath="$PROJECT_DIR$/templates/book_version/index_reservation.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/reservation/user_index.html.twig" afterDir="false" />
+    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="MAJ Registration">
+      <change afterPath="$PROJECT_DIR$/src/Twig/Components/Button.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/author/new_modal.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/components/Button.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/importmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/importmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/app.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/entrypoints.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/runtime.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_dist_js_boo-410d26.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/BookVersionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookVersionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/controllers.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20240926100008.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20240927073506.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20240927073912.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20240927084033.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20240927093735.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20240927135347.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20240930130044.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AuthorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AuthorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BorrowingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BorrowingController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReservationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Author.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Author.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Borrowing.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Borrowing.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Reservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/AuthorType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AuthorType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/BookType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BookType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/BookVersionType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BookVersionType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ReservationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ReservationType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/BookVersionRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/BookVersionRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/BorrowingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/BorrowingRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/ReservationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ReservationRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/author/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/author/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/author/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/author/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/author/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/author/edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/author/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/author/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/author/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/author/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/author/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/author/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/book/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/book/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/book/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book/edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/book/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/book/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/book/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/book_version/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book_version/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/book_version/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book_version/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/book_version/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book_version/edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/book_version/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book_version/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/book_version/index_reservation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book_version/index_reservation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/book_version/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book_version/new.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/book_version/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book_version/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/borrowing/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowing/_delete_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/borrowing/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowing/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/borrowing/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowing/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/borrowing/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowing/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/borrowing/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowing/new.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/borrowing/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowing/show.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/borrowing/user_index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowing/user_index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/components/Alert.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/Alert.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/navigation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navigation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/publisher/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publisher/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/publisher/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publisher/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/publisher/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publisher/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/publisher/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publisher/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/publisher/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publisher/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/publisher/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publisher/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/reservation/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reservation/_delete_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/reservation/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reservation/_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/reservation/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reservation/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/reservation/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reservation/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/reservation/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reservation/new.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/reservation/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reservation/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/reservation/user_index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reservation/user_index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,6 +196,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/ux-autocomplete" />
       <path value="$PROJECT_DIR$/vendor/symfony/ux-twig-component" />
       <path value="$PROJECT_DIR$/vendor/symfony/ux-icons" />
+      <path value="$PROJECT_DIR$/vendor/symfony/expression-language" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -177,7 +211,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "//wsl$/Debian/home/docker/projects/orange/library/templates/reservation",
+    "last_opened_file_path": "//wsl$/Debian/home/docker/projects/orange/library/templates/author",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -188,6 +222,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\wsl$\Debian\home\docker\projects\orange\library\templates\author" />
+      <recent name="\\wsl$\Debian\home\docker\projects\orange\library\templates\components" />
       <recent name="\\wsl$\Debian\home\docker\projects\orange\library\templates\reservation" />
       <recent name="\\wsl$\Debian\home\docker\projects\orange\library\templates\book_version" />
       <recent name="\\wsl$\Debian\home\docker\projects\orange\library\templates\borrowing" />
@@ -212,7 +248,8 @@
       <workItem from="1727340645344" duration="9056000" />
       <workItem from="1727421453892" duration="22143000" />
       <workItem from="1727681633240" duration="15015000" />
-      <workItem from="1727766785843" duration="10976000" />
+      <workItem from="1727766785843" duration="17410000" />
+      <workItem from="1727854384535" duration="8883000" />
     </task>
     <task id="LOCAL-00001" summary="Init Mailer">
       <option name="closed" value="true" />
@@ -406,7 +443,31 @@
       <option name="project" value="LOCAL" />
       <updated>1727702591224</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="User Borrowing">
+      <option name="closed" value="true" />
+      <created>1727788970000</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1727788970000</updated>
+    </task>
+    <task id="LOCAL-00026" summary="User Reservation">
+      <option name="closed" value="true" />
+      <created>1727789057101</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1727789057101</updated>
+    </task>
+    <task id="LOCAL-00027" summary="MAJ Registration">
+      <option name="closed" value="true" />
+      <created>1727789080115</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1727789080115</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -437,6 +498,9 @@
     <MESSAGE value="WebPack to Asset Mapper" />
     <MESSAGE value="MAJ User Borrowing" />
     <MESSAGE value="MAJ Homepage" />
-    <option name="LAST_COMMIT_MESSAGE" value="MAJ Homepage" />
+    <MESSAGE value="User Borrowing" />
+    <MESSAGE value="User Reservation" />
+    <MESSAGE value="MAJ Registration" />
+    <option name="LAST_COMMIT_MESSAGE" value="MAJ Registration" />
   </component>
 </project>

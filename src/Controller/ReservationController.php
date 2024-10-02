@@ -44,6 +44,7 @@ final class ReservationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $reservation->setActive(true);
             $entityManager->persist($reservation);
             $entityManager->flush();
 
@@ -63,8 +64,7 @@ final class ReservationController extends AbstractController
         $reservation = new Reservation();
         $reservation->setUser($this->getUser());
         $reservation->setBookVersion($bookVersionId);
-        $form = $this->createForm(ReservationType::class, $reservation);
-        $form->handleRequest($request);
+        $reservation->setActive(true);
 
         $entityManager->persist($reservation);
         $entityManager->flush();

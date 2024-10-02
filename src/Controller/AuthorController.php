@@ -42,6 +42,27 @@ final class AuthorController extends AbstractController
         ]);
     }
 
+    #[Route('/book/new', name: 'app_author_new_from_book', methods: ['GET', 'POST'])]
+    public function newAuthorFromBook(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $author = new Author();
+        $form = $this->createForm(AuthorType::class, $author);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($author);
+            $entityManager->flush();
+
+            return $this->redirect($request->request->get('backUrl'), Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('author/new_modal.html.twig', [
+            'author' => $author,
+            'form' => $form,
+            'backUrl' => $request->headers->get('referer'),
+        ]);
+    }
+
     #[Route('/{id}', name: 'app_author_show', methods: ['GET'])]
     public function show(Author $author): Response
     {

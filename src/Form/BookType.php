@@ -4,10 +4,8 @@ namespace App\Form;
 
 use App\Entity\Author;
 use App\Entity\Book;
-use App\Entity\BookVersion;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,13 +17,10 @@ class BookType extends AbstractType
             ->add('name')
             ->add('authors', EntityType::class, [
                 'class' => Author::class,
+                'autocomplete' => true,
                 'choice_label' => function (Author $author): string {
                     return $author->getFirstName() . " " . $author->getName();
                 },
-                'attr' => [
-                    'class' => 'select2'
-                ],
-                'expanded' =>false,
                 'multiple' => true,
             ])
         ;

@@ -43,6 +43,7 @@ class ReservationRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('r')
             ->where('r.user = :userId')
+            ->andWhere('r.isActive = false')
             ->setParameter('userId', $userId)
         ;
         return $qb->getQuery()->getResult();

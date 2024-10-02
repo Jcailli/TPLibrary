@@ -24,7 +24,6 @@ class Borrowing
     private ?bool $returned = null;
 
     #[ORM\OneToOne(inversedBy: 'borrowing', cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
     private ?BookVersion $bookVersion = null;
 
     #[ORM\ManyToOne(inversedBy: 'borrowings')]

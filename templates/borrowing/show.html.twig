@@ -22,16 +22,16 @@
         </tbody>
     </table>
 
-    <a class="btn btn-secondary" href="
+    <twig:Button type="back" path="
         {% if is_granted('ROLE_LIBRARIAN') %}
             {{ path('app_borrowing_index') }}
         {% else %}
             {{ path('app_borrowing_user_index') }}
         {% endif %}
-    ">back to list</a>
+    "/>
 
     {% if is_granted('ROLE_LIBRARIAN') %}
-        <a class="btn btn-warning icon-link" href="{{ path('app_borrowing_edit', {'id': borrowing.id}) }}"><twig:ux:icon class="bi" name="material-symbols:edit-outline" /> edit</a>
+        <twig:Button type="edit" path="{{ path('app_borrowing_edit', {'id': borrowing.id}) }}"/>
     {% endif %}
 
 {% endblock %}

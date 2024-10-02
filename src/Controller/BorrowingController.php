@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\BookVersion;
 use App\Entity\Borrowing;
 use App\Form\BorrowingType;
 use App\Repository\BorrowingRepository;
@@ -63,6 +64,30 @@ final class BorrowingController extends AbstractController
             'borrowing' => $borrowing,
             'form' => $form,
         ]);
+    }
+
+    #[Route('/new/{bookVersionId}', name: 'app_borrowing_new_from_reservation', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_USER')]
+    public function newFromReservation(BookVersion $bookVersionId, EntityManagerInterface $entityManager): Response
+    {
+        $canBorrow = $this->getUser()->getBorrowings()->count() < $this->getUser()->getMaxBorrow();
+        if (!$canBorrow) {
+            $this->addFlash('error' ,"Vous ne pouvez plus emprunter de livre pour l'instant !");
+            return $this->redirectToRoute('app_borrowing_user_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        $borrowing = new Borrowing();
+        $borrowing->setBookVersion($bookVersionId);
+        $borrowingDate = new \DateTime();
+        $returnDate = new \DateTime();
+        $borrowing->setBorrowingDate($borrowingDate);
+        $borrowing->setReturnDate($returnDate->add(\DateInterval::createFromDateString('30 day')));
+        $borrowing->setReturned(false);
+        $borrowing->setUser($this->getUser());
+        $entityManager->persist($borrowing);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_borrowing_user_index', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/{id}', name: 'app_borrowing_show', methods: ['GET'])]

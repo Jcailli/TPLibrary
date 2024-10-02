@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Book index{% endblock %}
+{% block title %}Books index{% endblock %}
 
 {% block body %}
-    <h1>Book index</h1>
+    <h1>Books index</h1>
 
     <table class="table">
         <thead>
@@ -19,12 +19,12 @@
                 <td>{{ book.name }}</td>
                 <td>
                     {% for author in book.authors %}
-                        {{ author.name }} {{ author.firstName }}
+                        {{ author.firstName }} {{ author.name }} <br>
                     {% endfor %}
                 </td>
                 <td>
-                    <a class="btn btn-info" href="{{ path('app_book_show', {'id': book.id}) }}">show</a>
-                    <a class="btn btn-warning" href="{{ path('app_book_edit', {'id': book.id}) }}">edit</a>
+                    <twig:Button type="show" path="{{ path('app_book_show', {'id': book.id}) }}"/>
+                    <twig:Button type="edit" path="{{ path('app_book_edit', {'id': book.id}) }}"/>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +35,5 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary" href="{{ path('app_book_new') }}">Create new</a>
+    <twig:Button type="new" path="{{ path('app_book_new') }}"/>
 {% endblock %}

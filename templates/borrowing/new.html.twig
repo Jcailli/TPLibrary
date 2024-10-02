@@ -7,5 +7,5 @@
 
     {{ include('borrowing/_form.html.twig') }}
 
-    <a class="btn btn-secondary" href="{{ path('app_borrowing_index') }}">back to list</a>
+    <twig:Button type="back" path="{{ path('app_borrowing_index') }}"/>
 {% endblock %}

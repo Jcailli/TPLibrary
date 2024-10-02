@@ -1,4 +1,11 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_row(form.name) }}
+    <div>
+        {{ form_label(form.authors) }}
+        <a href="{{ path('app_author_new_from_book') }}" class="btn btn-primary icon-link form-label">
+            <twig:ux:icon class="bi" name="bi:plus-circle"/> New Author
+        </a>
+    </div>
+    {{ form_widget(form.authors) }}
+    <button class="btn btn-success icon-link"><twig:ux:icon class="bi" name="bi:floppy" /> {{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

@@ -7,5 +7,5 @@
 
     {{ include('book_version/_form.html.twig') }}
 
-    <a href="{{ path('app_book_version_index') }}">back to list</a>
+    <twig:Button type="back" path="{{ path('app_book_version_index') }}"/>
 {% endblock %}
