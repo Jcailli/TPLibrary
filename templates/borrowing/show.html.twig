@@ -22,13 +22,11 @@
         </tbody>
     </table>
 
-    <twig:Button type="back" path="
-        {% if is_granted('ROLE_LIBRARIAN') %}
-            {{ path('app_borrowing_index') }}
-        {% else %}
-            {{ path('app_borrowing_user_index') }}
-        {% endif %}
-    "/>
+    {% if is_granted('ROLE_LIBRARIAN') %}
+        <twig:Button type="back" path="{{ path('app_borrowing_index') }}"/>
+    {% else %}
+        <twig:Button type="back" path="{{ path('app_borrowing_user_index') }}"/>
+    {% endif %}
 
     {% if is_granted('ROLE_LIBRARIAN') %}
         <twig:Button type="edit" path="{{ path('app_borrowing_edit', {'id': borrowing.id}) }}"/>

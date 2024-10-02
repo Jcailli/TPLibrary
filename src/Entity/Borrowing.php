@@ -23,11 +23,12 @@ class Borrowing
     #[ORM\Column]
     private ?bool $returned = null;
 
-    #[ORM\OneToOne(inversedBy: 'borrowing', cascade: ['persist', 'remove'])]
-    private ?BookVersion $bookVersion = null;
-
     #[ORM\ManyToOne(inversedBy: 'borrowings')]
     private ?User $user = null;
+
+    #[ORM\ManyToOne(inversedBy: 'borrowings')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?BookVersion $bookVersion = null;
 
     public function getId(): ?int
     {
@@ -70,18 +71,6 @@ class Borrowing
         return $this;
     }
 
-    public function getBookVersion(): ?BookVersion
-    {
-        return $this->bookVersion;
-    }
-
-    public function setBookVersion(BookVersion $bookVersion): self
-    {
-        $this->bookVersion = $bookVersion;
-
-        return $this;
-    }
-
     public function getUser(): ?User
     {
         return $this->user;
@@ -90,6 +79,18 @@ class Borrowing
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getBookVersion(): ?BookVersion
+    {
+        return $this->bookVersion;
+    }
+
+    public function setBookVersion(?BookVersion $bookVersion): static
+    {
+        $this->bookVersion = $bookVersion;
 
         return $this;
     }

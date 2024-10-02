@@ -3,7 +3,13 @@
 {% block title %}BookVersion index{% endblock %}
 
 {% block body %}
-    <h1>Books Can Be Reserved</h1>
+    <h1>Books i can
+        {% if 'app_book_version_can_be_borrow' is same as(app.request.get('_route')) %}
+            borrow
+        {% elseif 'app_book_version_can_be_reserved' is same as(app.request.get('_route')) %}
+            reserve
+        {% endif %}
+    </h1>
 
     <table class="table">
         <thead>
@@ -24,7 +30,7 @@
                             <twig:Button type="borrow" path="{{ path('app_borrowing_new_from_reservation', {'bookVersionId': book_version.id}) }}"/>
                         {% endif %}
                     {% elseif 'app_book_version_can_be_reserved' is same as(app.request.get('_route')) %}
-                        <twig:Button type="reserve" path="{{ path('app_reservation_new_from_book_list', {'bookVersionId': book_version.id}) }}"/>
+                            <twig:Button type="reserve" path="{{ path('app_reservation_new_from_book_list', {'bookVersionId': book_version.id}) }}"/>
                     {% endif %}
                 </td>
             </tr>

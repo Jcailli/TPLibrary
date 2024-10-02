@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\BookVersionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BookVersionRepository::class)]
@@ -24,11 +26,23 @@ class BookVersion
     #[ORM\JoinColumn(nullable: false)]
     private ?Publisher $publisher = null;
 
-    #[ORM\OneToOne(mappedBy: 'bookVersion', cascade: ['persist', 'remove'])]
-    private ?Borrowing $borrowing = null;
+    /**
+     * @var Collection<int, Borrowing>
+     */
+    #[ORM\OneToMany(targetEntity: Borrowing::class, mappedBy: 'bookVersion', orphanRemoval: true)]
+    private Collection $borrowings;
 
-    #[ORM\OneToOne(mappedBy: 'bookVersion', cascade: ['persist', 'remove'])]
-    private ?Reservation $reservation = null;
+    /**
+     * @var Collection<int, Reservation>
+     */
+    #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'bookVersion', orphanRemoval: true)]
+    private Collection $reservations;
+
+    public function __construct()
+    {
+        $this->borrowings = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -71,36 +85,62 @@ class BookVersion
         return $this;
     }
 
-    public function getBorrowing(): ?Borrowing
+    /**
+     * @return Collection<int, Borrowing>
+     */
+    public function getBorrowings(): Collection
     {
-        return $this->borrowing;
+        return $this->borrowings;
     }
 
-    public function setBorrowing(Borrowing $borrowing): self
+    public function addBorrowing(Borrowing $borrowing): static
     {
-        // set the owning side of the relation if necessary
-        if ($borrowing->getBookVersion() !== $this) {
+        if (!$this->borrowings->contains($borrowing)) {
+            $this->borrowings->add($borrowing);
             $borrowing->setBookVersion($this);
         }
-
-        $this->borrowing = $borrowing;
 
         return $this;
     }
 
-    public function getReservation(): ?Reservation
+    public function removeBorrowing(Borrowing $borrowing): static
     {
-        return $this->reservation;
+        if ($this->borrowings->removeElement($borrowing)) {
+            // set the owning side to null (unless already changed)
+            if ($borrowing->getBookVersion() === $this) {
+                $borrowing->setBookVersion(null);
+            }
+        }
+
+        return $this;
     }
 
-    public function setReservation(Reservation $reservation): self
+    /**
+     * @return Collection<int, Reservation>
+     */
+    public function getReservations(): Collection
     {
-        // set the owning side of the relation if necessary
-        if ($reservation->getBookVersion() !== $this) {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): static
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations->add($reservation);
             $reservation->setBookVersion($this);
         }
 
-        $this->reservation = $reservation;
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): static
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getBookVersion() === $this) {
+                $reservation->setBookVersion(null);
+            }
+        }
 
         return $this;
     }

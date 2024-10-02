@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ReservationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: ReservationRepository::class)]
 class Reservation
@@ -13,9 +14,6 @@ class Reservation
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToOne(inversedBy: 'reservation', cascade: ['persist', 'remove'])]
-    private ?BookVersion $bookVersion = null;
-
     #[ORM\Column]
     private ?bool $isActive = null;
 
@@ -23,21 +21,13 @@ class Reservation
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+    #[ORM\ManyToOne(inversedBy: 'reservations')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?BookVersion $bookVersion = null;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getBookVersion(): ?BookVersion
-    {
-        return $this->bookVersion;
-    }
-
-    public function setBookVersion(BookVersion $bookVersion): self
-    {
-        $this->bookVersion = $bookVersion;
-
-        return $this;
     }
 
     public function isActive(): ?bool
@@ -60,6 +50,18 @@ class Reservation
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getBookVersion(): ?BookVersion
+    {
+        return $this->bookVersion;
+    }
+
+    public function setBookVersion(?BookVersion $bookVersion): static
+    {
+        $this->bookVersion = $bookVersion;
 
         return $this;
     }

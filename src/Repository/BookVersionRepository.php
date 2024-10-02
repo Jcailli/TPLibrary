@@ -42,7 +42,7 @@ class BookVersionRepository extends ServiceEntityRepository
         }
     }
 
-    public function findAllBookVersionBorrowed(): array
+    public function findAllBookVersionBorrowed(int $userId): array
     {
         $qb = $this->createQueryBuilder('b')
         ->innerJoin(
@@ -58,7 +58,9 @@ class BookVersionRepository extends ServiceEntityRepository
             'reservation.bookVersion = b.id'
         )
         ->where('reservation.bookVersion IS NULL')
-        ->andWhere('borrowing.returned = false');
+        ->andWhere('borrowing.user != :userId')
+        ->andWhere('borrowing.returned = false')
+        ->setParameter('userId', $userId);
 
         return $qb->getQuery()->getResult();
     }

@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Refactoring Front">
+    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Books available to borrow">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/BookVersionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookVersionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReservationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/BookVersion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/BookVersion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Borrowing.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Borrowing.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Reservation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/BookVersionRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/BookVersionRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ReservationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ReservationRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/book_version/index_reservation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book_version/index_reservation.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/navigation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navigation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/borrowing/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowing/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +189,7 @@
       <workItem from="1727421453892" duration="22143000" />
       <workItem from="1727681633240" duration="15015000" />
       <workItem from="1727766785843" duration="17410000" />
-      <workItem from="1727854384535" duration="10318000" />
+      <workItem from="1727854384535" duration="11661000" />
     </task>
     <task id="LOCAL-00001" summary="Init Mailer">
       <option name="closed" value="true" />
@@ -434,7 +439,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727871995968</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Books available to borrow">
+      <option name="closed" value="true" />
+      <created>1727873292697</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1727873292697</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -469,6 +482,7 @@
     <MESSAGE value="User Reservation" />
     <MESSAGE value="MAJ Registration" />
     <MESSAGE value="Refactoring Front" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring Front" />
+    <MESSAGE value="Books available to borrow" />
+    <option name="LAST_COMMIT_MESSAGE" value="Books available to borrow" />
   </component>
 </project>

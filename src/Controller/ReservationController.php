@@ -69,7 +69,7 @@ final class ReservationController extends AbstractController
         $entityManager->persist($reservation);
         $entityManager->flush();
 
-        return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_reservation_user_index', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/{id}', name: 'app_reservation_show', methods: ['GET'])]

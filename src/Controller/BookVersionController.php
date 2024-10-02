@@ -29,7 +29,7 @@ final class BookVersionController extends AbstractController
     public function bookVersionCanBeReserved(BookVersionRepository $bookVersionRepository): Response
     {
         return $this->render('book_version/index_reservation.html.twig', [
-            'book_versions' => $bookVersionRepository->findAllBookVersionBorrowed(),
+            'book_versions' => $bookVersionRepository->findAllBookVersionBorrowed($this->getUser()->getId()),
         ]);
     }
 
