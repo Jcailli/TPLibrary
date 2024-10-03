@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Add Management of Penality for Admin">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/BookVersionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookVersionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/BookVersionRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/BookVersionRepository.php" afterDir="false" />
-    </list>
+    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Install Scheduler and Messenger for Cron Task" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -130,6 +126,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/ux-twig-component" />
       <path value="$PROJECT_DIR$/vendor/symfony/ux-icons" />
       <path value="$PROJECT_DIR$/vendor/symfony/expression-language" />
+      <path value="$PROJECT_DIR$/vendor/symfony/scheduler" />
+      <path value="$PROJECT_DIR$/vendor/symfony/messenger" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -183,7 +181,7 @@
       <workItem from="1727681633240" duration="15015000" />
       <workItem from="1727766785843" duration="17410000" />
       <workItem from="1727854384535" duration="17244000" />
-      <workItem from="1727938112255" duration="19210000" />
+      <workItem from="1727938112255" duration="19507000" />
     </task>
     <task id="LOCAL-00001" summary="Init Mailer">
       <option name="closed" value="true" />
@@ -521,7 +519,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727966537523</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="MAJ Reservation and Borrow if User have penality">
+      <option name="closed" value="true" />
+      <created>1727967453722</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1727967453722</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Install Scheduler and Messenger for Cron Task">
+      <option name="closed" value="true" />
+      <created>1727967618324</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1727967618324</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,8 +553,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update User CRUD for administration" />
-    <MESSAGE value="Update Navigation to add Granted Authorizations and Profil page" />
     <MESSAGE value="Add Symfony Profiler" />
     <MESSAGE value="change chmod" />
     <MESSAGE value="Add Webpack encore for bootstrap and jquery" />
@@ -564,6 +576,8 @@
     <MESSAGE value="Rights adjustment" />
     <MESSAGE value="Add Management of Max Borrow of Users By Librarians" />
     <MESSAGE value="Add Management of Penality for Admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Management of Penality for Admin" />
+    <MESSAGE value="MAJ Reservation and Borrow if User have penality" />
+    <MESSAGE value="Install Scheduler and Messenger for Cron Task" />
+    <option name="LAST_COMMIT_MESSAGE" value="Install Scheduler and Messenger for Cron Task" />
   </component>
 </project>
