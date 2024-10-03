@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Rights adjustment">
-      <change afterPath="$PROJECT_DIR$/src/Form/UserLibrarianType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/edit_librarian.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/index_librarian.html.twig" afterDir="false" />
+    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Add Management of Max Borrow of Users By Librarians">
+      <change afterPath="$PROJECT_DIR$/src/Form/UserPenalityType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/user/index_penality.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +186,7 @@
       <workItem from="1727681633240" duration="15015000" />
       <workItem from="1727766785843" duration="17410000" />
       <workItem from="1727854384535" duration="17244000" />
-      <workItem from="1727938112255" duration="16871000" />
+      <workItem from="1727938112255" duration="18275000" />
     </task>
     <task id="LOCAL-00001" summary="Init Mailer">
       <option name="closed" value="true" />
@@ -508,7 +508,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727964067579</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Add Management of Max Borrow of Users By Librarians">
+      <option name="closed" value="true" />
+      <created>1727965418903</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1727965418903</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -526,7 +534,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add ResetPassword + Update login and register" />
     <MESSAGE value="Add AppController for the home page" />
     <MESSAGE value="Update User CRUD for administration" />
     <MESSAGE value="Update Navigation to add Granted Authorizations and Profil page" />
@@ -551,6 +558,7 @@
     <MESSAGE value="Profile Management" />
     <MESSAGE value="Mailling to user if bookVersion is available" />
     <MESSAGE value="Rights adjustment" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rights adjustment" />
+    <MESSAGE value="Add Management of Max Borrow of Users By Librarians" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Management of Max Borrow of Users By Librarians" />
   </component>
 </project>

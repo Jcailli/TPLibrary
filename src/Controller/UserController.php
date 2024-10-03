@@ -67,6 +67,15 @@ final class UserController extends AbstractController
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
 
+    #[Route('/penality', name: 'app_user_penality_index', methods: ['GET'])]
+    #[IsGranted('ROLE_ADMIN')]
+    public function indexPenality(UserRepository $userRepository): Response
+    {
+        return $this->render('user/index_penality.html.twig', [
+            'users' => $userRepository->findAllPenalityUsers(),
+        ]);
+    }
+
     #[Route('/librarian', name: 'app_user_index_users', methods: ['GET'])]
     #[IsGranted('ROLE_LIBRARIAN')]
     public function indexUsers(UserRepository $userRepository): Response

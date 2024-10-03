@@ -8,30 +8,20 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Role</th>
                 <th>UserName</th>
                 <th>First Name</th>
                 <th>Email</th>
+                <th>Penality</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
         {% for user in users %}
             <tr>
-                <td>
-                    {% for role in user.roles %}
-                        {% if role == "ROLE_USER" %}
-                            Utilisateur
-                        {% elseif role == "ROLE_LIBRARIAN" %}
-                            Bibliothécaire
-                        {% elseif role == "ROLE_ADMIN" %}
-                            Administrateur
-                        {% endif %}
-                    {% endfor %}
-                </td>
                 <td>{{ user.username }}</td>
                 <td>{{ user.userFirstName }}</td>
                 <td>{{ user.email }}</td>
+                <td>{{ user.penality }} €</td>
                 <td>
                     <twig:Button type="show" path="{{ path('app_user_show', {'id': user.id}) }}"/>
                     <twig:Button type="edit" path="{{ path('app_user_edit', {'id': user.id}) }}"/>
