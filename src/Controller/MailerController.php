@@ -12,6 +12,7 @@ use Symfony\Component\Mailer\Exception\TransportException;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/email')]
 class MailerController extends AbstractController
@@ -22,6 +23,7 @@ class MailerController extends AbstractController
     }
 
     #[Route('/{user}/{bookVersion}', name:'reservation_email')]
+    #[IsGranted('ROLE_LIBRARIAN')]
     public function sendReservationEmail(User $user, BookVersion $bookVersion, MailerInterface $mailer): Response
     {
         try {

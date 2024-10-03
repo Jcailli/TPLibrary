@@ -45,6 +45,7 @@ final class BookVersionController extends AbstractController
     }
 
     #[Route('/new', name: 'app_book_version_new', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_LIBRARIAN')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $bookVersion = new BookVersion();
@@ -65,6 +66,7 @@ final class BookVersionController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_book_version_show', methods: ['GET'])]
+    #[IsGranted('ROLE_LIBRARIAN')]
     public function show(BookVersion $bookVersion): Response
     {
         return $this->render('book_version/show.html.twig', [
@@ -73,6 +75,7 @@ final class BookVersionController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_book_version_edit', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_LIBRARIAN')]
     public function edit(Request $request, BookVersion $bookVersion, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(BookVersionType::class, $bookVersion);
@@ -91,6 +94,7 @@ final class BookVersionController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_book_version_delete', methods: ['POST'])]
+    #[IsGranted('ROLE_LIBRARIAN')]
     public function delete(Request $request, BookVersion $bookVersion, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$bookVersion->getId(), $request->getPayload()->getString('_token'))) {

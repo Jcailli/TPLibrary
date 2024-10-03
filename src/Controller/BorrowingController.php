@@ -9,6 +9,7 @@ use App\Form\BorrowingType;
 use App\Repository\BorrowingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\ExpressionLanguage\Expression;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -92,6 +93,7 @@ final class BorrowingController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_borrowing_show', methods: ['GET'])]
+    #[IsGranted(new Expression('is_granted("ROLE_USER") or is_granted("ROLE_LIBRARIAN")'))]
     public function show(Borrowing $borrowing): Response
     {
         return $this->render('borrowing/show.html.twig', [
@@ -100,6 +102,7 @@ final class BorrowingController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_borrowing_edit', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_LIBRARIAN')]
     public function edit(Request $request, Borrowing $borrowing, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(BorrowingType::class, $borrowing);
@@ -118,6 +121,7 @@ final class BorrowingController extends AbstractController
     }
 
     #[Route('/{id}/return', name: 'app_borrowing_return', methods: ['GET'])]
+    #[IsGranted('ROLE_LIBRARIAN')]
     public function return(Request $request, Borrowing $borrowing, EntityManagerInterface $entityManager): Response
     {
         $borrowing->setReturned(true);
@@ -135,6 +139,7 @@ final class BorrowingController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_borrowing_delete', methods: ['POST'])]
+    #[IsGranted('ROLE_LIBRARIAN')]
     public function delete(Request $request, Borrowing $borrowing, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$borrowing->getId(), $request->getPayload()->getString('_token'))) {

@@ -12,22 +12,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/reservation')]
+#[IsGranted('ROLE_USER')]
 final class ReservationController extends AbstractController
 {
-    #[Route(name: 'app_reservation_index', methods: ['GET'])]
-    #[IsGranted('ROEL_LIBRARIAN')]
-    public function index(ReservationRepository $reservationRepository): Response
-    {
-        return $this->render('reservation/index.html.twig', [
-            'reservations' => $reservationRepository->findAll(),
-        ]);
-    }
-
     #[Route('/user' ,name: 'app_reservation_user_index', methods: ['GET'])]
-    #[IsGranted('ROLE_USER')]
     public function userReservation(ReservationRepository $reservationRepository): Response
     {
         return $this->render('reservation/user_index.html.twig', [
@@ -36,7 +28,6 @@ final class ReservationController extends AbstractController
     }
 
     #[Route('/new', name: 'app_reservation_new', methods: ['GET', 'POST'])]
-    #[IsGranted('ROLE_USER')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $reservation = new Reservation();
@@ -59,7 +50,6 @@ final class ReservationController extends AbstractController
     }
 
     #[Route('/new/{bookVersionId}', name: 'app_reservation_new_from_book_list', methods: ['GET'])]
-    #[IsGranted('ROLE_USER')]
     public function newBookReservation(Request $request, BookVersion $bookVersionId, EntityManagerInterface $entityManager): Response
     {
         $reservation = new Reservation();
@@ -77,6 +67,10 @@ final class ReservationController extends AbstractController
     #[IsGranted(new Expression('is_granted("ROLE_USER") or is_granted("ROLE_LIBRARIAN")'))]
     public function show(Reservation $reservation): Response
     {
+        if ($this->getUser()->getId() !== $reservation->getUser()->getId()) {
+            throw new AccessDeniedException('This reservation is not accessible to you');
+        }
+
         return $this->render('reservation/show.html.twig', [
             'reservation' => $reservation,
         ]);
@@ -85,6 +79,10 @@ final class ReservationController extends AbstractController
     #[Route('/{id}/edit', name: 'app_reservation_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Reservation $reservation, EntityManagerInterface $entityManager): Response
     {
+        if ($this->getUser()->getId() !== $reservation->getUser()->getId()) {
+            throw new AccessDeniedException('This reservation is not accessible to you');
+        }
+
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
 
@@ -103,6 +101,10 @@ final class ReservationController extends AbstractController
     #[Route('/{id}', name: 'app_reservation_delete', methods: ['POST'])]
     public function delete(Request $request, Reservation $reservation, EntityManagerInterface $entityManager): Response
     {
+        if ($this->getUser()->getId() !== $reservation->getUser()->getId()) {
+            throw new AccessDeniedException('This reservation is not accessible to you');
+        }
+
         if ($this->isCsrfTokenValid('delete'.$reservation->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($reservation);
             $entityManager->flush();
