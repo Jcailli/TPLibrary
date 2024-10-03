@@ -19,6 +19,7 @@ class Button
             'back' => 'bi:arrow-left-circle',
             'borrow' => 'bi:book',
             'reserve' => 'bi:bookmark',
+            'return' => 'bi:journal-arrow-down',
         };
     }
 
@@ -31,6 +32,7 @@ class Button
             'back' => 'Back to list',
             'borrow' => 'Borrow',
             'reserve' => 'Reserve',
+            'return' => 'Return',
         };
     }
 
@@ -43,6 +45,7 @@ class Button
             'back' => 'btn-secondary',
             'borrow' => 'btn-primary',
             'reserve' => 'btn-primary',
+            'return' => 'btn-primary',
         };
     }
 }

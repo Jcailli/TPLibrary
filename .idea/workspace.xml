@@ -4,16 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Books available to borrow">
+    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Refactoring Reservations and Borrowings">
+      <change afterPath="$PROJECT_DIR$/src/Controller/MailerController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/emails/reservation.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/mailer.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/mailer.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/BookVersionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookVersionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReservationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/BookVersion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/BookVersion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Borrowing.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Borrowing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Reservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BorrowingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BorrowingController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/BookVersionRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/BookVersionRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ReservationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ReservationRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Twig/Components/Button.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Twig/Components/Button.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/book_version/index_reservation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book_version/index_reservation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/borrowing/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowing/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/borrowing/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowing/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,19 +148,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "//wsl$/Debian/home/docker/projects/orange/library/templates/author",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;//wsl$/Debian/home/docker/projects/orange/library/templates/author&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="\\wsl$\Debian\home\docker\projects\orange\library\templates\author" />
@@ -189,7 +190,8 @@
       <workItem from="1727421453892" duration="22143000" />
       <workItem from="1727681633240" duration="15015000" />
       <workItem from="1727766785843" duration="17410000" />
-      <workItem from="1727854384535" duration="11661000" />
+      <workItem from="1727854384535" duration="17244000" />
+      <workItem from="1727938112255" duration="8031000" />
     </task>
     <task id="LOCAL-00001" summary="Init Mailer">
       <option name="closed" value="true" />
@@ -447,7 +449,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727873292697</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Refactoring Reservations and Borrowings">
+      <option name="closed" value="true" />
+      <created>1727874619601</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1727874619601</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,6 +493,7 @@
     <MESSAGE value="MAJ Registration" />
     <MESSAGE value="Refactoring Front" />
     <MESSAGE value="Books available to borrow" />
-    <option name="LAST_COMMIT_MESSAGE" value="Books available to borrow" />
+    <MESSAGE value="Refactoring Reservations and Borrowings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring Reservations and Borrowings" />
   </component>
 </project>

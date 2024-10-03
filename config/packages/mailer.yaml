@@ -1,3 +1,5 @@
 framework:
     mailer:
+        headers:
+            From: "no-reply@library.com"
         dsn: '%env(MAILER_DSN)%'
