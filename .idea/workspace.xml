@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Admin Mono Role Management">
+    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Add DateVersion to Book Version + MAJ Fixtures">
+      <change afterPath="$PROJECT_DIR$/src/Form/UserProfileType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/user/_delete_profile_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/user/edit_profile.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/user/show_profile.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20241002075931.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20241002125424.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AuthorFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AuthorFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/BookFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/BookFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/PublisherFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/PublisherFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/BookVersion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/BookVersion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/navigation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navigation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/new.html.twig" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,26 +145,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;//wsl$/Debian/home/docker/projects/orange/library/templates/author&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "//wsl$/Debian/home/docker/projects/orange/library/templates/user",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\wsl$\Debian\home\docker\projects\orange\library\templates\user" />
       <recent name="\\wsl$\Debian\home\docker\projects\orange\library\templates\author" />
       <recent name="\\wsl$\Debian\home\docker\projects\orange\library\templates\components" />
       <recent name="\\wsl$\Debian\home\docker\projects\orange\library\templates\reservation" />
       <recent name="\\wsl$\Debian\home\docker\projects\orange\library\templates\book_version" />
-      <recent name="\\wsl$\Debian\home\docker\projects\orange\library\templates\borrowing" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -189,7 +188,7 @@
       <workItem from="1727681633240" duration="15015000" />
       <workItem from="1727766785843" duration="17410000" />
       <workItem from="1727854384535" duration="17244000" />
-      <workItem from="1727938112255" duration="12092000" />
+      <workItem from="1727938112255" duration="13481000" />
     </task>
     <task id="LOCAL-00001" summary="Init Mailer">
       <option name="closed" value="true" />
@@ -479,7 +478,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727949364997</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Add DateVersion to Book Version + MAJ Fixtures">
+      <option name="closed" value="true" />
+      <created>1727959161051</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1727959161051</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -519,6 +526,7 @@
     <MESSAGE value="MAJ Borrow and Reservation Rules" />
     <MESSAGE value="Librarian Can Return Borrow" />
     <MESSAGE value="Admin Mono Role Management" />
-    <option name="LAST_COMMIT_MESSAGE" value="Admin Mono Role Management" />
+    <MESSAGE value="Add DateVersion to Book Version + MAJ Fixtures" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add DateVersion to Book Version + MAJ Fixtures" />
   </component>
 </project>

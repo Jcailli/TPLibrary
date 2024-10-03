@@ -29,7 +29,7 @@ class Button
             'show' => 'Details',
             'edit' => 'Edit',
             'new' => 'New',
-            'back' => 'Back to list',
+            'back' => 'Back',
             'borrow' => 'Borrow',
             'reserve' => 'Reserve',
             'return' => 'Return',

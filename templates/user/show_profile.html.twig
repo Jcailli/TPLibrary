@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+    <h1>User</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Roles</th>
+                <td>
+                    {% for role in user.roles %}
+                        {% if role == "ROLE_USER" %}
+                            Utilisateur
+                        {% elseif role == "ROLE_LIBRARIAN" %}
+                            Bibliothécaire
+                        {% elseif role == "ROLE_ADMIN" %}
+                            Administrateur
+                        {% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ user.userFirstName }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            {% if is_granted('ROLE_USER') %}
+                <tr>
+                    <th>Borrows</th>
+                    <td>
+                        {% for borrow in user.borrowings %}
+                            {% if borrow.return is same as(false) %}
+                                <p>{{ borrow.bookVersion.book.name }} : {{ borrow.bookVersion.name }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Reservations</th>
+                    <td>
+                        {% for reservation in user.reservations %}
+                            {% if reservation.isActive is same as(true) %}
+                                <p>{{ reservation.bookVersion.book.name }} : {{ reservation.bookVersion.name }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Penality</th>
+                    <td>{{ user.penality }}</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    <twig:Button type="edit" path="{{ path('app_user_edit_profile', {'id': user.id}) }}"/>
+{% endblock %}
