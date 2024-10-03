@@ -8,6 +8,7 @@ use App\Repository\BookVersionRepository;
 use App\Repository\BorrowingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -29,6 +30,15 @@ final class BookVersionController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function bookVersionCanBeReserved(BookVersionRepository $bookVersionRepository): Response
     {
+        $userPenality = $this->getUser()->getPenality();
+
+        if (
+            null !== $userPenality
+            && $userPenality > 0
+        ){
+            throw new AccessDeniedException('You cant reserve any Book. Regularise your late payment penalties');
+        }
+
         return $this->render('book_version/index_reservation.html.twig', [
             'book_versions' => $bookVersionRepository->findAllBookVersionCanBeReserved($this->getUser()->getId()),
         ]);
@@ -38,6 +48,15 @@ final class BookVersionController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function bookVersionCanBeBorrow(BookVersionRepository $bookVersionRepository, BorrowingRepository $borrowingRepository): Response
     {
+        $userPenality = $this->getUser()->getPenality();
+
+        if (
+            null !== $userPenality
+            && $userPenality > 0
+        ){
+            throw new AccessDeniedException('You cant borrow any Book. Regularise your late payment penalties');
+        }
+
         return $this->render('book_version/index_reservation.html.twig', [
             'borrowings' => count($borrowingRepository->findByUserId($this->getUser()->getId())),
             'book_versions' => $bookVersionRepository->findAllBookVersionCanBeBorrowed($this->getUser()->getId()),
