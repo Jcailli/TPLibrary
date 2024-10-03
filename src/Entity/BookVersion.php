@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\BookVersionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BookVersionRepository::class)]
@@ -37,6 +38,9 @@ class BookVersion
      */
     #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'bookVersion', orphanRemoval: true)]
     private Collection $reservations;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $versionDate = null;
 
     public function __construct()
     {
@@ -141,6 +145,18 @@ class BookVersion
                 $reservation->setBookVersion(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getVersionDate(): ?\DateTimeInterface
+    {
+        return $this->versionDate;
+    }
+
+    public function setVersionDate(\DateTimeInterface $versionDate): static
+    {
+        $this->versionDate = $versionDate;
 
         return $this;
     }

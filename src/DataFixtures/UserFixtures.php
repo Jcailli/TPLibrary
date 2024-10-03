@@ -34,6 +34,22 @@ class UserFixtures extends Fixture
         $user->setRoles(["ROLE_USER"]);
         $manager->persist($user);
 
+        $user = new User();
+        $user->setUserFirstName('user1');
+        $user->setUsername('user1');
+        $user->setPassword('$2y$13$lSiHlrvpGsgR/keLGGPuS.5mAxMl5V86mGP3QIWsHTDsj74V2VuCa'); //user1
+        $user->setEmail('user1@user.com');
+        $user->setRoles(["ROLE_USER"]);
+        $manager->persist($user);
+
+        $user = new User();
+        $user->setUserFirstName('user2');
+        $user->setUsername('user2');
+        $user->setPassword('$2y$13$g05wsa0eQ9BjulkQYBVu3OpjRxanmVFSkVWMgJuuaaG/TEaz.KlFC'); //user2
+        $user->setEmail('user2@user.com');
+        $user->setRoles(["ROLE_USER"]);
+        $manager->persist($user);
+
         $manager->flush();
     }
 }

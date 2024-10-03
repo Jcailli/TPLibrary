@@ -8,6 +8,8 @@ use Doctrine\Persistence\ObjectManager;
 
 class PublisherFixtures extends Fixture
 {
+    public const PUBLISHER_REFERENCE = 'publisher';
+
     public function load(ObjectManager $manager): void
     {
         $publishers = [
@@ -62,6 +64,7 @@ class PublisherFixtures extends Fixture
             $publisherEntity = new Publisher();
             $publisherEntity->setName($publisher['name']);
             $manager->persist($publisherEntity);
+            $this->addReference(self::PUBLISHER_REFERENCE.'-'.$publisher['name'], $publisherEntity);
         }
 
         $manager->flush();
