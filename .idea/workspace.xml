@@ -4,18 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Refactoring Reservations and Borrowings">
-      <change afterPath="$PROJECT_DIR$/src/Controller/MailerController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/emails/reservation.html.twig" afterDir="false" />
+    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Librarian Can Return Borrow">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/mailer.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/mailer.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/BookVersionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookVersionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/BorrowingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BorrowingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/BookVersionRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/BookVersionRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Twig/Components/Button.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Twig/Components/Button.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/book_version/index_reservation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book_version/index_reservation.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/borrowing/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowing/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/borrowing/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowing/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserType.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +182,7 @@
       <workItem from="1727681633240" duration="15015000" />
       <workItem from="1727766785843" duration="17410000" />
       <workItem from="1727854384535" duration="17244000" />
-      <workItem from="1727938112255" duration="8031000" />
+      <workItem from="1727938112255" duration="8709000" />
     </task>
     <task id="LOCAL-00001" summary="Init Mailer">
       <option name="closed" value="true" />
@@ -457,7 +448,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727874619601</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="MAJ Borrow and Reservation Rules">
+      <option name="closed" value="true" />
+      <created>1727948839050</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1727948839050</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Librarian Can Return Borrow">
+      <option name="closed" value="true" />
+      <created>1727948864186</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1727948864186</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -494,6 +501,8 @@
     <MESSAGE value="Refactoring Front" />
     <MESSAGE value="Books available to borrow" />
     <MESSAGE value="Refactoring Reservations and Borrowings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring Reservations and Borrowings" />
+    <MESSAGE value="MAJ Borrow and Reservation Rules" />
+    <MESSAGE value="Librarian Can Return Borrow" />
+    <option name="LAST_COMMIT_MESSAGE" value="Librarian Can Return Borrow" />
   </component>
 </project>

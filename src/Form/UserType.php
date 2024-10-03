@@ -7,6 +7,7 @@ use App\Entity\Reservation;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,7 +25,7 @@ class UserType extends AbstractType
                     "Bibliothécaire" => "ROLE_LIBRARIAN"
                 ],
                 'expanded' => true,
-                'multiple' => true,
+                'multiple' => false,
             ])
             ->add('username', TextType::class, [
                 'required' => true,
@@ -32,8 +33,17 @@ class UserType extends AbstractType
             ->add('userFirstName', TextType::class, [
                 'label' => "First Name",
             ])
-            ->add('email')
-            ->add('penality')
+        ;
+
+        $builder->get('roles')
+            ->addModelTransformer(new CallbackTransformer(
+                function ($rolesArray) {
+                    return count($rolesArray) ? $rolesArray[0] : null;
+                },
+                function ($roleString) {
+                    return [$roleString];
+                }
+            ))
         ;
     }
 
