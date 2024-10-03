@@ -59,21 +59,16 @@ class BookVersionRepository extends ServiceEntityRepository
         )
         ->where('
             reservation.bookVersion IS NULL
-        ')
-        ->orWhere('
-            reservation.isActive = false
-        ')
-        ->orWhere('
-            borrowing.returned = false
-            AND borrowing.user != :userId
-        ')
-        ->andWhere('
-            NOT EXISTS (
+            OR NOT EXISTS (
                 SELECT 1
                 FROM ' . Reservation::class . ' r
                 WHERE r.bookVersion = b.id
                 AND r.isActive = true
             )
+        ')
+        ->andWhere('
+            borrowing.returned = false
+            AND borrowing.user != :userId
         ')
         ->setParameter('userId', $userId);
 

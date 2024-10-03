@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\BookVersion;
 use App\Entity\Borrowing;
+use App\Entity\Reservation;
 use App\Form\BorrowingType;
 use App\Repository\BorrowingRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -123,8 +124,12 @@ final class BorrowingController extends AbstractController
         $borrowing->setReturnDate(new \DateTime('now'));
         $entityManager->flush();
 
+        $userReservation = $entityManager
+            ->getRepository(Reservation::class)
+            ->findOneBy(['bookVersion' => $borrowing->getBookVersion(), 'isActive' => true]);
+
         return $this->redirectToRoute('reservation_email', [
-            "user" => $borrowing->getUser()->getId(),
+            "user" => $userReservation?->getUser()->getId(),
             "bookVersion" => $borrowing->getBookVersion()->getId()
         ], Response::HTTP_SEE_OTHER);
     }

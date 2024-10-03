@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Add DateVersion to Book Version + MAJ Fixtures">
-      <change afterPath="$PROJECT_DIR$/src/Form/UserProfileType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/_delete_profile_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/edit_profile.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/show_profile.html.twig" afterDir="false" />
+    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Profile Management">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/navigation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navigation.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/new.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BorrowingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BorrowingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReservationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/BookVersionRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/BookVersionRepository.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +184,7 @@
       <workItem from="1727681633240" duration="15015000" />
       <workItem from="1727766785843" duration="17410000" />
       <workItem from="1727854384535" duration="17244000" />
-      <workItem from="1727938112255" duration="13481000" />
+      <workItem from="1727938112255" duration="14474000" />
     </task>
     <task id="LOCAL-00001" summary="Init Mailer">
       <option name="closed" value="true" />
@@ -486,7 +482,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727959161051</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Profile Management">
+      <option name="closed" value="true" />
+      <created>1727960632561</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1727960632561</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -527,6 +531,7 @@
     <MESSAGE value="Librarian Can Return Borrow" />
     <MESSAGE value="Admin Mono Role Management" />
     <MESSAGE value="Add DateVersion to Book Version + MAJ Fixtures" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add DateVersion to Book Version + MAJ Fixtures" />
+    <MESSAGE value="Profile Management" />
+    <option name="LAST_COMMIT_MESSAGE" value="Profile Management" />
   </component>
 </project>
