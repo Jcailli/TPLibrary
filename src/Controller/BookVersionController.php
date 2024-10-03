@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\BookVersion;
 use App\Form\BookVersionType;
 use App\Repository\BookVersionRepository;
+use App\Repository\BorrowingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,16 +30,17 @@ final class BookVersionController extends AbstractController
     public function bookVersionCanBeReserved(BookVersionRepository $bookVersionRepository): Response
     {
         return $this->render('book_version/index_reservation.html.twig', [
-            'book_versions' => $bookVersionRepository->findAllBookVersionBorrowed($this->getUser()->getId()),
+            'book_versions' => $bookVersionRepository->findAllBookVersionCanBeReserved($this->getUser()->getId()),
         ]);
     }
 
     #[Route('/can_be_borrow', name: 'app_book_version_can_be_borrow', methods: ['GET'])]
     #[IsGranted('ROLE_USER')]
-    public function bookVersionCanBeBorrow(BookVersionRepository $bookVersionRepository): Response
+    public function bookVersionCanBeBorrow(BookVersionRepository $bookVersionRepository, BorrowingRepository $borrowingRepository): Response
     {
         return $this->render('book_version/index_reservation.html.twig', [
-            'book_versions' => $bookVersionRepository->findAllBookVersionNotBorrowedAndNotReserved(),
+            'borrowings' => count($borrowingRepository->findByUserId($this->getUser()->getId())),
+            'book_versions' => $bookVersionRepository->findAllBookVersionCanBeBorrowed($this->getUser()->getId()),
         ]);
     }
 

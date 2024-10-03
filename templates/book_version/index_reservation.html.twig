@@ -26,7 +26,7 @@
                 <td>{{ book_version.name }}</td>
                 <td>
                     {% if 'app_book_version_can_be_borrow' is same as(app.request.get('_route')) %}
-                        {% if app.user.borrowings|length < app.user.maxBorrow %}
+                        {% if borrowings < app.user.maxBorrow %}
                             <twig:Button type="borrow" path="{{ path('app_borrowing_new_from_reservation', {'bookVersionId': book_version.id}) }}"/>
                         {% endif %}
                     {% elseif 'app_book_version_can_be_reserved' is same as(app.request.get('_route')) %}

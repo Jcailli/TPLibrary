@@ -116,6 +116,19 @@ final class BorrowingController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}/return', name: 'app_borrowing_return', methods: ['GET'])]
+    public function return(Request $request, Borrowing $borrowing, EntityManagerInterface $entityManager): Response
+    {
+        $borrowing->setReturned(true);
+        $borrowing->setReturnDate(new \DateTime('now'));
+        $entityManager->flush();
+
+        return $this->redirectToRoute('reservation_email', [
+            "user" => $borrowing->getUser()->getId(),
+            "bookVersion" => $borrowing->getBookVersion()->getId()
+        ], Response::HTTP_SEE_OTHER);
+    }
+
     #[Route('/{id}', name: 'app_borrowing_delete', methods: ['POST'])]
     public function delete(Request $request, Borrowing $borrowing, EntityManagerInterface $entityManager): Response
     {

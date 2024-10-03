@@ -42,7 +42,7 @@ class BookVersionRepository extends ServiceEntityRepository
         }
     }
 
-    public function findAllBookVersionBorrowed(int $userId): array
+    public function findAllBookVersionCanBeReserved(int $userId): array
     {
         $qb = $this->createQueryBuilder('b')
         ->innerJoin(
@@ -57,15 +57,30 @@ class BookVersionRepository extends ServiceEntityRepository
             'WITH',
             'reservation.bookVersion = b.id'
         )
-        ->where('reservation.bookVersion IS NULL')
-        ->andWhere('borrowing.user != :userId')
-        ->andWhere('borrowing.returned = false')
+        ->where('
+            reservation.bookVersion IS NULL
+        ')
+        ->orWhere('
+            reservation.isActive = false
+        ')
+        ->orWhere('
+            borrowing.returned = false
+            AND borrowing.user != :userId
+        ')
+        ->andWhere('
+            NOT EXISTS (
+                SELECT 1
+                FROM ' . Reservation::class . ' r
+                WHERE r.bookVersion = b.id
+                AND r.isActive = true
+            )
+        ')
         ->setParameter('userId', $userId);
 
         return $qb->getQuery()->getResult();
     }
 
-    public function findAllBookVersionNotBorrowedAndNotReserved(): array
+    public function findAllBookVersionCanBeBorrowed(int $userId): array
     {
         $qb = $this->createQueryBuilder('b')
         ->leftJoin(
@@ -80,10 +95,33 @@ class BookVersionRepository extends ServiceEntityRepository
             'WITH',
             'reservation.bookVersion = b.id'
         )
-        ->where('reservation.bookVersion IS NULL')
-        ->andWhere('reservation.isActive = false OR reservation.isActive IS NULL')
-        ->andWhere('borrowing.bookVersion IS NULL')
-        ->andWhere('borrowing.returned = true OR borrowing.returned IS NULL');
+        ->where('borrowing.bookVersion IS NULL')
+        ->orWhere('
+            NOT EXISTS (
+                SELECT 1
+                FROM ' . Borrowing::class . ' b1
+                WHERE b1.bookVersion = b.id
+                AND b1.returned = false
+            )
+            AND NOT EXISTS (
+                SELECT 1
+                FROM ' . Reservation::class . ' r
+                WHERE r.bookVersion = b.id
+                AND r.isActive = true
+            )
+        ')
+        ->orWhere('
+            borrowing.returned = true
+            AND reservation.isActive = true
+            AND reservation.user = :userId
+        ')
+        ->orWhere('
+            borrowing.returned = true
+            AND CURRENT_DATE() >= DATE_ADD(borrowing.returnDate, 3, \'DAY\')
+            AND reservation.isActive = true
+            AND reservation.user != :userId
+        ')
+        ->setParameter('userId', $userId);
 
         return $qb->getQuery()->getResult();
     }
