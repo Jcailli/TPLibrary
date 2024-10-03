@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\UserLibrarianType;
 use App\Form\UserProfileType;
 use App\Form\UserType;
 use App\Repository\UserRepository;
@@ -14,10 +15,10 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-#[Route('/admin/user')]
+#[Route('/user')]
 final class UserController extends AbstractController
 {
-    #[Route(name: 'app_user_index', methods: ['GET'])]
+    #[Route('/admin', name: 'app_user_index', methods: ['GET'])]
     #[IsGranted('ROLE_ADMIN')]
     public function index(UserRepository $userRepository): Response
     {
@@ -26,7 +27,7 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
+    #[Route('/admin/{id}', name: 'app_user_show', methods: ['GET'])]
     #[IsGranted('ROLE_ADMIN')]
     public function show(User $user): Response
     {
@@ -35,19 +36,7 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/profile', name: 'app_user_show_profile', methods: ['GET'])]
-    public function showProfile(User $user): Response
-    {
-        if ($this->getUser()->getId() !== $user->getId()) {
-            throw new AccessDeniedException('Only admin can access to this page');
-        }
-
-        return $this->render('user/show_profile.html.twig', [
-            'user' => $user,
-        ]);
-    }
-
-    #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
+    #[Route('/admin/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_ADMIN')]
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
@@ -63,6 +52,58 @@ final class UserController extends AbstractController
         return $this->render('user/edit.html.twig', [
             'user' => $user,
             'form' => $form,
+        ]);
+    }
+
+    #[Route('/admin/{id}', name: 'app_user_delete', methods: ['POST'])]
+    #[IsGranted('ROLE_ADMIN')]
+    public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->getPayload()->getString('_token'))) {
+            $entityManager->remove($user);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/librarian', name: 'app_user_index_users', methods: ['GET'])]
+    #[IsGranted('ROLE_LIBRARIAN')]
+    public function indexUsers(UserRepository $userRepository): Response
+    {
+        return $this->render('user/index_librarian.html.twig', [
+            'users' => $userRepository->findAllUsers(),
+        ]);
+    }
+
+    #[Route('/librarian/{id}/edit', name: 'app_user_edit_librarian', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_LIBRARIAN')]
+    public function editUserByLibrarian(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(UserLibrarianType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_user_index_users', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('user/edit_librarian.html.twig', [
+            'user' => $user,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/{id}/profile', name: 'app_user_show_profile', methods: ['GET'])]
+    public function showProfile(User $user): Response
+    {
+        if ($this->getUser()->getId() !== $user->getId()) {
+            throw new AccessDeniedException('Only admin can access to this page');
+        }
+
+        return $this->render('user/show_profile.html.twig', [
+            'user' => $user,
         ]);
     }
 
@@ -86,18 +127,6 @@ final class UserController extends AbstractController
             'user' => $user,
             'form' => $form,
         ]);
-    }
-
-    #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
-    #[IsGranted('ROLE_ADMIN')]
-    public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->getPayload()->getString('_token'))) {
-            $entityManager->remove($user);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/{id}', name: 'app_user_delete_profile', methods: ['POST'])]

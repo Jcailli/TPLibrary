@@ -21,36 +21,40 @@
                             <a class="nav-link" href="{{ path('app_author_index') }}">Authors</a>
                         </li>
                     {% endif %}
-                    {% if is_granted('ROLE_LIBRARIAN') or is_granted('ROLE_USER') %}
-                        {% if is_granted('ROLE_LIBRARIAN') %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('app_borrowing_index') }}">List of Borrowings</a>
-                            </li>
-                        {% endif %}
-                        {% if is_granted('ROLE_USER') %}
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Borrowings
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ path('app_borrowing_user_index') }}">My Borrowings</a></li>
-                                    <li><a class="dropdown-item" href="{{ path('app_book_version_can_be_borrow') }}">Books available to borrow</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Reservations
-                                </a>
-                                <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="{{ path('app_reservation_user_index') }}">My Reservations</a></li>
-                                        <li><a class="dropdown-item" href="{{ path('app_book_version_can_be_reserved') }}">Books available to reservation</a></li>
-                                </ul>
-                            </li>
-                        {% endif %}
+                    {% if is_granted('ROLE_LIBRARIAN') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_borrowing_index') }}">List of Borrowings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_user_index_users') }}">Manage Max Borrow of Users</a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('ROLE_USER') %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Borrowings
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ path('app_borrowing_user_index') }}">My Borrowings</a></li>
+                                <li><a class="dropdown-item" href="{{ path('app_book_version_can_be_borrow') }}">Books available to borrow</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Reservations
+                            </a>
+                            <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ path('app_reservation_user_index') }}">My Reservations</a></li>
+                                    <li><a class="dropdown-item" href="{{ path('app_book_version_can_be_reserved') }}">Books available to reservation</a></li>
+                            </ul>
+                        </li>
                     {% endif %}
                     {% if is_granted('ROLE_ADMIN') %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_user_index') }}">List of Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_user_penality_index') }}">Manage Penality of Users</a>
                         </li>
                     {% endif %}
                 {% endif %}

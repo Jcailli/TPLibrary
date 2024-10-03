@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit User{% endblock %}
+
+{% block body %}
+    <h1>Edit User</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ user.userFirstName }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <twig:Button type="back" path="{{ path('app_user_index') }}"/>
+{% endblock %}
