@@ -58,12 +58,22 @@ final class BorrowingController extends AbstractController
         ]);
     }
 
-    #[Route('/history', name: 'app_borrowing_user_history', methods: ['GET'])]
+    #[Route('/history/{page<\d+>}', name: 'app_borrowing_user_history', methods: ['GET'])]
     #[IsGranted('ROLE_USER')]
-    public function userBorrowingHistory(BorrowingRepository $borrowingRepository): Response
+    public function userBorrowingHistory(BorrowingRepository $borrowingRepository, int $page = 1): Response
     {
+        $activeBorrowings = $borrowingRepository->findByUserId($this->getUser()->getId());
+        $pages = ceil(count($activeBorrowings) / AppController::PER_PAGE);
+
+        if ($page < 1 || $page > $pages) {
+            throw new NotFoundHttpException();
+        }
+
+        $results = array_slice($activeBorrowings, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('borrowing/index_history.html.twig', [
-            'borrowings' => $borrowingRepository->findByUserId($this->getUser()->getId()),
+            'borrowings' => $results,
+            'page' => $page,
+            'pages' => $pages
         ]);
     }
 
