@@ -20,12 +20,22 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/user')]
 final class UserController extends AbstractController
 {
-    #[Route('/admin', name: 'app_user_index', methods: ['GET'])]
+    #[Route('/admin/{page<\d+>}', name: 'app_user_index', methods: ['GET'])]
     #[IsGranted('ROLE_ADMIN')]
-    public function index(UserRepository $userRepository): Response
+    public function index(UserRepository $userRepository, int $page = 1): Response
     {
+        $users = $userRepository->findAll();
+        $pages = ceil(count($users) / AppController::PER_PAGE);
+
+        if ($page < 1 || $page > $pages) {
+            throw new NotFoundHttpException();
+        }
+
+        $results = array_slice($users, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('user/index.html.twig', [
-            'users' => $userRepository->findAll(),
+            'users' => $results,
+            'page' => $page,
+            'pages' => $pages,
         ]);
     }
 
