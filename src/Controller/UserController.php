@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -96,12 +97,22 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/librarian', name: 'app_user_index_users', methods: ['GET'])]
+    #[Route('/librarian/{page<\d+>}', name: 'app_user_index_users', methods: ['GET'])]
     #[IsGranted('ROLE_LIBRARIAN')]
-    public function indexUsers(UserRepository $userRepository): Response
+    public function indexUsers(UserRepository $userRepository, int $page = 1): Response
     {
+        $users = $userRepository->findAllUsers();
+        $pages = ceil(count($users) / AppController::PER_PAGE);
+
+        if ($page < 1 || $page > $pages) {
+            throw new NotFoundHttpException();
+        }
+
+        $results = array_slice($users, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('user/index_librarian.html.twig', [
-            'users' => $userRepository->findAllUsers(),
+            'users' => $results,
+            'page' => $page,
+            'pages' => $pages,
         ]);
     }
 

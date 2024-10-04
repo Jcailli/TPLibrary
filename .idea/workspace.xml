@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Pagination for bookVersion">
-      <change beforePath="$PROJECT_DIR$/src/Controller/BorrowingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BorrowingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/borrowing/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowing/index.html.twig" afterDir="false" />
+    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Pagination for active reservations">
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/index_librarian.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/index_librarian.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,31 +188,7 @@
       <workItem from="1727766785843" duration="17410000" />
       <workItem from="1727854384535" duration="17244000" />
       <workItem from="1727938112255" duration="21225000" />
-      <workItem from="1728026104131" duration="8978000" />
-    </task>
-    <task id="LOCAL-00006" summary="Add ResetPassword + Update login and register">
-      <option name="closed" value="true" />
-      <created>1727439291181</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1727439291181</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Add ResetPassword + Update login and register">
-      <option name="closed" value="true" />
-      <created>1727439327491</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1727439327491</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Add AppController for the home page">
-      <option name="closed" value="true" />
-      <created>1727439352570</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1727439352570</updated>
+      <workItem from="1728026104131" duration="9653000" />
     </task>
     <task id="LOCAL-00009" summary="Add AppController for the home page">
       <option name="closed" value="true" />
@@ -582,7 +558,31 @@
       <option name="project" value="LOCAL" />
       <updated>1728035190990</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Pagination for active borrowings">
+      <option name="closed" value="true" />
+      <created>1728035318042</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1728035318042</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Pagination for publishers">
+      <option name="closed" value="true" />
+      <created>1728035470409</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1728035470409</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Pagination for active reservations">
+      <option name="closed" value="true" />
+      <created>1728035581233</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1728035581233</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -600,9 +600,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="User Borrowing" />
-    <MESSAGE value="User Reservation" />
-    <MESSAGE value="MAJ Registration" />
     <MESSAGE value="Refactoring Front" />
     <MESSAGE value="Books available to borrow" />
     <MESSAGE value="Refactoring Reservations and Borrowings" />
@@ -625,6 +622,9 @@
     <MESSAGE value="Pagination for books" />
     <MESSAGE value="Pagination for authors" />
     <MESSAGE value="Pagination for bookVersion" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pagination for bookVersion" />
+    <MESSAGE value="Pagination for active borrowings" />
+    <MESSAGE value="Pagination for publishers" />
+    <MESSAGE value="Pagination for active reservations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pagination for active reservations" />
   </component>
 </project>
