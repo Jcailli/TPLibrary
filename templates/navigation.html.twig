@@ -65,6 +65,11 @@
             </ul>
             <div class="navbar-text">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {% if is_granted('ROLE_USER') and app.user.penality > 0 %}
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="">Penality : {{ app.user.penality }} €</a>
+                        </li>
+                    {% endif %}
                     {% if not is_granted('IS_AUTHENTICATED') %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_login') }}">Login</a>

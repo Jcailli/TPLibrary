@@ -33,34 +33,6 @@
                 <th>Email</th>
                 <td>{{ user.email }}</td>
             </tr>
-            {% if is_granted('ROLE_USER') %}
-                <tr>
-                    <th>Penality</th>
-                    <td>{{ user.penality }}</td>
-                </tr>
-                <tr>
-                    <th>Borrows</th>
-                    <td>
-                        {% for borrow in user.borrowings %}
-                            <p>{{ borrow.bookVersion.book.name }} : {{ borrow.bookVersion.name }} - Borrow at {{ borrow.borrowingDate | date('d-m-Y') }}
-                                {% if borrow.returned is same as(true) %}
-                                    - (Returned)
-                                {% endif %}
-                            </p>
-                        {% endfor %}
-                    </td>
-                </tr>
-                <tr>
-                    <th>Reservations</th>
-                    <td>
-                        {% for reservation in user.reservations %}
-                            {% if reservation.isActive is same as(true) %}
-                                <p>{{ reservation.bookVersion.book.name }} : {{ reservation.bookVersion.name }}</p>
-                            {% endif %}
-                        {% endfor %}
-                    </td>
-                </tr>
-            {% endif %}
         </tbody>
     </table>
 
