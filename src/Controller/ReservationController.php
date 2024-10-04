@@ -19,12 +19,18 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/reservation')]
 final class ReservationController extends AbstractController
 {
-    #[Route('/user' ,name: 'app_reservation_user_index', methods: ['GET'])]
+    #[Route('/user/{page<\d+>}' ,name: 'app_reservation_user_index', methods: ['GET'])]
     #[IsGranted('ROLE_USER')]
-    public function userReservation(ReservationRepository $reservationRepository): Response
+    public function userReservation(ReservationRepository $reservationRepository, int $page = 1): Response
     {
+        $reservations = $reservationRepository->findAllActiveByUserId($this->getUser()->getId());
+        $pages = ceil(count($reservations) / AppController::PER_PAGE);
+
+        $results = array_slice($reservations, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('reservation/user_index.html.twig', [
-            'reservations' => $reservationRepository->findAllActiveByUserId($this->getUser()->getId()),
+            'reservations' => $results,
+            'page' => $page,
+            'pages' => $pages,
         ]);
     }
     #[Route('/librarian/{page<\d+>}' ,name: 'app_reservation_index', methods: ['GET'])]
