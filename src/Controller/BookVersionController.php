@@ -55,10 +55,18 @@ final class BookVersionController extends AbstractController
         ]);
     }
 
-    #[Route('/can_be_borrow', name: 'app_book_version_can_be_borrow', methods: ['GET'])]
+    #[Route('/can_be_borrow/{page<\d+>}', name: 'app_book_version_can_be_borrow', methods: ['GET'])]
     #[IsGranted('ROLE_USER')]
-    public function bookVersionCanBeBorrow(BookVersionRepository $bookVersionRepository, BorrowingRepository $borrowingRepository): Response
+    public function bookVersionCanBeBorrow(BookVersionRepository $bookVersionRepository, BorrowingRepository $borrowingRepository, int $page = 1): Response
     {
+        $bookVersions = $bookVersionRepository->findAllBookVersionCanBeBorrowed($this->getUser()->getId());
+        $pages = ceil(count($bookVersions) / AppController::PER_PAGE);
+
+        if ($page < 1 || $page > $pages) {
+            throw new NotFoundHttpException();
+        }
+
+        $results = array_slice($bookVersions, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         $userPenality = $this->getUser()->getPenality();
 
         if (
@@ -69,8 +77,11 @@ final class BookVersionController extends AbstractController
         }
 
         return $this->render('book_version/index_reservation.html.twig', [
+            'route' => 'app_book_version_can_be_borrow',
             'borrowings' => count($borrowingRepository->findActiveByUserId($this->getUser()->getId())),
-            'book_versions' => $bookVersionRepository->findAllBookVersionCanBeBorrowed($this->getUser()->getId()),
+            'book_versions' => $results,
+            'page' => $page,
+            'pages' => $pages
         ]);
     }
 

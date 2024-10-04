@@ -11,34 +11,51 @@
         {% endif %}
     </h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Book Name</th>
-                <th>Version Name</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for book_version in book_versions %}
-            <tr>
-                <td>{{ book_version.book.name }}</td>
-                <td>{{ book_version.name }}</td>
-                <td>
-                    {% if 'app_book_version_can_be_borrow' is same as(app.request.get('_route')) %}
-                        {% if borrowings < app.user.maxBorrow %}
-                            <twig:Button type="borrow" path="{{ path('app_borrowing_new_from_reservation', {'bookVersionId': book_version.id}) }}"/>
+    <div data-controller="symfony--ux-swup--swup" id="swup" data-turbo="false">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Book Name</th>
+                    <th>Version Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for book_version in book_versions %}
+                <tr>
+                    <td>{{ book_version.book.name }}</td>
+                    <td>{{ book_version.name }}</td>
+                    <td>
+                        {% if 'app_book_version_can_be_borrow' is same as(app.request.get('_route')) %}
+                            {% if borrowings < app.user.maxBorrow %}
+                                <twig:Button type="borrow" path="{{ path('app_borrowing_new_from_reservation', {'bookVersionId': book_version.id}) }}"/>
+                            {% endif %}
+                        {% elseif 'app_book_version_can_be_reserved' is same as(app.request.get('_route')) %}
+                                <twig:Button type="reserve" path="{{ path('app_reservation_new_from_book_list', {'bookVersionId': book_version.id}) }}"/>
                         {% endif %}
-                    {% elseif 'app_book_version_can_be_reserved' is same as(app.request.get('_route')) %}
-                            <twig:Button type="reserve" path="{{ path('app_reservation_new_from_book_list', {'bookVersionId': book_version.id}) }}"/>
-                    {% endif %}
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no books to reserve</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">no books to reserve</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="mt-3">
+            <nav>
+                <ul class="pagination">
+                    {% for num in 1..pages %}
+                        <li class="page-item">
+                            <a href="{{ path(route, num > 1 ? {page: num} : {}) }}"
+                               class="page-link {{ page == num ? "active" : "" }}"
+                               aria-current="{{ page == num ? 'true' : 'false' }}">
+                                {{ num }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </div>
 {% endblock %}

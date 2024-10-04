@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Pagination for users for penality">
-      <change beforePath="$PROJECT_DIR$/templates/navigation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navigation.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/show_profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/show_profile.html.twig" afterDir="false" />
+    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Pagination for bookVersion can be borrow">
+      <change beforePath="$PROJECT_DIR$/src/Controller/BookVersionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookVersionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/book_version/index_reservation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book_version/index_reservation.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,39 +188,7 @@
       <workItem from="1727766785843" duration="17410000" />
       <workItem from="1727854384535" duration="17244000" />
       <workItem from="1727938112255" duration="21225000" />
-      <workItem from="1728026104131" duration="11311000" />
-    </task>
-    <task id="LOCAL-00014" summary="Add Webpack encore for bootstrap and jquery">
-      <option name="closed" value="true" />
-      <created>1727441590247</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1727441590247</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Add Webpack encore for bootstrap and jquery">
-      <option name="closed" value="true" />
-      <created>1727441790198</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1727441790198</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Add Webpack encore for bootstrap and jquery">
-      <option name="closed" value="true" />
-      <created>1727444778239</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1727444778239</updated>
-    </task>
-    <task id="LOCAL-00017" summary="BookController for Librarian">
-      <option name="closed" value="true" />
-      <created>1727444868672</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1727444868672</updated>
+      <workItem from="1728026104131" duration="11881000" />
     </task>
     <task id="LOCAL-00018" summary="Change chmod">
       <option name="closed" value="true" />
@@ -582,7 +550,39 @@
       <option name="project" value="LOCAL" />
       <updated>1728036366048</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Show if penality in navbar for user">
+      <option name="closed" value="true" />
+      <created>1728041366076</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1728041366076</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Pagination for active borrowings of user">
+      <option name="closed" value="true" />
+      <created>1728041499783</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1728041499783</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Pagination for borrowings history of user">
+      <option name="closed" value="true" />
+      <created>1728041602203</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1728041602203</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Pagination for bookVersion can be borrow">
+      <option name="closed" value="true" />
+      <created>1728041789140</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1728041789140</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -600,10 +600,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="MAJ Borrow and Reservation Rules" />
-    <MESSAGE value="Librarian Can Return Borrow" />
-    <MESSAGE value="Admin Mono Role Management" />
-    <MESSAGE value="Add DateVersion to Book Version + MAJ Fixtures" />
     <MESSAGE value="Profile Management" />
     <MESSAGE value="Mailling to user if bookVersion is available" />
     <MESSAGE value="Rights adjustment" />
@@ -625,6 +621,10 @@
     <MESSAGE value="Pagination for users for librarian" />
     <MESSAGE value="Pagination for users for admins" />
     <MESSAGE value="Pagination for users for penality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pagination for users for penality" />
+    <MESSAGE value="Show if penality in navbar for user" />
+    <MESSAGE value="Pagination for active borrowings of user" />
+    <MESSAGE value="Pagination for borrowings history of user" />
+    <MESSAGE value="Pagination for bookVersion can be borrow" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pagination for bookVersion can be borrow" />
   </component>
 </project>
