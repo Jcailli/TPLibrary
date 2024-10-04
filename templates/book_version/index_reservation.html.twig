@@ -47,7 +47,7 @@
                 <ul class="pagination">
                     {% for num in 1..pages %}
                         <li class="page-item">
-                            <a href="{{ path(route, num > 1 ? {page: num} : {}) }}"
+                            <a href="{{ path(app.request.get('_route'), num > 1 ? {page: num} : {}) }}"
                                class="page-link {{ page == num ? "active" : "" }}"
                                aria-current="{{ page == num ? 'true' : 'false' }}">
                                 {{ num }}
