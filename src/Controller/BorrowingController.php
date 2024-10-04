@@ -13,18 +13,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\ExpressionLanguage\Expression;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/borrowing')]
 final class BorrowingController extends AbstractController
 {
-    #[Route('/librarian', name: 'app_borrowing_index', methods: ['GET'])]
+    #[Route('/librarian/{page<\d+>}', name: 'app_borrowing_index', methods: ['GET'])]
     #[IsGranted('ROLE_LIBRARIAN')]
-    public function index(BorrowingRepository $borrowingRepository): Response
+    public function index(BorrowingRepository $borrowingRepository, int $page = 1): Response
     {
+        $activeBorrowings = $borrowingRepository->findAllActive();
+        $pages = ceil(count($activeBorrowings) / AppController::PER_PAGE);
+
+        if ($page < 1 || $page > $pages) {
+            throw new NotFoundHttpException();
+        }
+
+        $results = array_slice($activeBorrowings, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('borrowing/index.html.twig', [
-            'borrowings' => $borrowingRepository->findAllActive(),
+            'borrowings' => $results,
+            'page' => $page,
+            'pages' => $pages
         ]);
     }
 

@@ -5,32 +5,49 @@
 {% block body %}
     <h1>Borrowings in progress</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>BorrowingDate</th>
-                <th>ReturnDate</th>
-                <th>User</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for borrowing in borrowings %}
-            <tr>
-                <td>{{ borrowing.borrowingDate ? borrowing.borrowingDate|date('Y-m-d') : '' }}</td>
-                <td>{{ borrowing.returnDate ? borrowing.returnDate|date('Y-m-d') : '' }}</td>
-                <td>{{ borrowing.user.userFirstName }} {{ borrowing.user.username }}</td>
-                <td>
-                    <twig:Button type="show" path="{{ path('app_borrowing_show', {'id': borrowing.id}) }}"/>
-                    <twig:Button type="edit" path="{{ path('app_borrowing_edit', {'id': borrowing.id}) }}"/>
-                    <twig:Button type="return" path="{{ path('app_borrowing_return', {'id': borrowing.id}) }}"/>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div data-controller="symfony--ux-swup--swup" id="swup" data-turbo="false">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>BorrowingDate</th>
+                    <th>ReturnDate</th>
+                    <th>User</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for borrowing in borrowings %}
+                <tr>
+                    <td>{{ borrowing.borrowingDate ? borrowing.borrowingDate|date('Y-m-d') : '' }}</td>
+                    <td>{{ borrowing.returnDate ? borrowing.returnDate|date('Y-m-d') : '' }}</td>
+                    <td>{{ borrowing.user.userFirstName }} {{ borrowing.user.username }}</td>
+                    <td>
+                        <twig:Button type="show" path="{{ path('app_borrowing_show', {'id': borrowing.id}) }}"/>
+                        <twig:Button type="edit" path="{{ path('app_borrowing_edit', {'id': borrowing.id}) }}"/>
+                        <twig:Button type="return" path="{{ path('app_borrowing_return', {'id': borrowing.id}) }}"/>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="mt-3">
+            <nav>
+                <ul class="pagination">
+                    {% for num in 1..pages %}
+                        <li class="page-item">
+                            <a href="{{ path('app_borrowing_index', num > 1 ? {page: num} : {}) }}"
+                               class="page-link {{ page == num ? "active" : "" }}"
+                               aria-current="{{ page == num ? 'true' : 'false' }}">
+                                {{ num }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </div>
 {% endblock %}
