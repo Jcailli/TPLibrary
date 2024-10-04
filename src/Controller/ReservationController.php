@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -26,12 +27,22 @@ final class ReservationController extends AbstractController
             'reservations' => $reservationRepository->findAllActiveByUserId($this->getUser()->getId()),
         ]);
     }
-    #[Route('/librarian' ,name: 'app_reservation_index', methods: ['GET'])]
+    #[Route('/librarian/{page<\d+>}' ,name: 'app_reservation_index', methods: ['GET'])]
     #[IsGranted('ROLE_LIBRARIAN')]
-    public function index(ReservationRepository $reservationRepository): Response
+    public function index(ReservationRepository $reservationRepository, int $page = 1): Response
     {
+        $activeReservations = $reservationRepository->findAllActive();
+        $pages = ceil(count($activeReservations) / AppController::PER_PAGE);
+
+        if ($page < 1 || $page > $pages) {
+            throw new NotFoundHttpException();
+        }
+
+        $results = array_slice($activeReservations, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('reservation/index.html.twig', [
-            'reservations' => $reservationRepository->findAllActive(),
+            'reservations' => $results,
+            'page' => $page,
+            'pages' => $pages,
         ]);
     }
 
