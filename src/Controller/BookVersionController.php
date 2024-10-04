@@ -11,18 +11,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/book_version')]
 final class BookVersionController extends AbstractController
 {
-    #[Route(name: 'app_book_version_index', methods: ['GET'])]
+    #[Route('/{page<\d+>}', name: 'app_book_version_index', methods: ['GET'])]
     #[IsGranted('ROLE_LIBRARIAN')]
-    public function index(BookVersionRepository $bookVersionRepository): Response
+    public function index(BookVersionRepository $bookVersionRepository, int $page = 1): Response
     {
+        $bookVersions = $bookVersionRepository->findAll();
+        $pages = ceil(count($bookVersions) / AppController::PER_PAGE);
+
+        if ($page < 1 || $page > $pages) {
+            throw new NotFoundHttpException();
+        }
+
+        $results = array_slice($bookVersions, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('book_version/index.html.twig', [
-            'book_versions' => $bookVersionRepository->findAll(),
+            'book_versions' => $results,
+            'page' => $page,
+            'pages' => $pages
         ]);
     }
 
