@@ -5,31 +5,48 @@
 {% block body %}
     <h1>Authors index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>FirstName</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for author in authors %}
-            <tr>
-                <td>{{ author.name }}</td>
-                <td>{{ author.firstName }}</td>
-                <td>
-                    <twig:Button type="show" path="{{ path('app_author_show', {'id': author.id}) }}" />
-                    <twig:Button type="edit" path="{{ path('app_author_edit', {'id': author.id}) }}" />
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div data-controller="symfony--ux-swup--swup" id="swup" data-turbo="false">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>FirstName</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for author in authors %}
+                <tr>
+                    <td>{{ author.name }}</td>
+                    <td>{{ author.firstName }}</td>
+                    <td>
+                        <twig:Button type="show" path="{{ path('app_author_show', {'id': author.id}) }}" />
+                        <twig:Button type="edit" path="{{ path('app_author_edit', {'id': author.id}) }}" />
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="mt-3">
+            <nav>
+                <ul class="pagination">
+                    {% for num in 1..pages %}
+                        <li class="page-item">
+                            <a href="{{ path('app_author_index', num > 1 ? {page: num} : {}) }}"
+                               class="page-link {{ page == num ? "active" : "" }}"
+                               aria-current="{{ page == num ? 'true' : 'false' }}">
+                                {{ num }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </div>
 
 
     <twig:Button type="new" path="{{ path('app_author_new') }}" />

@@ -4,19 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="FIX : Librarian can edit return date of borrowings">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/controllers.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/importmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/importmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AppController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AppController.php" afterDir="false" />
+    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Pagination for books">
+      <change beforePath="$PROJECT_DIR$/src/Controller/AuthorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AuthorController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/BookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/BookRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/BookRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/author/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/author/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/book/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -199,15 +190,7 @@
       <workItem from="1727766785843" duration="17410000" />
       <workItem from="1727854384535" duration="17244000" />
       <workItem from="1727938112255" duration="21225000" />
-      <workItem from="1728026104131" duration="8367000" />
-    </task>
-    <task id="LOCAL-00002" summary="Init Mailer">
-      <option name="closed" value="true" />
-      <created>1727439171864</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1727439171864</updated>
+      <workItem from="1728026104131" duration="8679000" />
     </task>
     <task id="LOCAL-00003" summary="Add ResetPassword + Update login and register">
       <option name="closed" value="true" />
@@ -593,7 +576,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728031516736</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Pagination for books">
+      <option name="closed" value="true" />
+      <created>1728034817512</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1728034817512</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -611,7 +602,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="WebPack to Asset Mapper" />
     <MESSAGE value="MAJ User Borrowing" />
     <MESSAGE value="MAJ Homepage" />
     <MESSAGE value="User Borrowing" />
@@ -636,6 +626,7 @@
     <MESSAGE value="FIX : Librarian can manage active Borrowings and Reservations" />
     <MESSAGE value="FIX : ROLE_USER as default in registration" />
     <MESSAGE value="FIX : Librarian can edit return date of borrowings" />
-    <option name="LAST_COMMIT_MESSAGE" value="FIX : Librarian can edit return date of borrowings" />
+    <MESSAGE value="Pagination for books" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pagination for books" />
   </component>
 </project>

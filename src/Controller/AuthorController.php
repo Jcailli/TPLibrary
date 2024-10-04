@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
@@ -16,11 +17,21 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[IsGranted('ROLE_LIBRARIAN')]
 final class AuthorController extends AbstractController
 {
-    #[Route(name: 'app_author_index', methods: ['GET'])]
-    public function index(AuthorRepository $authorRepository): Response
+    #[Route('/{page<\d+>}', name: 'app_author_index', methods: ['GET'])]
+    public function index(AuthorRepository $authorRepository, int $page = 1): Response
     {
+        $authors = $authorRepository->findAll();
+        $pages = ceil(count($authors) / AppController::PER_PAGE);
+
+        if ($page < 1 || $page > $pages) {
+            throw new NotFoundHttpException();
+        }
+
+        $results = array_slice($authors, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('author/index.html.twig', [
-            'authors' => $authorRepository->findAll(),
+            'authors' => $results,
+            'page' => $page,
+            'pages' => $pages
         ]);
     }
 
