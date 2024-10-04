@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserLibrarianType;
+use App\Form\UserPenalityType;
 use App\Form\UserProfileType;
 use App\Form\UserType;
 use App\Repository\UserRepository;
@@ -73,6 +74,25 @@ final class UserController extends AbstractController
     {
         return $this->render('user/index_penality.html.twig', [
             'users' => $userRepository->findAllPenalityUsers(),
+        ]);
+    }
+
+    #[Route('/penality/{id}/edit', name: 'app_user_penality_edit', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_ADMIN')]
+    public function editPenality(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(UserPenalityType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_user_penality_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('user/edit_penality.html.twig', [
+            'user' => $user,
+            'form' => $form,
         ]);
     }
 

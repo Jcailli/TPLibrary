@@ -23,8 +23,7 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.penality }} €</td>
                 <td>
-                    <twig:Button type="show" path="{{ path('app_user_show', {'id': user.id}) }}"/>
-                    <twig:Button type="edit" path="{{ path('app_user_edit', {'id': user.id}) }}"/>
+                    <twig:Button type="edit" path="{{ path('app_user_penality_edit', {'id': user.id}) }}"/>
                 </td>
             </tr>
         {% else %}
