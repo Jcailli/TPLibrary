@@ -36,6 +36,7 @@
         "symfony/twig-bundle": "6.4.*",
         "symfony/ux-autocomplete": "^2.20",
         "symfony/ux-icons": "^2.20",
+        "symfony/ux-swup": "^2.20",
         "symfony/ux-twig-component": "^2.20",
         "symfony/validator": "6.4.*",
         "symfony/yaml": "6.4.*",

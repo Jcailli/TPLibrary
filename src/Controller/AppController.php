@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class AppController extends AbstractController
 {
+    public const int PER_PAGE = 10;
     public function __construct(
         private readonly Security $security
     ){

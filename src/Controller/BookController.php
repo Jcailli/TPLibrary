@@ -6,9 +6,11 @@ use App\Entity\Book;
 use App\Form\BookType;
 use App\Repository\BookRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
@@ -16,11 +18,21 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[IsGranted("ROLE_LIBRARIAN")]
 final class BookController extends AbstractController
 {
-    #[Route(name: 'app_book_index', methods: ['GET'])]
-    public function index(BookRepository $bookRepository): Response
+    #[Route('/{page<\d+>}', name: 'app_book_index', methods: ['GET'])]
+    public function index(BookRepository $bookRepository, int $page = 1): Response
     {
+        $books = $bookRepository->findAll();
+        $pages = ceil(count($books) / AppController::PER_PAGE);
+
+        if ($page < 1 || $page > $pages) {
+            throw new NotFoundHttpException();
+        }
+
+        $results = array_slice($books, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('book/index.html.twig', [
-            'books' => $bookRepository->findAll(),
+            'books' => $results,
+            'page' => $page,
+            'pages' => $pages
         ]);
     }
 

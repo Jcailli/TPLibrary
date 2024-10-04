@@ -9,6 +9,7 @@
 import './styles/app.css';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '@swup/fade-theme';
 import 'tom-select';
 import 'tom-select/dist/css/tom-select.bootstrap5.css';
 import '@popperjs/core';
