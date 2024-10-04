@@ -22,6 +22,7 @@
                 <td>{{ borrowing.user.userFirstName }} {{ borrowing.user.username }}</td>
                 <td>
                     <twig:Button type="show" path="{{ path('app_borrowing_show', {'id': borrowing.id}) }}"/>
+                    <twig:Button type="edit" path="{{ path('app_borrowing_edit', {'id': borrowing.id}) }}"/>
                     <twig:Button type="return" path="{{ path('app_borrowing_return', {'id': borrowing.id}) }}"/>
                 </td>
             </tr>

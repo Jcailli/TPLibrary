@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="FIX : Admin can manage penalities">
+    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="FIX : ROLE_USER as default in registration">
+      <change afterPath="$PROJECT_DIR$/src/Form/BorrowingLibrarianType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BorrowingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BorrowingController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReservationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ReservationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ReservationRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/navigation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navigation.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/reservation/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reservation/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/borrowing/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowing/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/borrowing/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowing/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +191,7 @@
       <workItem from="1727766785843" duration="17410000" />
       <workItem from="1727854384535" duration="17244000" />
       <workItem from="1727938112255" duration="21225000" />
-      <workItem from="1728026104131" duration="3053000" />
+      <workItem from="1728026104131" duration="5065000" />
     </task>
     <task id="LOCAL-00001" summary="Init Mailer">
       <option name="closed" value="true" />
@@ -568,7 +569,23 @@
       <option name="project" value="LOCAL" />
       <updated>1728028759071</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="FIX : Librarian can manage active Borrowings and Reservations">
+      <option name="closed" value="true" />
+      <created>1728029394761</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1728029394761</updated>
+    </task>
+    <task id="LOCAL-00049" summary="FIX : ROLE_USER as default in registration">
+      <option name="closed" value="true" />
+      <created>1728029538942</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1728029538942</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -586,8 +603,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add Webpack encore for bootstrap and jquery" />
-    <MESSAGE value="BookController for Librarian" />
     <MESSAGE value="Change chmod" />
     <MESSAGE value="WebPack to Asset Mapper" />
     <MESSAGE value="MAJ User Borrowing" />
@@ -611,6 +626,8 @@
     <MESSAGE value="Install Scheduler and Messenger for Cron Task" />
     <MESSAGE value="FIX : User can view borrow history" />
     <MESSAGE value="FIX : Admin can manage penalities" />
-    <option name="LAST_COMMIT_MESSAGE" value="FIX : Admin can manage penalities" />
+    <MESSAGE value="FIX : Librarian can manage active Borrowings and Reservations" />
+    <MESSAGE value="FIX : ROLE_USER as default in registration" />
+    <option name="LAST_COMMIT_MESSAGE" value="FIX : ROLE_USER as default in registration" />
   </component>
 </project>

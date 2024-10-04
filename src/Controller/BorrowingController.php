@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\BookVersion;
 use App\Entity\Borrowing;
 use App\Entity\Reservation;
+use App\Form\BorrowingLibrarianType;
 use App\Form\BorrowingType;
 use App\Repository\BorrowingRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -20,7 +21,7 @@ final class BorrowingController extends AbstractController
 {
     #[Route('/librarian', name: 'app_borrowing_index', methods: ['GET'])]
     #[IsGranted('ROLE_LIBRARIAN')]
-    public function librarianBorrowing(BorrowingRepository $borrowingRepository): Response
+    public function index(BorrowingRepository $borrowingRepository): Response
     {
         return $this->render('borrowing/index.html.twig', [
             'borrowings' => $borrowingRepository->findAllActive(),
@@ -36,7 +37,7 @@ final class BorrowingController extends AbstractController
         ]);
     }
 
-    #[Route('/history/', name: 'app_borrowing_user_history', methods: ['GET'])]
+    #[Route('/history', name: 'app_borrowing_user_history', methods: ['GET'])]
     #[IsGranted('ROLE_USER')]
     public function userBorrowingHistory(BorrowingRepository $borrowingRepository): Response
     {
@@ -113,11 +114,11 @@ final class BorrowingController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_borrowing_edit', methods: ['GET', 'POST'])]
+    #[Route('/librarian/{id}/edit', name: 'app_borrowing_edit', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_LIBRARIAN')]
     public function edit(Request $request, Borrowing $borrowing, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(BorrowingType::class, $borrowing);
+        $form = $this->createForm(BorrowingLibrarianType::class, $borrowing);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -132,7 +133,7 @@ final class BorrowingController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/return', name: 'app_borrowing_return', methods: ['GET'])]
+    #[Route('/librarian/{id}/return', name: 'app_borrowing_return', methods: ['GET'])]
     #[IsGranted('ROLE_LIBRARIAN')]
     public function return(Request $request, Borrowing $borrowing, EntityManagerInterface $entityManager): Response
     {
@@ -150,7 +151,7 @@ final class BorrowingController extends AbstractController
         ], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/{id}', name: 'app_borrowing_delete', methods: ['POST'])]
+    #[Route('/librarian/{id}', name: 'app_borrowing_delete', methods: ['POST'])]
     #[IsGranted('ROLE_LIBRARIAN')]
     public function delete(Request $request, Borrowing $borrowing, EntityManagerInterface $entityManager): Response
     {

@@ -5,9 +5,20 @@
 {% block body %}
     <h1>Edit Borrowing</h1>
 
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>User</th>
+                <td>{{ borrowing.user.userFirstName }} {{ borrowing.user.username }}</td>
+            </tr>
+            <tr>
+                <th>Book</th>
+                <td>{{ borrowing.bookVersion.book.name }} : {{ borrowing.bookVersion.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
     {{ include('borrowing/_form.html.twig', {'button_label': 'Update'}) }}
 
     <twig:Button type="back" path="{{ path('app_borrowing_index') }}"/>
-
-    {{ include('borrowing/_delete_form.html.twig') }}
 {% endblock %}
