@@ -79,12 +79,22 @@ final class UserController extends AbstractController
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/penality', name: 'app_user_penality_index', methods: ['GET'])]
+    #[Route('/penality/{page<\d+>}', name: 'app_user_penality_index', methods: ['GET'])]
     #[IsGranted('ROLE_ADMIN')]
-    public function indexPenality(UserRepository $userRepository): Response
+    public function indexPenality(UserRepository $userRepository, int $page = 1): Response
     {
+        $users = $userRepository->findAllPenalityUsers();
+        $pages = ceil(count($users) / AppController::PER_PAGE);
+
+        if ($page < 1 || $page > $pages) {
+            throw new NotFoundHttpException();
+        }
+
+        $results = array_slice($users, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('user/index_penality.html.twig', [
-            'users' => $userRepository->findAllPenalityUsers(),
+            'users' => $results,
+            'page' => $page,
+            'pages' => $pages,
         ]);
     }
 

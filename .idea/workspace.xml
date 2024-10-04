@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Pagination for active reservations">
+    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Pagination for users for admins">
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/index_librarian.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/index_librarian.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/index_penality.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/index_penality.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,39 +188,7 @@
       <workItem from="1727766785843" duration="17410000" />
       <workItem from="1727854384535" duration="17244000" />
       <workItem from="1727938112255" duration="21225000" />
-      <workItem from="1728026104131" duration="9653000" />
-    </task>
-    <task id="LOCAL-00009" summary="Add AppController for the home page">
-      <option name="closed" value="true" />
-      <created>1727439368997</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1727439368997</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Update User CRUD for administration">
-      <option name="closed" value="true" />
-      <created>1727439536245</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1727439536245</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Update Navigation to add Granted Authorizations and Profil page">
-      <option name="closed" value="true" />
-      <created>1727439572882</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1727439572882</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Add Symfony Profiler">
-      <option name="closed" value="true" />
-      <created>1727439590982</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1727439590982</updated>
+      <workItem from="1728026104131" duration="10026000" />
     </task>
     <task id="LOCAL-00013" summary="Add Webpack encore for bootstrap and jquery">
       <option name="closed" value="true" />
@@ -582,7 +550,39 @@
       <option name="project" value="LOCAL" />
       <updated>1728035581233</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Pagination for users for librarian">
+      <option name="closed" value="true" />
+      <created>1728035995772</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1728035995772</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Pagination for users for librarian">
+      <option name="closed" value="true" />
+      <created>1728036109272</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1728036109272</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Pagination for users for admins">
+      <option name="closed" value="true" />
+      <created>1728036118089</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1728036118089</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Pagination for users for admins">
+      <option name="closed" value="true" />
+      <created>1728036251361</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1728036251361</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -600,8 +600,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactoring Front" />
-    <MESSAGE value="Books available to borrow" />
     <MESSAGE value="Refactoring Reservations and Borrowings" />
     <MESSAGE value="MAJ Borrow and Reservation Rules" />
     <MESSAGE value="Librarian Can Return Borrow" />
@@ -625,6 +623,8 @@
     <MESSAGE value="Pagination for active borrowings" />
     <MESSAGE value="Pagination for publishers" />
     <MESSAGE value="Pagination for active reservations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pagination for active reservations" />
+    <MESSAGE value="Pagination for users for librarian" />
+    <MESSAGE value="Pagination for users for admins" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pagination for users for admins" />
   </component>
 </project>
