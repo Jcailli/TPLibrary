@@ -3,22 +3,23 @@
 {% block title %}Reservations index{% endblock %}
 
 {% block body %}
-    <h1>Reservations index</h1>
+    <h1>Active Reservations index</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>User</th>
+                <th>Book</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for reservation in reservations %}
             <tr>
-                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.user.userFirstName }} {{ reservation.user.username }}</td>
+                <td>{{ reservation.bookVersion.book.name }} : {{ reservation.bookVersion.name }}</td>
                 <td>
                     <twig:Button type="show" path="{{ path('app_reservation_show', {'id': reservation.id}) }}"/>
-                    <twig:Button type="edit" path="{{ path('app_reservation_edit', {'id': reservation.id}) }}"/>
                 </td>
             </tr>
         {% else %}

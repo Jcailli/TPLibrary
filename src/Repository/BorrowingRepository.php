@@ -39,6 +39,15 @@ class BorrowingRepository extends ServiceEntityRepository
         }
     }
 
+    public function findAllActive(): ?array
+    {
+        return $this->createQueryBuilder('b')
+            ->where('b.returned = false')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     public function findActiveByUserId(int $value): ?array
     {
         return $this->createQueryBuilder('b')

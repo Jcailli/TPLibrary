@@ -10,7 +10,6 @@
             <tr>
                 <th>BorrowingDate</th>
                 <th>ReturnDate</th>
-                <th>Returned</th>
                 <th>User</th>
                 <th></th>
             </tr>
@@ -20,7 +19,6 @@
             <tr>
                 <td>{{ borrowing.borrowingDate ? borrowing.borrowingDate|date('Y-m-d') : '' }}</td>
                 <td>{{ borrowing.returnDate ? borrowing.returnDate|date('Y-m-d') : '' }}</td>
-                <td>{{ borrowing.returned ? 'Yes' : 'No' }}</td>
                 <td>{{ borrowing.user.userFirstName }} {{ borrowing.user.username }}</td>
                 <td>
                     <twig:Button type="show" path="{{ path('app_borrowing_show', {'id': borrowing.id}) }}"/>

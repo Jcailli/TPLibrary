@@ -16,18 +16,27 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/reservation')]
-#[IsGranted('ROLE_USER')]
 final class ReservationController extends AbstractController
 {
     #[Route('/user' ,name: 'app_reservation_user_index', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
     public function userReservation(ReservationRepository $reservationRepository): Response
     {
         return $this->render('reservation/user_index.html.twig', [
-            'reservations' => $reservationRepository->findAllByUserId($this->getUser()->getId()),
+            'reservations' => $reservationRepository->findAllActiveByUserId($this->getUser()->getId()),
+        ]);
+    }
+    #[Route('/librarian' ,name: 'app_reservation_index', methods: ['GET'])]
+    #[IsGranted('ROLE_LIBRARIAN')]
+    public function index(ReservationRepository $reservationRepository): Response
+    {
+        return $this->render('reservation/index.html.twig', [
+            'reservations' => $reservationRepository->findAllActive(),
         ]);
     }
 
     #[Route('/new', name: 'app_reservation_new', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_USER')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $reservation = new Reservation();
@@ -50,6 +59,7 @@ final class ReservationController extends AbstractController
     }
 
     #[Route('/new/{bookVersionId}', name: 'app_reservation_new_from_book_list', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
     public function newBookReservation(Request $request, BookVersion $bookVersionId, EntityManagerInterface $entityManager): Response
     {
         $reservation = new Reservation();
@@ -64,6 +74,7 @@ final class ReservationController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_reservation_show', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
     #[IsGranted(new Expression('is_granted("ROLE_USER") or is_granted("ROLE_LIBRARIAN")'))]
     public function show(Reservation $reservation): Response
     {
@@ -77,6 +88,7 @@ final class ReservationController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_reservation_edit', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_USER')]
     public function edit(Request $request, Reservation $reservation, EntityManagerInterface $entityManager): Response
     {
         if ($this->getUser()->getId() !== $reservation->getUser()->getId()) {
@@ -99,6 +111,7 @@ final class ReservationController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_reservation_delete', methods: ['POST'])]
+    #[IsGranted('ROLE_USER')]
     public function delete(Request $request, Reservation $reservation, EntityManagerInterface $entityManager): Response
     {
         if ($this->getUser()->getId() !== $reservation->getUser()->getId()) {

@@ -23,7 +23,7 @@ final class BorrowingController extends AbstractController
     public function librarianBorrowing(BorrowingRepository $borrowingRepository): Response
     {
         return $this->render('borrowing/index.html.twig', [
-            'borrowings' => $borrowingRepository->findAll(),
+            'borrowings' => $borrowingRepository->findAllActive(),
         ]);
     }
 

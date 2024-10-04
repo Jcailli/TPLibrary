@@ -23,7 +23,10 @@
                     {% endif %}
                     {% if is_granted('ROLE_LIBRARIAN') %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_borrowing_index') }}">List of Borrowings</a>
+                            <a class="nav-link" href="{{ path('app_borrowing_index') }}">Active Borrowings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_reservation_index') }}">Active Reservations</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_user_index_users') }}">Manage Max Borrow of Users</a>
