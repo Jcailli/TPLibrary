@@ -35,12 +35,18 @@
             </tr>
             {% if is_granted('ROLE_USER') %}
                 <tr>
+                    <th>Penality</th>
+                    <td>{{ user.penality }}</td>
+                </tr>
+                <tr>
                     <th>Borrows</th>
                     <td>
                         {% for borrow in user.borrowings %}
-                            {% if borrow.return is same as(false) %}
-                                <p>{{ borrow.bookVersion.book.name }} : {{ borrow.bookVersion.name }}</p>
-                            {% endif %}
+                            <p>{{ borrow.bookVersion.book.name }} : {{ borrow.bookVersion.name }} - Borrow at {{ borrow.borrowingDate | date('d-m-Y') }}
+                                {% if borrow.returned is same as(true) %}
+                                    - (Returned)
+                                {% endif %}
+                            </p>
                         {% endfor %}
                     </td>
                 </tr>
@@ -53,10 +59,6 @@
                             {% endif %}
                         {% endfor %}
                     </td>
-                </tr>
-                <tr>
-                    <th>Penality</th>
-                    <td>{{ user.penality }}</td>
                 </tr>
             {% endif %}
         </tbody>

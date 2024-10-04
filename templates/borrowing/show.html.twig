@@ -19,13 +19,17 @@
                 <th>Return Date</th>
                 <td>{{ borrowing.returnDate ? borrowing.returnDate|date('Y-m-d') : '' }}</td>
             </tr>
+            <tr>
+                <th>Returned</th>
+                <td>{{ borrowing.returned ? 'Yes' : 'No' }}</td>
+            </tr>
         </tbody>
     </table>
 
     {% if is_granted('ROLE_LIBRARIAN') %}
         <twig:Button type="back" path="{{ path('app_borrowing_index') }}"/>
     {% else %}
-        <twig:Button type="back" path="{{ path('app_borrowing_user_index') }}"/>
+        <twig:Button type="back" path="{{ path }}"/>
     {% endif %}
 
     {% if is_granted('ROLE_LIBRARIAN') %}

@@ -58,7 +58,7 @@ final class BookVersionController extends AbstractController
         }
 
         return $this->render('book_version/index_reservation.html.twig', [
-            'borrowings' => count($borrowingRepository->findByUserId($this->getUser()->getId())),
+            'borrowings' => count($borrowingRepository->findActiveByUserId($this->getUser()->getId())),
             'book_versions' => $bookVersionRepository->findAllBookVersionCanBeBorrowed($this->getUser()->getId()),
         ]);
     }

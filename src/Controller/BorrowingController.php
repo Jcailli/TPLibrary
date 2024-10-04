@@ -32,6 +32,15 @@ final class BorrowingController extends AbstractController
     public function userBorrowing(BorrowingRepository $borrowingRepository): Response
     {
         return $this->render('borrowing/user_index.html.twig', [
+            'borrowings' => $borrowingRepository->findActiveByUserId($this->getUser()->getId()),
+        ]);
+    }
+
+    #[Route('/history/', name: 'app_borrowing_user_history', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
+    public function userBorrowingHistory(BorrowingRepository $borrowingRepository): Response
+    {
+        return $this->render('borrowing/index_history.html.twig', [
             'borrowings' => $borrowingRepository->findByUserId($this->getUser()->getId()),
         ]);
     }
@@ -40,7 +49,9 @@ final class BorrowingController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $canBorrow = $this->getUser()->getBorrowings()->count() < $this->getUser()->getMaxBorrow();
+        $canBorrow = count($entityManager->getRepository(Borrowing::class)
+                ->findActiveByUserId($this->getUser()->getId())
+                ) < $this->getUser()->getMaxBorrow();
         if (!$canBorrow) {
             $this->addFlash('error' ,"Vous ne pouvez plus emprunter de livre pour l'instant !");
             return $this->redirectToRoute('app_borrowing_user_index', [], Response::HTTP_SEE_OTHER);
@@ -94,9 +105,10 @@ final class BorrowingController extends AbstractController
 
     #[Route('/{id}', name: 'app_borrowing_show', methods: ['GET'])]
     #[IsGranted(new Expression('is_granted("ROLE_USER") or is_granted("ROLE_LIBRARIAN")'))]
-    public function show(Borrowing $borrowing): Response
+    public function show(Request $request, Borrowing $borrowing): Response
     {
         return $this->render('borrowing/show.html.twig', [
+            'path' => $request->headers->get('referer'),
             'borrowing' => $borrowing,
         ]);
     }
@@ -148,5 +160,10 @@ final class BorrowingController extends AbstractController
         }
 
         return $this->redirectToRoute('app_borrowing_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    public function penalityCron(): void
+    {
+
     }
 }

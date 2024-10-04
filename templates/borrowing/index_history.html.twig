@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Borrowings index{% endblock %}
+
+{% block body %}
+    <h1>Borrowings in progress</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Book</th>
+                <th>BorrowingDate</th>
+                <th>ReturnDate</th>
+                <th>Returned</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for borrowing in borrowings %}
+            <tr>
+                <td>{{ borrowing.bookVersion.book.name }} : {{ borrowing.bookVersion.name }}</td>
+                <td>{{ borrowing.borrowingDate ? borrowing.borrowingDate|date('Y-m-d') : '' }}</td>
+                <td>{{ borrowing.returnDate ? borrowing.returnDate|date('Y-m-d') : '' }}</td>
+                <td>{{ borrowing.returned ? 'Yes' : 'No' }}</td>
+                <td>
+                    <twig:Button type="show" path="{{ path('app_borrowing_show', {'id': borrowing.id}) }}"/>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

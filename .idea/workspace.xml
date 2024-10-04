@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Install Scheduler and Messenger for Cron Task" />
+    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Install Scheduler and Messenger for Cron Task">
+      <change afterPath="$PROJECT_DIR$/templates/borrowing/index_history.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/user/edit_penality.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BorrowingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BorrowingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/BorrowingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/BorrowingRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/borrowing/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowing/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/borrowing/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowing/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/navigation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navigation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/index_penality.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/index_penality.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/show_profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/show_profile.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -128,6 +140,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/expression-language" />
       <path value="$PROJECT_DIR$/vendor/symfony/scheduler" />
       <path value="$PROJECT_DIR$/vendor/symfony/messenger" />
+      <path value="$PROJECT_DIR$/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -142,7 +156,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "//wsl$/Debian/home/docker/projects/orange/library/vendor",
+    "last_opened_file_path": "//wsl$/Debian/home/docker/projects/orange/library/templates/borrowing",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -153,8 +167,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="\\wsl$\Debian\home\docker\projects\orange\library\templates\user" />
       <recent name="\\wsl$\Debian\home\docker\projects\orange\library\templates\borrowing" />
+      <recent name="\\wsl$\Debian\home\docker\projects\orange\library\templates\user" />
       <recent name="\\wsl$\Debian\home\docker\projects\orange\library\templates\author" />
       <recent name="\\wsl$\Debian\home\docker\projects\orange\library\templates\components" />
       <recent name="\\wsl$\Debian\home\docker\projects\orange\library\templates\reservation" />
@@ -181,7 +195,8 @@
       <workItem from="1727681633240" duration="15015000" />
       <workItem from="1727766785843" duration="17410000" />
       <workItem from="1727854384535" duration="17244000" />
-      <workItem from="1727938112255" duration="19507000" />
+      <workItem from="1727938112255" duration="21225000" />
+      <workItem from="1728026104131" duration="2392000" />
     </task>
     <task id="LOCAL-00001" summary="Init Mailer">
       <option name="closed" value="true" />
@@ -535,7 +550,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727967618324</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Install Scheduler and Messenger for Cron Task">
+      <option name="closed" value="true" />
+      <created>1727967842522</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1727967842522</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
