@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PublisherRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PublisherRepository::class)]
@@ -15,6 +16,12 @@ class Publisher
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
+
+    /**
+     * @var Collection<int, Reservation>
+     */
+    #[ORM\OneToMany(targetEntity: BookVersion::class, mappedBy: 'publisher', orphanRemoval: true)]
+    private Collection $bookVersions;
 
     public function getId(): ?int
     {
@@ -31,5 +38,13 @@ class Publisher
         $this->name = $name;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Reservation>
+     */
+    public function getBookVersions(): Collection
+    {
+        return $this->bookVersions;
     }
 }

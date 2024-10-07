@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="Pagination for bookVersion can be reserve">
-      <change beforePath="$PROJECT_DIR$/src/Controller/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReservationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/reservation/user_index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reservation/user_index.html.twig" afterDir="false" />
+    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="FIX Show Details">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/author/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/author/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/book/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/book_version/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book_version/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,19 +146,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "//wsl$/Debian/home/docker/projects/orange/library/templates/borrowing",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;//wsl$/Debian/home/docker/projects/orange/library/templates/borrowing&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="\\wsl$\Debian\home\docker\projects\orange\library\templates\borrowing" />
@@ -188,39 +190,8 @@
       <workItem from="1727766785843" duration="17410000" />
       <workItem from="1727854384535" duration="17244000" />
       <workItem from="1727938112255" duration="21225000" />
-      <workItem from="1728026104131" duration="12207000" />
-    </task>
-    <task id="LOCAL-00021" summary="WebPack to Asset Mapper">
-      <option name="closed" value="true" />
-      <created>1727701686395</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1727701686395</updated>
-    </task>
-    <task id="LOCAL-00022" summary="MAJ User Borrowing">
-      <option name="closed" value="true" />
-      <created>1727701944366</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1727701944366</updated>
-    </task>
-    <task id="LOCAL-00023" summary="MAJ User Borrowing">
-      <option name="closed" value="true" />
-      <created>1727702573677</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1727702573677</updated>
-    </task>
-    <task id="LOCAL-00024" summary="MAJ Homepage">
-      <option name="closed" value="true" />
-      <created>1727702591224</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1727702591224</updated>
+      <workItem from="1728026104131" duration="19974000" />
+      <workItem from="1728285820147" duration="7544000" />
     </task>
     <task id="LOCAL-00025" summary="User Borrowing">
       <option name="closed" value="true" />
@@ -582,7 +553,39 @@
       <option name="project" value="LOCAL" />
       <updated>1728042375036</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Pagination for user reservations">
+      <option name="closed" value="true" />
+      <created>1728042486150</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1728042486150</updated>
+    </task>
+    <task id="LOCAL-00071" summary="FIX Pagination nav from 2 pages">
+      <option name="closed" value="true" />
+      <created>1728042625916</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1728042625916</updated>
+    </task>
+    <task id="LOCAL-00072" summary="FIX Pagination nav from 2 pages">
+      <option name="closed" value="true" />
+      <created>1728042659972</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1728042659972</updated>
+    </task>
+    <task id="LOCAL-00073" summary="FIX Show Details">
+      <option name="closed" value="true" />
+      <created>1728302476969</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1728302476970</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -600,9 +603,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Mailling to user if bookVersion is available" />
-    <MESSAGE value="Rights adjustment" />
-    <MESSAGE value="Add Management of Max Borrow of Users By Librarians" />
     <MESSAGE value="Add Management of Penality for Admin" />
     <MESSAGE value="MAJ Reservation and Borrow if User have penality" />
     <MESSAGE value="Install Scheduler and Messenger for Cron Task" />
@@ -625,6 +625,9 @@
     <MESSAGE value="Pagination for borrowings history of user" />
     <MESSAGE value="Pagination for bookVersion can be borrow" />
     <MESSAGE value="Pagination for bookVersion can be reserve" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pagination for bookVersion can be reserve" />
+    <MESSAGE value="Pagination for user reservations" />
+    <MESSAGE value="FIX Pagination nav from 2 pages" />
+    <MESSAGE value="FIX Show Details" />
+    <option name="LAST_COMMIT_MESSAGE" value="FIX Show Details" />
   </component>
 </project>

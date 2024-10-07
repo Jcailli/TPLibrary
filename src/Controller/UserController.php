@@ -27,10 +27,6 @@ final class UserController extends AbstractController
         $users = $userRepository->findAll();
         $pages = ceil(count($users) / AppController::PER_PAGE);
 
-        if ($page < 1 || $page > $pages) {
-            throw new NotFoundHttpException();
-        }
-
         $results = array_slice($users, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('user/index.html.twig', [
             'users' => $results,
@@ -39,7 +35,7 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/{id}', name: 'app_user_show', methods: ['GET'])]
+    #[Route('/admin/show/{id}', name: 'app_user_show', methods: ['GET'])]
     #[IsGranted('ROLE_ADMIN')]
     public function show(User $user): Response
     {
@@ -48,7 +44,7 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
+    #[Route('/admin/edit/{id}', name: 'app_user_edit', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_ADMIN')]
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
@@ -67,7 +63,7 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/{id}', name: 'app_user_delete', methods: ['POST'])]
+    #[Route('/admin/delete/{id}', name: 'app_user_delete', methods: ['POST'])]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
@@ -85,10 +81,6 @@ final class UserController extends AbstractController
     {
         $users = $userRepository->findAllPenalityUsers();
         $pages = ceil(count($users) / AppController::PER_PAGE);
-
-        if ($page < 1 || $page > $pages) {
-            throw new NotFoundHttpException();
-        }
 
         $results = array_slice($users, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('user/index_penality.html.twig', [
@@ -123,10 +115,6 @@ final class UserController extends AbstractController
     {
         $users = $userRepository->findAllUsers();
         $pages = ceil(count($users) / AppController::PER_PAGE);
-
-        if ($page < 1 || $page > $pages) {
-            throw new NotFoundHttpException();
-        }
 
         $results = array_slice($users, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('user/index_librarian.html.twig', [
@@ -189,7 +177,7 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_user_delete_profile', methods: ['POST'])]
+    #[Route('/delete/{id}', name: 'app_user_delete_profile', methods: ['POST'])]
     public function deleteProfile(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
         if ($this->getUser()->getId() !== $user->getId()) {

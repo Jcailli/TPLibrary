@@ -8,12 +8,16 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ publisher.id }}</td>
-            </tr>
-            <tr>
                 <th>Name</th>
                 <td>{{ publisher.name }}</td>
+            </tr>
+            <tr>
+                <th>Books</th>
+                <td>
+                    {% for bookVersion in publisher.bookVersions|sort((a, b) => a.versionDate <=> b.versionDate) %}
+                        <a href="{{ path('app_book_show', {'id': bookVersion.book.id}) }}">{{ bookVersion.book.name }} - {{ bookVersion.name }} : {{ bookVersion.versionDate | date('d-m-Y') }}</a><br>
+                    {% endfor %}
+                </td>
             </tr>
         </tbody>
     </table>

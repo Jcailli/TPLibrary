@@ -23,10 +23,6 @@ final class AuthorController extends AbstractController
         $authors = $authorRepository->findAll();
         $pages = ceil(count($authors) / AppController::PER_PAGE);
 
-        if ($page < 1 || $page > $pages) {
-            throw new NotFoundHttpException();
-        }
-
         $results = array_slice($authors, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('author/index.html.twig', [
             'authors' => $results,
@@ -76,7 +72,7 @@ final class AuthorController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_author_show', methods: ['GET'])]
+    #[Route('/show/{id}', name: 'app_author_show', methods: ['GET'])]
     public function show(Author $author): Response
     {
         return $this->render('author/show.html.twig', [
@@ -84,7 +80,7 @@ final class AuthorController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_author_edit', methods: ['GET', 'POST'])]
+    #[Route('/edit/{id}', name: 'app_author_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Author $author, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(AuthorType::class, $author);
@@ -102,7 +98,7 @@ final class AuthorController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_author_delete', methods: ['POST'])]
+    #[Route('/delete/{id}', name: 'app_author_delete', methods: ['POST'])]
     public function delete(Request $request, Author $author, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$author->getId(), $request->getPayload()->getString('_token'))) {

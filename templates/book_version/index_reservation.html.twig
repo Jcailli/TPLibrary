@@ -16,6 +16,8 @@
             <thead>
                 <tr>
                     <th>Book Name</th>
+                    <th>Author(s)</th>
+                    <th>Publisher</th>
                     <th>Version Name</th>
                     <th></th>
                 </tr>
@@ -24,6 +26,12 @@
             {% for book_version in book_versions %}
                 <tr>
                     <td>{{ book_version.book.name }}</td>
+                    <td>
+                        {% for author in book_version.book.authors %}
+                            {{ author.firstName }} {{ author.name }}<br>
+                        {% endfor %}
+                    </td>
+                    <td>{{ book_version.publisher.name }}</td>
                     <td>{{ book_version.name }}</td>
                     <td>
                         {% if 'app_book_version_can_be_borrow' is same as(app.request.get('_route')) %}

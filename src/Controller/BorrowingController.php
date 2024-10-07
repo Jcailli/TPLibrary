@@ -13,7 +13,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\ExpressionLanguage\Expression;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
@@ -26,10 +25,6 @@ final class BorrowingController extends AbstractController
     {
         $activeBorrowings = $borrowingRepository->findAllActive();
         $pages = ceil(count($activeBorrowings) / AppController::PER_PAGE);
-
-        if ($page < 1 || $page > $pages) {
-            throw new NotFoundHttpException();
-        }
 
         $results = array_slice($activeBorrowings, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('borrowing/index.html.twig', [
@@ -46,10 +41,6 @@ final class BorrowingController extends AbstractController
         $activeBorrowings = $borrowingRepository->findActiveByUserId($this->getUser()->getId());
         $pages = ceil(count($activeBorrowings) / AppController::PER_PAGE);
 
-        if ($page < 1 || $page > $pages) {
-            throw new NotFoundHttpException();
-        }
-
         $results = array_slice($activeBorrowings, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('borrowing/user_index.html.twig', [
             'borrowings' => $results,
@@ -64,10 +55,6 @@ final class BorrowingController extends AbstractController
     {
         $activeBorrowings = $borrowingRepository->findByUserId($this->getUser()->getId());
         $pages = ceil(count($activeBorrowings) / AppController::PER_PAGE);
-
-        if ($page < 1 || $page > $pages) {
-            throw new NotFoundHttpException();
-        }
 
         $results = array_slice($activeBorrowings, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('borrowing/index_history.html.twig', [
@@ -135,7 +122,7 @@ final class BorrowingController extends AbstractController
         return $this->redirectToRoute('app_borrowing_user_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/{id}', name: 'app_borrowing_show', methods: ['GET'])]
+    #[Route('/show/{id}', name: 'app_borrowing_show', methods: ['GET'])]
     #[IsGranted(new Expression('is_granted("ROLE_USER") or is_granted("ROLE_LIBRARIAN")'))]
     public function show(Request $request, Borrowing $borrowing): Response
     {

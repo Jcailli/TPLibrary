@@ -19,6 +19,16 @@
                     <td>{{ reservation.bookVersion.book.name }} : {{ reservation.bookVersion.name }}</td>
                     <td>
                         <twig:Button type="show" path="{{ path('app_reservation_show', {'id': reservation.id}) }}"/>
+                        {% set isReturned = true %}
+                        {% for borrowing in reservation.bookVersion.borrowings %}
+                            {% if borrowing.returned is same as(false) %}
+                                {% set isReturned = false %}
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if isReturned %}
+                            <twig:Button type="borrow" path="{{ path('app_borrowing_new_from_reservation', {bookVersionId: reservation.bookVersion.id}) }}"/>
+                        {% endif %}
                     </td>
                 </tr>
             {% else %}

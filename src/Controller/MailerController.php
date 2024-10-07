@@ -43,7 +43,19 @@ class MailerController extends AbstractController
         }
 
         return $this->redirectToRoute('app_borrowing_index', [], Response::HTTP_SEE_OTHER);
+    }
 
+    public function sendMail(MailerInterface $mailer): Response
+    {$email = (new Email())
+        ->from('no-reply@library.com')
+        ->to('test@test.com')
+        ->subject('The book you have reserved is available to borrow !')
+        ->html('
+                <h4>Hello, this is a test from cron</h4>
+            ');
 
+        $mailer->send($email);
+
+        return new Response(Response::HTTP_OK);
     }
 }

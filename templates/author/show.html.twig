@@ -19,7 +19,7 @@
                 <th>Books</th>
                 <td>
                     {% for book in author.books %}
-                        {{ book.name }}
+                        <a href="{{ path('app_book_show', {'id': book.id}) }}">{{ book.name }}</a><br>
                     {% endfor %}
                 </td>
             </tr>

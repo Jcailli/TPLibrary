@@ -9,6 +9,7 @@ use App\Entity\Publisher;
 use App\Entity\Reservation;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -25,6 +26,10 @@ class BookVersionType extends AbstractType
             ->add('publisher', EntityType::class, [
                 'class' => Publisher::class,
                 'choice_label' => 'name',
+            ])
+            ->add('versionDate', DateType::class, [
+                'widget' => 'single_text',
+                'attr' => ['class' => 'js-datepicker']
             ])
         ;
     }

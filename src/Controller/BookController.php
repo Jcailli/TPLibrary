@@ -24,10 +24,6 @@ final class BookController extends AbstractController
         $books = $bookRepository->findAll();
         $pages = ceil(count($books) / AppController::PER_PAGE);
 
-        if ($page < 1 || $page > $pages) {
-            throw new NotFoundHttpException();
-        }
-
         $results = array_slice($books, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('book/index.html.twig', [
             'books' => $results,
@@ -56,7 +52,7 @@ final class BookController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_book_show', methods: ['GET'])]
+    #[Route('/show/{id}', name: 'app_book_show', methods: ['GET'])]
     public function show(Book $book): Response
     {
         return $this->render('book/show.html.twig', [
@@ -64,7 +60,7 @@ final class BookController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_book_edit', methods: ['GET', 'POST'])]
+    #[Route('/edit/{id}', name: 'app_book_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Book $book, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(BookType::class, $book);
@@ -82,7 +78,7 @@ final class BookController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_book_delete', methods: ['POST'])]
+    #[Route('/delete/{id}', name: 'app_book_delete', methods: ['POST'])]
     public function delete(Request $request, Book $book, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$book->getId(), $request->getPayload()->getString('_token'))) {

@@ -9,6 +9,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>Book</th>
                     <th>BorrowingDate</th>
                     <th>ReturnDate</th>
                     <th>User</th>
@@ -18,6 +19,7 @@
             <tbody>
             {% for borrowing in borrowings %}
                 <tr>
+                    <td>{{ borrowing.bookVersion.book.name }} : {{ borrowing.bookVersion.name }}</td>
                     <td>{{ borrowing.borrowingDate ? borrowing.borrowingDate|date('Y-m-d') : '' }}</td>
                     <td>{{ borrowing.returnDate ? borrowing.returnDate|date('Y-m-d') : '' }}</td>
                     <td>{{ borrowing.user.userFirstName }} {{ borrowing.user.username }}</td>

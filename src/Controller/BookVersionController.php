@@ -25,10 +25,6 @@ final class BookVersionController extends AbstractController
         $bookVersions = $bookVersionRepository->findAll();
         $pages = ceil(count($bookVersions) / AppController::PER_PAGE);
 
-        if ($page < 1 || $page > $pages) {
-            throw new NotFoundHttpException();
-        }
-
         $results = array_slice($bookVersions, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('book_version/index.html.twig', [
             'book_versions' => $results,
@@ -44,10 +40,6 @@ final class BookVersionController extends AbstractController
         $bookVersions = $bookVersionRepository->findAllBookVersionCanBeReserved($this->getUser()->getId());
         $pages = ceil(count($bookVersions) / AppController::PER_PAGE);
 
-        if ($page < 1 || $page > $pages) {
-            throw new NotFoundHttpException();
-        }
-
         $results = array_slice($bookVersions, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         $userPenality = $this->getUser()->getPenality();
 
@@ -55,7 +47,8 @@ final class BookVersionController extends AbstractController
             null !== $userPenality
             && $userPenality > 0
         ){
-            throw new AccessDeniedException('You cant reserve any Book. Regularise your late payment penalties');
+            $this->addFlash('error', 'You cant borrow any Book. Regularise your late payment penalties');
+            return $this->redirectToRoute('app_borrowing_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('book_version/index_reservation.html.twig', [
@@ -72,10 +65,6 @@ final class BookVersionController extends AbstractController
         $bookVersions = $bookVersionRepository->findAllBookVersionCanBeBorrowed($this->getUser()->getId());
         $pages = ceil(count($bookVersions) / AppController::PER_PAGE);
 
-        if ($page < 1 || $page > $pages) {
-            throw new NotFoundHttpException();
-        }
-
         $results = array_slice($bookVersions, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         $userPenality = $this->getUser()->getPenality();
 
@@ -83,7 +72,8 @@ final class BookVersionController extends AbstractController
             null !== $userPenality
             && $userPenality > 0
         ){
-            throw new AccessDeniedException('You cant borrow any Book. Regularise your late payment penalties');
+            $this->addFlash('error', 'You cant borrow any Book. Regularise your late payment penalties');
+            return $this->redirectToRoute('app_borrowing_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('book_version/index_reservation.html.twig', [
@@ -115,7 +105,7 @@ final class BookVersionController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_book_version_show', methods: ['GET'])]
+    #[Route('/show/{id}', name: 'app_book_version_show', methods: ['GET'])]
     #[IsGranted('ROLE_LIBRARIAN')]
     public function show(BookVersion $bookVersion): Response
     {
@@ -124,7 +114,7 @@ final class BookVersionController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_book_version_edit', methods: ['GET', 'POST'])]
+    #[Route('/edit/{id}', name: 'app_book_version_edit', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_LIBRARIAN')]
     public function edit(Request $request, BookVersion $bookVersion, EntityManagerInterface $entityManager): Response
     {
@@ -143,7 +133,7 @@ final class BookVersionController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_book_version_delete', methods: ['POST'])]
+    #[Route('/delete/{id}', name: 'app_book_version_delete', methods: ['POST'])]
     #[IsGranted('ROLE_LIBRARIAN')]
     public function delete(Request $request, BookVersion $bookVersion, EntityManagerInterface $entityManager): Response
     {

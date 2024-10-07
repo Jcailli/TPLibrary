@@ -6,6 +6,12 @@
     <h1>List of my outstanding borrowings</h1>
     <p><em>(maximum : {{ app.user.maxBorrow }} books)</em></p>
 
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
     <div data-controller="symfony--ux-swup--swup" id="swup" data-turbo="false">
         <table class="table">
             <thead>

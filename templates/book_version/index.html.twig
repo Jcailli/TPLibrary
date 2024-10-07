@@ -10,7 +10,10 @@
             <thead>
                 <tr>
                     <th>Book Name</th>
+                    <th>Author(s)</th>
+                    <th>Publisher</th>
                     <th>Version Name</th>
+                    <th>Version Date</th>
                     <th></th>
                 </tr>
             </thead>
@@ -18,7 +21,14 @@
             {% for book_version in book_versions %}
                 <tr>
                     <td>{{ book_version.book.name }}</td>
+                    <td>
+                        {% for author in book_version.book.authors %}
+                            {{ author.firstName }} {{ author.name }}<br>
+                        {% endfor %}
+                    </td>
+                    <td>{{ book_version.publisher.name }}</td>
                     <td>{{ book_version.name }}</td>
+                    <td>{{ book_version.versionDate | date('d-m-Y') }}</td>
                     <td>
                         <twig:Button type="show" path="{{ path('app_book_version_show', {'id': book_version.id}) }}"/>
                         <twig:Button type="edit" path="{{ path('app_book_version_edit', {'id': book_version.id}) }}"/>

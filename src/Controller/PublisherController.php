@@ -23,10 +23,6 @@ final class PublisherController extends AbstractController
         $publishers = $publisherRepository->findAll();
         $pages = ceil(count($publishers) / AppController::PER_PAGE);
 
-        if ($page < 1 || $page > $pages) {
-            throw new NotFoundHttpException();
-        }
-
         $results = array_slice($publishers, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('publisher/index.html.twig', [
             'publishers' => $results,
@@ -55,7 +51,7 @@ final class PublisherController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_publisher_show', methods: ['GET'])]
+    #[Route('/show/{id}', name: 'app_publisher_show', methods: ['GET'])]
     public function show(Publisher $publisher): Response
     {
         return $this->render('publisher/show.html.twig', [
@@ -63,7 +59,7 @@ final class PublisherController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_publisher_edit', methods: ['GET', 'POST'])]
+    #[Route('/edit/{id}', name: 'app_publisher_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Publisher $publisher, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(PublisherType::class, $publisher);
@@ -81,7 +77,7 @@ final class PublisherController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_publisher_delete', methods: ['POST'])]
+    #[Route('/delete/{id}', name: 'app_publisher_delete', methods: ['POST'])]
     public function delete(Request $request, Publisher $publisher, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$publisher->getId(), $request->getPayload()->getString('_token'))) {

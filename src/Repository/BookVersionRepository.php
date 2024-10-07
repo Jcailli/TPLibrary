@@ -98,27 +98,27 @@ class BookVersionRepository extends ServiceEntityRepository
             ->orWhere('
                 NOT EXISTS (
                     SELECT 1
-                    FROM ' . Borrowing::class . ' b1
-                    WHERE b1.bookVersion = b.id
-                    AND b1.returned = false
-                )
-                AND NOT EXISTS (
-                    SELECT 1
                     FROM ' . Reservation::class . ' r
                     WHERE r.bookVersion = b.id
                     AND r.isActive = true
                 )
             ')
             ->orWhere('
-                borrowing.returned = true
-                AND reservation.isActive = true
+                reservation.isActive = true
                 AND reservation.user = :userId
             ')
             ->orWhere('
-                borrowing.returned = true
-                AND CURRENT_DATE() >= DATE_ADD(borrowing.returnDate, 3, \'DAY\')
+                CURRENT_DATE() >= DATE_ADD(borrowing.returnDate, 3, \'DAY\')
                 AND reservation.isActive = true
                 AND reservation.user != :userId
+            ')
+            ->andWhere('
+                NOT EXISTS (
+                    SELECT 1
+                    FROM ' . Borrowing::class . ' b1
+                    WHERE b1.bookVersion = b.id
+                    AND b1.returned = false
+                )
             ')
             ->setParameter('userId', $userId)
         ;

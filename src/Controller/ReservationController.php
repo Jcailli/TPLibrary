@@ -40,10 +40,6 @@ final class ReservationController extends AbstractController
         $activeReservations = $reservationRepository->findAllActive();
         $pages = ceil(count($activeReservations) / AppController::PER_PAGE);
 
-        if ($page < 1 || $page > $pages) {
-            throw new NotFoundHttpException();
-        }
-
         $results = array_slice($activeReservations, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
         return $this->render('reservation/index.html.twig', [
             'reservations' => $results,
@@ -91,11 +87,10 @@ final class ReservationController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_reservation_show', methods: ['GET'])]
-    #[IsGranted('ROLE_USER')]
     #[IsGranted(new Expression('is_granted("ROLE_USER") or is_granted("ROLE_LIBRARIAN")'))]
     public function show(Reservation $reservation): Response
     {
-        if ($this->getUser()->getId() !== $reservation->getUser()->getId()) {
+        if ($this->getUser()->getId() !== $reservation->getUser()->getId() && $this->isGranted('ROLE_USER')) {
             throw new AccessDeniedException('This reservation is not accessible to you');
         }
 

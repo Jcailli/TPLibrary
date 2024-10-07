@@ -27,12 +27,29 @@
                 <th>Publisher</th>
                 <td>{{ reservation.bookVersion.publisher.name }}</td>
             </tr>
+            {% if is_granted('ROLE_LIBRARIAN') %}
+                <tr>
+                    <th>User</th>
+                    <td>{{ reservation.user.userFirstName }} {{ reservation.user.username }}</td>
+                </tr>
+            {% endif %}
         </tbody>
     </table>
 
-    <twig:Button type="back" path="{{ path('app_reservation_user_index') }}"/>
+    {% if is_granted('ROLE_USER') %}
+        <twig:Button type="back" path="{{ path('app_reservation_user_index') }}"/>
+    {% else %}
+        <twig:Button type="back" path="{{ path('app_reservation_index') }}"/>
+    {% endif %}
 
-    {% if reservation.bookVersion.borrowing.returned %}
+    {% set isReturned = true %}
+    {% for borrowing in reservation.bookVersion.borrowings %}
+        {% if borrowing.returned is same as(false) %}
+            {% set isReturned = false %}
+        {% endif %}
+    {% endfor %}
+
+    {% if isReturned and is_granted('ROLE_USER') %}
         <twig:Button type="borrow" path="{{ path('app_borrowing_new_from_reservation', {bookVersionId: reservation.bookVersion.id}) }}"/>
     {% endif %}
 {% endblock %}
