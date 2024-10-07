@@ -15,10 +15,15 @@
                 <th>Book</th>
                 <td>{{ borrowing.bookVersion.book.name }} : {{ borrowing.bookVersion.name }}</td>
             </tr>
+            <tr>
+                <th>Borrowing Date</th>
+                <td>{{ borrowing.borrowingDate | date('d-m-Y') }}</td>
+            </tr>
         </tbody>
     </table>
 
     {{ include('borrowing/_form.html.twig', {'button_label': 'Update'}) }}
 
     <twig:Button type="back" path="{{ path('app_borrowing_index') }}"/>
+    <twig:Button type="return" path="{{ path('app_borrowing_return', {'id': borrowing.id}) }}"/>
 {% endblock %}

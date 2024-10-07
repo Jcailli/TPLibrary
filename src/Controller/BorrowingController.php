@@ -160,6 +160,14 @@ final class BorrowingController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($borrowing->getBorrowingDate() > $borrowing->getReturnDate()) {
+                $this->addFlash("error", "The return date cannot be earlier than the borrowing date !");
+
+                return $this->render('borrowing/edit.html.twig', [
+                    'borrowing' => $borrowing,
+                    'form' => $form,
+                ]);
+            }
             $entityManager->flush();
 
             return $this->redirectToRoute('app_borrowing_index', [], Response::HTTP_SEE_OTHER);
