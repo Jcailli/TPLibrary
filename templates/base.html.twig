@@ -14,6 +14,13 @@
     <body {{ stimulus_controller('symfony/ux-swup/swup') }}>
         <div class="container">
             {% include 'navigation.html.twig' %}
+
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
             {% block body %}
                 <h1>Bienvenue sur le site de votre bibliothèque</h1>
             {% endblock %}

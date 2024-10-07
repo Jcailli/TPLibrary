@@ -48,7 +48,7 @@ final class BookVersionController extends AbstractController
             && $userPenality > 0
         ){
             $this->addFlash('error', 'You cant borrow any Book. Regularise your late payment penalties');
-            return $this->redirectToRoute('app_borrowing_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('homepage', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('book_version/index_reservation.html.twig', [
@@ -73,7 +73,7 @@ final class BookVersionController extends AbstractController
             && $userPenality > 0
         ){
             $this->addFlash('error', 'You cant borrow any Book. Regularise your late payment penalties');
-            return $this->redirectToRoute('app_borrowing_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('homepage', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('book_version/index_reservation.html.twig', [

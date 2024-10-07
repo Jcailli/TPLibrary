@@ -52,6 +52,16 @@ final class ReservationController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $userPenality = $this->getUser()->getPenality();
+
+        if (
+            null !== $userPenality
+            && $userPenality > 0
+        ){
+            $this->addFlash('error', 'You cant borrow any Book. Regularise your late payment penalties');
+            return $this->redirectToRoute('homepage', [], Response::HTTP_SEE_OTHER);
+        }
+
         $reservation = new Reservation();
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
@@ -75,6 +85,16 @@ final class ReservationController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function newBookReservation(Request $request, BookVersion $bookVersionId, EntityManagerInterface $entityManager): Response
     {
+        $userPenality = $this->getUser()->getPenality();
+
+        if (
+            null !== $userPenality
+            && $userPenality > 0
+        ){
+            $this->addFlash('error', 'You cant borrow any Book. Regularise your late payment penalties');
+            return $this->redirectToRoute('homepage', [], Response::HTTP_SEE_OTHER);
+        }
+
         $reservation = new Reservation();
         $reservation->setUser($this->getUser());
         $reservation->setBookVersion($bookVersionId);

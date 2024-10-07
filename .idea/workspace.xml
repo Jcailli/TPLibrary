@@ -6,9 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="FIX Show Details">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/author/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/author/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/book/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/book_version/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book_version/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BookVersionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookVersionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BorrowingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BorrowingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReservationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/borrowing/user_index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowing/user_index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/reservation/user_index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reservation/user_index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,15 +194,7 @@
       <workItem from="1727854384535" duration="17244000" />
       <workItem from="1727938112255" duration="21225000" />
       <workItem from="1728026104131" duration="19974000" />
-      <workItem from="1728285820147" duration="7544000" />
-    </task>
-    <task id="LOCAL-00025" summary="User Borrowing">
-      <option name="closed" value="true" />
-      <created>1727788970000</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1727788970000</updated>
+      <workItem from="1728285820147" duration="10551000" />
     </task>
     <task id="LOCAL-00026" summary="User Reservation">
       <option name="closed" value="true" />
@@ -585,7 +580,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728302476970</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="FIX Show Details">
+      <option name="closed" value="true" />
+      <created>1728306387077</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1728306387077</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

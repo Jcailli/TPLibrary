@@ -68,6 +68,16 @@ final class BorrowingController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $userPenality = $this->getUser()->getPenality();
+
+        if (
+            null !== $userPenality
+            && $userPenality > 0
+        ){
+            $this->addFlash('error', 'You cant borrow any Book. Regularise your late payment penalties');
+            return $this->redirectToRoute('homepage', [], Response::HTTP_SEE_OTHER);
+        }
+
         $canBorrow = count($entityManager->getRepository(Borrowing::class)
                 ->findActiveByUserId($this->getUser()->getId())
                 ) < $this->getUser()->getMaxBorrow();
@@ -102,6 +112,16 @@ final class BorrowingController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function newFromReservation(BookVersion $bookVersionId, EntityManagerInterface $entityManager): Response
     {
+        $userPenality = $this->getUser()->getPenality();
+
+        if (
+            null !== $userPenality
+            && $userPenality > 0
+        ){
+            $this->addFlash('error', 'You cant borrow any Book. Regularise your late payment penalties');
+            return $this->redirectToRoute('homepage', [], Response::HTTP_SEE_OTHER);
+        }
+
         $canBorrow = $this->getUser()->getBorrowings()->count() < $this->getUser()->getMaxBorrow();
         if (!$canBorrow) {
             $this->addFlash('error' ,"Vous ne pouvez plus emprunter de livre pour l'instant !");
