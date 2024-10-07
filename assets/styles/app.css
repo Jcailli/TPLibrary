@@ -1,3 +1,17 @@
 body {
     background-color: transparent;
 }
+
+.user {
+    background-color: transparent;
+}
+
+.librarian {
+    color: orange !important;
+    font-weight: bold !important;
+}
+
+.admin {
+    color: lightskyblue !important;
+    font-weight: bold !important;
+}
