@@ -21,10 +21,12 @@
                             <a class="nav-link" href="{{ path('app_author_index') }}">Authors</a>
                         </li>
                     {% endif %}
-                    {% if is_granted('ROLE_LIBRARIAN') %}
+                    {% if not is_granted('ROLE_USER') %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_borrowing_index') }}">Active Borrowings</a>
                         </li>
+                    {% endif %}
+                    {% if is_granted('ROLE_LIBRARIAN') %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_reservation_index') }}">Active Reservations</a>
                         </li>

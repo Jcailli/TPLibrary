@@ -19,6 +19,22 @@
             <th>Email</th>
             <td>{{ user.email }}</td>
         </tr>
+        <tr>
+            <th>Reservations</th>
+            <td>
+                {% for reservation in user.reservations %}
+                    {{ reservation.bookVersion.book.name }} - {{ reservation.bookVersion.name }}
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <th>Borrowings</th>
+            <td>
+                {% for borrowing in user.borrowings %}
+                    {{ borrowing.bookVersion.book.name }} - {{ borrowing.bookVersion.name }} : return date ({{ borrowing.returnDate | date('d-m-Y') }})
+                {% endfor %}
+            </td>
+        </tr>
         </tbody>
     </table>
 

@@ -20,7 +20,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 final class BorrowingController extends AbstractController
 {
     #[Route('/librarian/{page<\d+>}', name: 'app_borrowing_index', methods: ['GET'])]
-    #[IsGranted('ROLE_LIBRARIAN')]
+    #[IsGranted(new Expression('is_granted("ROLE_ADMIN") or is_granted("ROLE_LIBRARIAN")'))]
     public function index(BorrowingRepository $borrowingRepository, int $page = 1): Response
     {
         $activeBorrowings = $borrowingRepository->findAllActive();
@@ -143,7 +143,6 @@ final class BorrowingController extends AbstractController
     }
 
     #[Route('/show/{id}', name: 'app_borrowing_show', methods: ['GET'])]
-    #[IsGranted(new Expression('is_granted("ROLE_USER") or is_granted("ROLE_LIBRARIAN")'))]
     public function show(Request $request, Borrowing $borrowing): Response
     {
         return $this->render('borrowing/show.html.twig', [
@@ -153,7 +152,7 @@ final class BorrowingController extends AbstractController
     }
 
     #[Route('/librarian/{id}/edit', name: 'app_borrowing_edit', methods: ['GET', 'POST'])]
-    #[IsGranted('ROLE_LIBRARIAN')]
+    #[IsGranted(new Expression('is_granted("ROLE_ADMIN") or is_granted("ROLE_LIBRARIAN")'))]
     public function edit(Request $request, Borrowing $borrowing, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(BorrowingLibrarianType::class, $borrowing);
@@ -180,7 +179,7 @@ final class BorrowingController extends AbstractController
     }
 
     #[Route('/librarian/{id}/return', name: 'app_borrowing_return', methods: ['GET'])]
-    #[IsGranted('ROLE_LIBRARIAN')]
+    #[IsGranted(new Expression('is_granted("ROLE_ADMIN") or is_granted("ROLE_LIBRARIAN")'))]
     public function return(Request $request, Borrowing $borrowing, EntityManagerInterface $entityManager): Response
     {
         $borrowing->setReturned(true);
@@ -191,14 +190,18 @@ final class BorrowingController extends AbstractController
             ->getRepository(Reservation::class)
             ->findOneBy(['bookVersion' => $borrowing->getBookVersion(), 'isActive' => true]);
 
-        return $this->redirectToRoute('reservation_email', [
-            "user" => $userReservation?->getUser()->getId(),
-            "bookVersion" => $borrowing->getBookVersion()->getId()
-        ], Response::HTTP_SEE_OTHER);
+        if (null !== $userReservation) {
+            return $this->redirectToRoute('reservation_email', [
+                "user" => $userReservation?->getUser()->getId() ?? null,
+                "bookVersion" => $borrowing->getBookVersion()->getId()
+            ], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->redirectToRoute('app_borrowing_index', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/librarian/{id}', name: 'app_borrowing_delete', methods: ['POST'])]
-    #[IsGranted('ROLE_LIBRARIAN')]
+    #[IsGranted(new Expression('is_granted("ROLE_ADMIN") or is_granted("ROLE_LIBRARIAN")'))]
     public function delete(Request $request, Borrowing $borrowing, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$borrowing->getId(), $request->getPayload()->getString('_token'))) {
@@ -207,10 +210,5 @@ final class BorrowingController extends AbstractController
         }
 
         return $this->redirectToRoute('app_borrowing_index', [], Response::HTTP_SEE_OTHER);
-    }
-
-    public function penalityCron(): void
-    {
-
     }
 }

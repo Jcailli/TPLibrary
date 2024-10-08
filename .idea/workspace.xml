@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="FIX Changement du BO">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/BorrowingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BorrowingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/borrowing/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowing/edit.html.twig" afterDir="false" />
+    <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="FIX Admin can manage Borrowings">
+      <change beforePath="$PROJECT_DIR$/templates/user/edit_penality.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/edit_penality.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,23 +188,8 @@
       <workItem from="1727854384535" duration="17244000" />
       <workItem from="1727938112255" duration="21225000" />
       <workItem from="1728026104131" duration="19974000" />
-      <workItem from="1728285820147" duration="13053000" />
-    </task>
-    <task id="LOCAL-00028" summary="Refactoring Front">
-      <option name="closed" value="true" />
-      <created>1727871941192</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1727871941192</updated>
-    </task>
-    <task id="LOCAL-00029" summary="Refactoring Front">
-      <option name="closed" value="true" />
-      <created>1727871965128</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1727871965128</updated>
+      <workItem from="1728285820147" duration="14016000" />
+      <workItem from="1728374323494" duration="2302000" />
     </task>
     <task id="LOCAL-00030" summary="Refactoring Front">
       <option name="closed" value="true" />
@@ -584,7 +567,23 @@
       <option name="project" value="LOCAL" />
       <updated>1728311696435</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="FIX Return Date of Borrowings">
+      <option name="closed" value="true" />
+      <created>1728312381652</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1728312381652</updated>
+    </task>
+    <task id="LOCAL-00078" summary="FIX Admin can manage Borrowings">
+      <option name="closed" value="true" />
+      <created>1728378015422</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1728378015422</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -602,8 +601,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Install Scheduler and Messenger for Cron Task" />
-    <MESSAGE value="FIX : User can view borrow history" />
     <MESSAGE value="FIX : Admin can manage penalities" />
     <MESSAGE value="FIX : Librarian can manage active Borrowings and Reservations" />
     <MESSAGE value="FIX : ROLE_USER as default in registration" />
@@ -627,6 +624,8 @@
     <MESSAGE value="FIX Show Details" />
     <MESSAGE value="FIX Penality Flash error" />
     <MESSAGE value="FIX Changement du BO" />
-    <option name="LAST_COMMIT_MESSAGE" value="FIX Changement du BO" />
+    <MESSAGE value="FIX Return Date of Borrowings" />
+    <MESSAGE value="FIX Admin can manage Borrowings" />
+    <option name="LAST_COMMIT_MESSAGE" value="FIX Admin can manage Borrowings" />
   </component>
 </project>

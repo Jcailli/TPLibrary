@@ -6,7 +6,7 @@ use App\Entity\BookVersion;
 use App\Entity\User;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\ExpressionLanguage\Expression;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportException;
 use Symfony\Component\Mailer\MailerInterface;
@@ -23,8 +23,8 @@ class MailerController extends AbstractController
     }
 
     #[Route('/{user}/{bookVersion}', name:'reservation_email')]
-    #[IsGranted('ROLE_LIBRARIAN')]
-    public function sendReservationEmail(User $user, BookVersion $bookVersion, MailerInterface $mailer): Response
+    #[IsGranted(new Expression('is_granted("ROLE_ADMIN") or is_granted("ROLE_LIBRARIAN")'))]
+    public function sendReservationEmail(?User $user = null, BookVersion $bookVersion, MailerInterface $mailer): Response
     {
         try {
             $email = (new Email())

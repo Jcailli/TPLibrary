@@ -7,6 +7,12 @@
 
     <table class="table">
         <tbody>
+            {% if not is_granted('ROLE_USER') %}
+                <tr>
+                    <th>User</th>
+                    <td>{{ borrowing.user.userFirstName }} {{ borrowing.user.username }}</td>
+                </tr>
+            {% endif %}
             <tr>
                 <th>Book Borrowed</th>
                 <td>{{ borrowing.bookVersion.book.name }} : {{ borrowing.bookVersion.name }}</td>
