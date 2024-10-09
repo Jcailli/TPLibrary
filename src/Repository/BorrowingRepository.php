@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Borrowing;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -64,6 +65,28 @@ class BorrowingRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('b')
             ->andWhere('b.user = :val')
             ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findBorrowingsSoonCompleted(): ?array
+    {
+        return $this->createQueryBuilder('b')
+            ->where('CURRENT_DATE() = DATE_SUB(b.returnDate, 3, \'DAY\')')
+            ->andWhere('b.returned = false')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findBorrowingsPastUncompletedByUser(User $user): ?array
+    {
+        return $this->createQueryBuilder('b')
+            ->where('CURRENT_DATE() > b.returnDate')
+            ->andWhere('b.returned = false')
+            ->andWhere('b.user = :user')
+            ->setParameter('user', $user)
             ->getQuery()
             ->getResult()
         ;

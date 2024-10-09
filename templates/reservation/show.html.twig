@@ -41,6 +41,7 @@
     {% else %}
         <twig:Button type="back" path="{{ path('app_reservation_index') }}"/>
     {% endif %}
+        {{ include('reservation/_delete_form.html.twig') }}
 
     {% set isReturned = true %}
     {% for borrowing in reservation.bookVersion.borrowings %}

@@ -30,8 +30,10 @@
         <tr>
             <th>Borrowings</th>
             <td>
-                {% for borrowing in user.borrowings %}
-                    {{ borrowing.bookVersion.book.name }} - {{ borrowing.bookVersion.name }} : return date ({{ borrowing.returnDate | date('d-m-Y') }})
+                {% for borrowing in user.borrowings|filter(borrowing => date(borrowing.returnDate) < date() and borrowing.returned == false) %}
+                    {{ borrowing.bookVersion.book.name }} - {{ borrowing.bookVersion.name }} : return date ({{ borrowing.returnDate | date('d-m-Y') }}) - penality : {{ date().diff(date(borrowing.returnDate)).days }}
+                    <twig:Button type="return" path="{{ path('app_borrowing_return', {'id': borrowing.id}) }}"/>
+                    <br>
                 {% endfor %}
             </td>
         </tr>

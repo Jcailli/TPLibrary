@@ -5,6 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="448a8e73-8a58-4f64-baf2-b655672278dd" name="Changes" comment="FIX Admin can manage Borrowings">
+      <change afterPath="$PROJECT_DIR$/src/Command/MailerCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Command/PenalityCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/BorrowingService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/MailService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/MessageGenerator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/PenalityService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/emails/borrowing.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BorrowingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BorrowingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MailerController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReservationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/BorrowingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/BorrowingRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Scheduler/Message/SendDailySalesReports.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Scheduler/Task/SendDailySalesReports.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/emails/reservation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/emails/reservation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/reservation/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reservation/show.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/edit_penality.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/edit_penality.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -189,23 +205,8 @@
       <workItem from="1727938112255" duration="21225000" />
       <workItem from="1728026104131" duration="19974000" />
       <workItem from="1728285820147" duration="14016000" />
-      <workItem from="1728374323494" duration="2302000" />
-    </task>
-    <task id="LOCAL-00030" summary="Refactoring Front">
-      <option name="closed" value="true" />
-      <created>1727871980024</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1727871980024</updated>
-    </task>
-    <task id="LOCAL-00031" summary="Refactoring Front">
-      <option name="closed" value="true" />
-      <created>1727871995968</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1727871995968</updated>
+      <workItem from="1728374323494" duration="15183000" />
+      <workItem from="1728457168260" duration="9632000" />
     </task>
     <task id="LOCAL-00032" summary="Books available to borrow">
       <option name="closed" value="true" />
@@ -583,7 +584,23 @@
       <option name="project" value="LOCAL" />
       <updated>1728378015422</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="FIX Admin can manage Borrowings">
+      <option name="closed" value="true" />
+      <created>1728378309412</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1728378309412</updated>
+    </task>
+    <task id="LOCAL-00080" summary="FIX Admin can manage Borrowings">
+      <option name="closed" value="true" />
+      <created>1728378338311</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1728378338311</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

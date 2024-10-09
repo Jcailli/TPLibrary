@@ -1,3 +1,3 @@
-<h4>Hello $user->getuserFirstName() .'</h4>
-<p>The book you have reserved (' . $bookVersion->getBook()->getName() . ') is available to borrow !</p>
-<a href="https://localhost/borrowing/new/'. $bookVersion->getId() .'">Click here to borrow</a>
+<h4>Hello {{ user.userFirstName }}</h4>
+<p>The book you have reserved {{ reservation.bookVersion.book.name }} is available to borrow !</p>
+<a href="https://localhost/borrowing/new/{{ reservation.bookVersion.id }}">Click here to borrow</a>

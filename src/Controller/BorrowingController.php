@@ -8,17 +8,23 @@ use App\Entity\Reservation;
 use App\Form\BorrowingLibrarianType;
 use App\Form\BorrowingType;
 use App\Repository\BorrowingRepository;
+use App\Service\MailService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\ExpressionLanguage\Expression;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/borrowing')]
 final class BorrowingController extends AbstractController
 {
+    public function __construct(
+        private readonly MailService $mailService,
+    ){}
+
     #[Route('/librarian/{page<\d+>}', name: 'app_borrowing_index', methods: ['GET'])]
     #[IsGranted(new Expression('is_granted("ROLE_ADMIN") or is_granted("ROLE_LIBRARIAN")'))]
     public function index(BorrowingRepository $borrowingRepository, int $page = 1): Response
@@ -178,6 +184,9 @@ final class BorrowingController extends AbstractController
         ]);
     }
 
+    /**
+     * @throws TransportExceptionInterface
+     */
     #[Route('/librarian/{id}/return', name: 'app_borrowing_return', methods: ['GET'])]
     #[IsGranted(new Expression('is_granted("ROLE_ADMIN") or is_granted("ROLE_LIBRARIAN")'))]
     public function return(Request $request, Borrowing $borrowing, EntityManagerInterface $entityManager): Response
@@ -191,10 +200,10 @@ final class BorrowingController extends AbstractController
             ->findOneBy(['bookVersion' => $borrowing->getBookVersion(), 'isActive' => true]);
 
         if (null !== $userReservation) {
-            return $this->redirectToRoute('reservation_email', [
-                "user" => $userReservation?->getUser()->getId() ?? null,
-                "bookVersion" => $borrowing->getBookVersion()->getId()
-            ], Response::HTTP_SEE_OTHER);
+            if ($this->mailService->notifyUserReservationReady($userReservation))
+            {
+                $this->redirectToRoute('app_borrowing_index', [], Response::HTTP_SEE_OTHER);
+            }
         }
 
         return $this->redirectToRoute('app_borrowing_index', [], Response::HTTP_SEE_OTHER);

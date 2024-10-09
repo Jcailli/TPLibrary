@@ -143,7 +143,7 @@ final class ReservationController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_reservation_delete', methods: ['POST'])]
-    #[IsGranted('ROLE_USER')]
+    #[IsGranted(new Expression('is_granted("ROLE_USER") or is_granted("ROLE_LIBRARIAN")'))]
     public function delete(Request $request, Reservation $reservation, EntityManagerInterface $entityManager): Response
     {
         if ($this->getUser()->getId() !== $reservation->getUser()->getId()) {
@@ -151,10 +151,14 @@ final class ReservationController extends AbstractController
         }
 
         if ($this->isCsrfTokenValid('delete'.$reservation->getId(), $request->getPayload()->getString('_token'))) {
-            $entityManager->remove($reservation);
+            $reservation->setActive(false);
             $entityManager->flush();
         }
 
+        if ($this->isGranted('ROLE_USER'))
+        {
+            return $this->redirectToRoute('app_reservation_user_index', [], Response::HTTP_SEE_OTHER);
+        }
         return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
     }
 }
