@@ -94,6 +94,8 @@ final class UserController extends AbstractController
     #[IsGranted('ROLE_ADMIN')]
     public function editPenalty(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
+        $user = $entityManager->getRepository(User::class)->findUserDetailsById($user->getId());
+
         $form = $this->createForm(UserPenaltyType::class, $user);
         $form->handleRequest($request);
 

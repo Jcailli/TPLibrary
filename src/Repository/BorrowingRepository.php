@@ -43,6 +43,12 @@ class BorrowingRepository extends ServiceEntityRepository
     public function findAllActive(): ?array
     {
         return $this->createQueryBuilder('b')
+            ->addSelect('u')
+            ->addSelect('bv')
+            ->addSelect('book')
+            ->innerJoin('b.user', 'u')
+            ->innerJoin('b.bookVersion', 'bv')
+            ->innerJoin('bv.book', 'book')
             ->where('b.returned = false')
             ->getQuery()
             ->getResult()
@@ -52,6 +58,10 @@ class BorrowingRepository extends ServiceEntityRepository
     public function findActiveByUserId(int $value): ?array
     {
         return $this->createQueryBuilder('b')
+            ->addSelect('bookVersion')
+            ->addSelect('book')
+            ->innerJoin('b.bookVersion', 'bookVersion')
+            ->innerJoin('bookVersion.book', 'book')
             ->where('b.returned = false')
             ->andWhere('b.user = :val')
             ->setParameter('val', $value)
@@ -63,6 +73,10 @@ class BorrowingRepository extends ServiceEntityRepository
     public function findByUserId(int $value): ?array
     {
         return $this->createQueryBuilder('b')
+            ->addSelect('bookVersion')
+            ->addSelect('book')
+            ->innerJoin('b.bookVersion', 'bookVersion')
+            ->innerJoin('bookVersion.book', 'book')
             ->andWhere('b.user = :val')
             ->setParameter('val', $value)
             ->getQuery()

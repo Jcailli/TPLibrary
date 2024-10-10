@@ -42,6 +42,12 @@ class ReservationRepository extends ServiceEntityRepository
     public function findAllActiveByUserId(int $userId): ?array
     {
         $qb = $this->createQueryBuilder('r')
+            ->addSelect('u')
+            ->addSelect('bv')
+            ->addSelect('book')
+            ->innerJoin('r.user', 'u')
+            ->innerJoin('r.bookVerion', 'bv')
+            ->innerJoin('bv.book', 'book')
             ->where('r.user = :userId')
             ->andWhere('r.isActive = true')
             ->setParameter('userId', $userId)
@@ -52,6 +58,12 @@ class ReservationRepository extends ServiceEntityRepository
     public function findAllActive(): ?array
     {
         $qb = $this->createQueryBuilder('r')
+            ->addSelect('u')
+            ->addSelect('bv')
+            ->addSelect('book')
+            ->innerJoin('r.user', 'u')
+            ->innerJoin('r.bookVersion', 'bv')
+            ->innerJoin('bv.book', 'book')
             ->where('r.isActive = true')
         ;
         return $qb->getQuery()->getResult();

@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\LockMode;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -31,6 +32,36 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $user->setPassword($newHashedPassword);
         $this->getEntityManager()->persist($user);
         $this->getEntityManager()->flush();
+    }
+
+    public function findUserDetailsById(int $id): object|null
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->addSelect('b')
+            ->addSelect('bbv')
+            ->addSelect('bbvb')
+            ->addSelect('bbvba')
+            ->addSelect('bbvp')
+            ->addSelect('r')
+            ->addSelect('rbv')
+            ->addSelect('rbvb')
+            ->addSelect('rbvba')
+            ->addSelect('rbvp')
+            ->innerJoin('u.borrowings','b')
+            ->innerJoin('b.bookVersion', 'bbv')
+            ->innerJoin('bbv.book', 'bbvb')
+            ->innerJoin('bbv.publisher', 'bbvp')
+            ->innerJoin('bbvb.authors', 'bbvba')
+            ->innerJoin('u.reservations', 'r')
+            ->innerJoin('r.bookVersion', 'rbv')
+            ->innerJoin('rbv.book', 'rbvb')
+            ->innerJoin('rbvb.authors', 'rbvba')
+            ->innerJoin('rbv.publisher', 'rbvp')
+            ->where('u.id = :userId')
+            ->setParameter('userId', $id)
+        ;
+
+        return $qb->getQuery()->getOneOrNullResult();
     }
 
     public function findAllUsers(): ?array

@@ -5,10 +5,7 @@ namespace App\Repository;
 use App\Entity\BookVersion;
 use App\Entity\Borrowing;
 use App\Entity\Reservation;
-use App\Entity\User;
-use DateInterval;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\Query\AST\ConditionalExpression;
 use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -17,7 +14,6 @@ use Doctrine\Persistence\ManagerRegistry;
  *
  * @method BookVersion|null find($id, $lockMode = null, $lockVersion = null)
  * @method BookVersion|null findOneBy(array $criteria, array $orderBy = null)
- * @method BookVersion[]    findAll()
  * @method BookVersion[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class BookVersionRepository extends ServiceEntityRepository
@@ -45,33 +41,53 @@ class BookVersionRepository extends ServiceEntityRepository
         }
     }
 
+    public function findAll(): array
+    {
+        $qb = $this->createQueryBuilder('bv')
+            ->addSelect('b')
+            ->addSelect('a')
+            ->addSelect('p')
+            ->innerJoin('bv.book', 'b')
+            ->innerJoin('b.authors', 'a')
+            ->innerJoin('bv.publisher', 'p')
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
+
     public function findAllBookVersionCanBeReserved(int $userId): array
     {
-        $qb = $this->createQueryBuilder('b')
+        $qb = $this->createQueryBuilder('bv')
+            ->addSelect('b')
+            ->addSelect('a')
+            ->addSelect('p')
+            ->innerJoin('bv.book', 'b')
+            ->innerJoin('b.authors', 'a')
+            ->innerJoin('bv.publisher', 'p')
             ->innerJoin(
                 Borrowing::class,
-                'borrowing',
+                'bor',
                 Join::WITH,
-                'borrowing.bookVersion = b.id'
+                'bor.bookVersion = bv.id'
             )
             ->leftJoin(
                 Reservation::class,
-                'reservation',
+                'r',
                 Join::WITH,
-                'reservation.bookVersion = b.id'
+                'r.bookVersion = bv.id'
             )
             ->where('
                 reservation.bookVersion IS NULL
                 OR NOT EXISTS (
                     SELECT 1
-                    FROM ' . Reservation::class . ' r
-                    WHERE r.bookVersion = b.id
-                    AND r.isActive = true
+                    FROM ' . Reservation::class . ' r1
+                    WHERE r1.bookVersion = bv.id
+                    AND r1.isActive = true
                 )
             ')
             ->andWhere('
-                borrowing.returned = false
-                AND borrowing.user != :userId
+                bor.returned = false
+                AND bor.user != :userId
             ')
             ->setParameter('userId', $userId)
         ;
@@ -81,42 +97,48 @@ class BookVersionRepository extends ServiceEntityRepository
 
     public function findAllBookVersionCanBeBorrowed(int $userId): array
     {
-        $qb = $this->createQueryBuilder('b')
+        $qb = $this->createQueryBuilder('bv')
+            ->addSelect('b')
+            ->addSelect('a')
+            ->addSelect('p')
+            ->innerJoin('bv.book', 'b')
+            ->innerJoin('b.authors', 'a')
+            ->innerJoin('bv.publisher', 'p')
             ->leftJoin(
                 Borrowing::class,
-                'borrowing',
+                'bor',
                 Join::WITH,
-                'borrowing.bookVersion = b.id'
+                'bor.bookVersion = bv.id'
             )
             ->leftJoin(
                 Reservation::class,
-                'reservation',
+                'r',
                 Join::WITH,
-                'reservation.bookVersion = b.id'
+                'r.bookVersion = bv.id'
             )
-            ->where('borrowing.bookVersion IS NULL')
+            ->where('bor.bookVersion IS NULL')
             ->orWhere('
                 NOT EXISTS (
                     SELECT 1
-                    FROM ' . Reservation::class . ' r
-                    WHERE r.bookVersion = b.id
-                    AND r.isActive = true
+                    FROM ' . Reservation::class . ' r1
+                    WHERE r1.bookVersion = bv.id
+                    AND r1.isActive = true
                 )
             ')
             ->orWhere('
-                reservation.isActive = true
-                AND reservation.user = :userId
+                r.isActive = true
+                AND r.user = :userId
             ')
             ->orWhere('
-                CURRENT_DATE() >= DATE_ADD(borrowing.returnDate, 3, \'DAY\')
-                AND reservation.isActive = true
-                AND reservation.user != :userId
+                CURRENT_DATE() >= DATE_ADD(bor.returnDate, 3, \'DAY\')
+                AND r.isActive = true
+                AND r.user != :userId
             ')
             ->andWhere('
                 NOT EXISTS (
                     SELECT 1
                     FROM ' . Borrowing::class . ' b1
-                    WHERE b1.bookVersion = b.id
+                    WHERE b1.bookVersion = bv.id
                     AND b1.returned = false
                 )
             ')

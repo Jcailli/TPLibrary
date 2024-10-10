@@ -23,7 +23,7 @@ class BookVersion
     #[ORM\JoinColumn(nullable: false)]
     private ?Book $book = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(inversedBy: 'bookVersions')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Publisher $publisher = null;
 
