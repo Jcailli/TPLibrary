@@ -13,7 +13,11 @@
         </tr>
         <tr>
             <th>FirstName</th>
-            <td>{{ user.userFirstName }}</td>
+            <td>{{ user.firstName }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ user.name }}</td>
         </tr>
         <tr>
             <th>Email</th>
@@ -31,7 +35,7 @@
             <th>Borrowings</th>
             <td>
                 {% for borrowing in user.borrowings|filter(borrowing => date(borrowing.returnDate) < date() and borrowing.returned == false) %}
-                    {{ borrowing.bookVersion.book.name }} - {{ borrowing.bookVersion.name }} : return date ({{ borrowing.returnDate | date('d-m-Y') }}) - penality : {{ date().diff(date(borrowing.returnDate)).days }}
+                    {{ borrowing.bookVersion.book.name }} - {{ borrowing.bookVersion.name }} : return date ({{ borrowing.returnDate | date('d-m-Y') }}) - penalty : {{ date().diff(date(borrowing.returnDate)).days }}
                     <twig:Button type="return" path="{{ path('app_borrowing_return', {'id': borrowing.id}) }}"/>
                     <br>
                 {% endfor %}

@@ -74,11 +74,11 @@ final class BorrowingController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $userPenality = $this->getUser()->getPenality();
+        $userPenalty = $this->getUser()->getPenalty();
 
         if (
-            null !== $userPenality
-            && $userPenality > 0
+            null !== $userPenalty
+            && $userPenalty > 0
         ){
             $this->addFlash('error', 'You cant borrow any Book. Regularise your late payment penalties');
             return $this->redirectToRoute('homepage', [], Response::HTTP_SEE_OTHER);
@@ -118,11 +118,11 @@ final class BorrowingController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function newFromReservation(BookVersion $bookVersionId, EntityManagerInterface $entityManager): Response
     {
-        $userPenality = $this->getUser()->getPenality();
+        $userPenalty = $this->getUser()->getPenalty();
 
         if (
-            null !== $userPenality
-            && $userPenality > 0
+            null !== $userPenalty
+            && $userPenalty > 0
         ){
             $this->addFlash('error', 'You cant borrow any Book. Regularise your late payment penalties');
             return $this->redirectToRoute('homepage', [], Response::HTTP_SEE_OTHER);

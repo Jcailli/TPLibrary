@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserLibrarianType;
-use App\Form\UserPenalityType;
+use App\Form\UserPenaltyType;
 use App\Form\UserProfileType;
 use App\Form\UserType;
 use App\Repository\UserRepository;
@@ -75,11 +75,11 @@ final class UserController extends AbstractController
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/penality/{page<\d+>}', name: 'app_user_penality_index', methods: ['GET'])]
+    #[Route('/penalty/{page<\d+>}', name: 'app_user_penality_index', methods: ['GET'])]
     #[IsGranted('ROLE_ADMIN')]
-    public function indexPenality(UserRepository $userRepository, int $page = 1): Response
+    public function indexPenalty(UserRepository $userRepository, int $page = 1): Response
     {
-        $users = $userRepository->findAllPenalityUsers();
+        $users = $userRepository->findAllPenaltyUsers();
         $pages = ceil(count($users) / AppController::PER_PAGE);
 
         $results = array_slice($users, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
@@ -90,11 +90,11 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/penality/{id}/edit', name: 'app_user_penality_edit', methods: ['GET', 'POST'])]
+    #[Route('/penalty/{id}/edit', name: 'app_user_penality_edit', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_ADMIN')]
-    public function editPenality(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    public function editPenalty(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(UserPenalityType::class, $user);
+        $form = $this->createForm(UserPenaltyType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -30,7 +30,7 @@
             {% if is_granted('ROLE_LIBRARIAN') %}
                 <tr>
                     <th>User</th>
-                    <td>{{ reservation.user.userFirstName }} {{ reservation.user.username }}</td>
+                    <td>{{ reservation.user.firstName }} {{ reservation.user.name }}</td>
                 </tr>
             {% endif %}
         </tbody>

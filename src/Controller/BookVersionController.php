@@ -41,11 +41,11 @@ final class BookVersionController extends AbstractController
         $pages = ceil(count($bookVersions) / AppController::PER_PAGE);
 
         $results = array_slice($bookVersions, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
-        $userPenality = $this->getUser()->getPenality();
+        $userPenalty = $this->getUser()->getPenalty();
 
         if (
-            null !== $userPenality
-            && $userPenality > 0
+            null !== $userPenalty
+            && $userPenalty > 0
         ){
             $this->addFlash('error', 'You cant borrow any Book. Regularise your late payment penalties');
             return $this->redirectToRoute('homepage', [], Response::HTTP_SEE_OTHER);
@@ -66,11 +66,11 @@ final class BookVersionController extends AbstractController
         $pages = ceil(count($bookVersions) / AppController::PER_PAGE);
 
         $results = array_slice($bookVersions, ($page - 1) * AppController::PER_PAGE, AppController::PER_PAGE);
-        $userPenality = $this->getUser()->getPenality();
+        $userPenalty = $this->getUser()->getPenalty();
 
         if (
-            null !== $userPenality
-            && $userPenality > 0
+            null !== $userPenalty
+            && $userPenalty > 0
         ){
             $this->addFlash('error', 'You cant borrow any Book. Regularise your late payment penalties');
             return $this->redirectToRoute('homepage', [], Response::HTTP_SEE_OTHER);

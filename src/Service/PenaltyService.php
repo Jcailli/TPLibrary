@@ -2,26 +2,25 @@
 
 namespace App\Service;
 
-use App\Entity\Borrowing;
 use App\Entity\User;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 
-readonly class PenalityService
+readonly class PenaltyService
 {
     public function __construct (
         private EntityManagerInterface $entityManager,
     ){}
 
-    public function updateUserPenality(array $borrowings, User $user): void
+    public function updateUserPenalty(array $borrowings, User $user): void
     {
-        $penality = 0;
+        $penalty = 0;
         foreach ($borrowings as $borrowing)
         {
-            $penality += intval((new DateTime())->diff($borrowing->getReturnDate())->format('%a'));
+            $penalty += intval((new DateTime())->diff($borrowing->getReturnDate())->format('%a'));
         }
 
-        $user->setPenality($penality);
+        $user->setPenalty($penalty);
 
         $this->entityManager->flush();
     }

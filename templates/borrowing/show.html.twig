@@ -10,7 +10,7 @@
             {% if not is_granted('ROLE_USER') %}
                 <tr>
                     <th>User</th>
-                    <td>{{ borrowing.user.userFirstName }} {{ borrowing.user.username }}</td>
+                    <td>{{ borrowing.user.firstName }} {{ borrowing.user.name }}</td>
                 </tr>
             {% endif %}
             <tr>

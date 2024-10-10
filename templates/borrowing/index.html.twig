@@ -22,7 +22,7 @@
                     <td>{{ borrowing.bookVersion.book.name }} : {{ borrowing.bookVersion.name }}</td>
                     <td>{{ borrowing.borrowingDate ? borrowing.borrowingDate|date('Y-m-d') : '' }}</td>
                     <td>{{ borrowing.returnDate ? borrowing.returnDate|date('Y-m-d') : '' }}</td>
-                    <td>{{ borrowing.user.userFirstName }} {{ borrowing.user.username }}</td>
+                    <td>{{ borrowing.user.firstName }} {{ borrowing.user.name }}</td>
                     <td>
                         <twig:Button type="show" path="{{ path('app_borrowing_show', {'id': borrowing.id}) }}"/>
                         <twig:Button type="edit" path="{{ path('app_borrowing_edit', {'id': borrowing.id}) }}"/>

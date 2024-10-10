@@ -12,6 +12,7 @@
                     <th>Role</th>
                     <th>UserName</th>
                     <th>First Name</th>
+                    <th>Name</th>
                     <th>Email</th>
                     <th></th>
                 </tr>
@@ -31,7 +32,8 @@
                         {% endfor %}
                     </td>
                     <td>{{ user.username }}</td>
-                    <td>{{ user.userFirstName }}</td>
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.name }}</td>
                     <td>{{ user.email }}</td>
                     <td>
                         <twig:Button type="show" path="{{ path('app_user_show', {'id': user.id}) }}"/>

@@ -11,7 +11,7 @@ readonly class BorrowingService
         private BorrowingRepository $borrowingRepository,
         private UserRepository      $userRepository,
         private MailService         $mailService,
-        private PenalityService     $penalityService,
+        private PenaltyService      $penaltyService,
     ){}
 
     public function checkBorrowings3DaysLeftReturn(): void
@@ -27,7 +27,7 @@ readonly class BorrowingService
         }
     }
 
-    public function checkBorrowingsNotReturnedForPenality(): void
+    public function checkBorrowingsNotReturnedForPenalty(): void
     {
         $users = $this->userRepository->findAllUsers();
         foreach ($users as $user) {
@@ -35,7 +35,7 @@ readonly class BorrowingService
 
             if (null != $borrowings)
             {
-                $this->penalityService->updateUserPenality($borrowings, $user);
+                $this->penaltyService->updateUserPenalty($borrowings, $user);
             }
         }
     }

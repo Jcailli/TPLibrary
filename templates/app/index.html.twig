@@ -10,7 +10,7 @@
 
 <div class="example-wrapper">
     {% if is_granted('IS_AUTHENTICATED') %}
-        <h1 class="text-center">Bonjour {{ user.userFirstName }} {{ user.username }}</h1>
+        <h1 class="text-center">Bonjour {{ user.firstName }} {{ user.name }}</h1>
 
         <p class="text-center">Bienvenue dans ta librairie préférée</p>
     {% else %}

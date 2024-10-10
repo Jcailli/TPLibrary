@@ -58,6 +58,87 @@ class PublisherFixtures extends Fixture
             [
                 'name' => 'T. Egerton',
             ],
+            [
+                'name' => 'Lackington',
+            ],
+            [
+                'name' => 'Levavasseur',
+            ],
+            [
+                'name' => 'Chatto & Windus',
+            ],
+            [
+                'name' => 'Francisco de Robles',
+            ],
+            [
+                'name' => 'HarperCollins',
+            ],
+            [
+                'name' => 'Chilton Books',
+            ],
+            [
+                'name' => 'Doubleday',
+            ],
+            [
+                'name' => 'William Morrow',
+            ],
+            [
+                'name' => 'Knopf',
+            ],
+            [
+                'name' => 'Alfred A. Knopf',
+            ],
+            [
+                'name' => 'Charles Scribner\'s Sons',
+            ],
+            [
+                'name' => 'Little, Brown and Company',
+            ],
+            [
+                'name' => 'Bompiani',
+            ],
+            [
+                'name' => 'Albin Michel',
+            ],
+            [
+                'name' => 'Seuil',
+            ],
+            [
+                'name' => 'Sylvia Beach',
+            ],
+            [
+                'name' => 'Le Livre de Poche',
+            ],
+            [
+                'name' => 'Harper & Row',
+            ],
+            [
+                'name' => 'Smith, Elder & Co.',
+            ],
+            [
+                'name' => 'Michel Lévy Frères',
+            ],
+            [
+                'name' => 'S. Fischer Verlag',
+            ],
+            [
+                'name' => 'Viking Press',
+            ],
+            [
+                'name' => 'George Newnes',
+            ],
+            [
+                'name' => 'Hetzel',
+            ],
+            [
+                'name' => 'Baudry',
+            ],
+            [
+                'name' => 'Antonio Blado d\'Asola',
+            ],
+            [
+                'name' => 'Nathan',
+            ],
         ];
 
         foreach ($publishers as $publisher) {

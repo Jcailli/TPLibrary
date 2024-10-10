@@ -17,7 +17,7 @@
             <tbody>
             {% for reservation in reservations %}
                 <tr>
-                    <td>{{ reservation.user.userFirstName }} {{ reservation.user.username }}</td>
+                    <td>{{ reservation.user.firstName }} {{ reservation.user.name }}</td>
                     <td>{{ reservation.bookVersion.book.name }} : {{ reservation.bookVersion.name }}</td>
                     <td>
                         <twig:Button type="show" path="{{ path('app_reservation_show', {'id': reservation.id}) }}"/>

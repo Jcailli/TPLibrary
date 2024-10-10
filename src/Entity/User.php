@@ -37,10 +37,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $userFirstName = null;
+    private ?string $firstName = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $penality = null;
+    private ?int $penalty = null;
 
     /**
      * @var Collection<int, Borrowing>
@@ -148,26 +151,38 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getUserFirstName(): ?string
+    public function getFirstName(): ?string
     {
-        return $this->userFirstName;
+        return $this->firstName;
     }
 
-    public function setUserFirstName(string $userFirstName): static
+    public function setFirstName(string $firstName): static
     {
-        $this->userFirstName = $userFirstName;
+        $this->firstName = $firstName;
 
         return $this;
     }
 
-    public function getPenality(): ?int
+    public function getName(): ?string
     {
-        return $this->penality;
+        return $this->name;
     }
 
-    public function setPenality(?int $penality): static
+    public function setName(string $name): static
     {
-        $this->penality = $penality;
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getPenalty(): ?int
+    {
+        return $this->penalty;
+    }
+
+    public function setPenalty(?int $penalty): static
+    {
+        $this->penalty = $penalty;
 
         return $this;
     }
